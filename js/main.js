@@ -56,7 +56,14 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+      // threshold: 0 fires as soon as any part of an element enters the
+      // viewport. A fractional threshold (e.g. 0.12) requires that % of the
+      // element's OWN height to be visible at once — for a tall single
+      // container like a stacked mobile card-grid (which can run several
+      // times taller than the viewport once cards stack into one column),
+      // that requirement is literally impossible to satisfy and the
+      // section never reveals. threshold: 0 has no such ceiling.
+      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
     );
     revealEls.forEach(function (el) { observer.observe(el); });
   }

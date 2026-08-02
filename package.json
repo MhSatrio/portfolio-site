@@ -1,0 +1,24 @@
+{
+  "name": "portfolio-site",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:client": "tsc src/tracking.ts --target ES2020 --lib dom,es2020,esnext --outDir js --removeComments --strict false --skipLibCheck && tsc admin-src/dashboard.ts --target ES2020 --lib dom,es2020,esnext --outDir admin --removeComments --strict false --skipLibCheck",
+    "setup:sheet": "tsx scripts/setup-sheet.ts"
+  },
+  "dependencies": {
+    "googleapis": "^173.0.0",
+    "nodemailer": "^9.0.3",
+    "ua-parser-js": "^1.0.40",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/nodemailer": "^6.4.17",
+    "@types/ua-parser-js": "^0.7.39",
+    "@vercel/node": "^3.2.24",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

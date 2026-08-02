@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Visitor Analytics — Admin</title>
+<link rel="icon" href="data:,">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/admin/dashboard.css">
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="loginScreen" class="login-screen">
+  <form id="loginForm" class="login-card">
+    <div class="eyebrow" style="margin-bottom: 16px;">Admin</div>
+    <h1>Visitor Analytics</h1>
+    <p class="text-secondary" style="margin-bottom: 24px;">Enter the admin password to continue.</p>
+    <input type="password" id="passwordInput" placeholder="Password" autocomplete="current-password" required>
+    <button type="submit" class="btn btn-primary" style="width:100%; margin-top: 14px;">Log In</button>
+    <div id="loginError" class="login-error"></div>
+  </form>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div id="dashboardScreen" class="dashboard-screen hidden">
+  <header class="dash-header">
+    <div>
+      <div class="eyebrow" style="margin-bottom: 6px;">Admin</div>
+      <h1 class="dash-title">Visitor Analytics</h1>
+    </div>
+    <div class="dash-header-actions">
+      <span id="lastUpdated" class="text-secondary" style="font-size: 13px;">Last updated: —</span>
+      <button id="refreshBtn" class="btn btn-secondary btn-sm">Refresh</button>
+      <button id="logoutBtn" class="btn btn-secondary btn-sm">Log Out</button>
+    </div>
+  </header>
+
+  <div id="errorBanner" class="error-banner hidden"></div>
+
+  <div id="skeleton" class="skeleton-grid">
+    <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+    <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+  </div>
+
+  <div id="emptyState" class="empty-state hidden">
+    <h3>No visitor data yet</h3>
+    <p class="text-secondary">Once someone visits the portfolio, events will start appearing here.</p>
+  </div>
+
+  <div id="dashboardBody" class="hidden">
+
+    <section>
+      <div id="statsGrid" class="stats-grid"></div>
+    </section>
+
+    <section class="chart-section">
+      <h2 class="section-title-sm">Traffic Over Time</h2>
+      <div class="chart-grid">
+        <div class="chart-card"><h4>Daily Visitors</h4><div class="chart-canvas-wrap"><canvas id="chartDailyVisitors"></canvas></div></div>
+        <div class="chart-card"><h4>Weekly Visitors</h4><div class="chart-canvas-wrap"><canvas id="chartWeeklyVisitors"></canvas></div></div>
+        <div class="chart-card"><h4>Monthly Visitors</h4><div class="chart-canvas-wrap"><canvas id="chartMonthlyVisitors"></canvas></div></div>
+        <div class="chart-card"><h4>Visitor Growth</h4><div class="chart-canvas-wrap"><canvas id="chartVisitorGrowth"></canvas></div></div>
+        <div class="chart-card"><h4>Downloads Over Time</h4><div class="chart-canvas-wrap"><canvas id="chartDownloadsOverTime"></canvas></div></div>
+        <div class="chart-card"><h4>Returning vs New Visitors</h4><div class="chart-canvas-wrap chart-canvas-wrap-short"><canvas id="chartReturningVsNew"></canvas></div></div>
+      </div>
+    </section>
+
+    <section class="chart-section">
+      <h2 class="section-title-sm">Audience</h2>
+      <div class="chart-grid">
+        <div class="chart-card"><h4>Browser Distribution</h4><div class="chart-canvas-wrap"><canvas id="chartBrowsers"></canvas></div></div>
+        <div class="chart-card"><h4>Operating System Distribution</h4><div class="chart-canvas-wrap"><canvas id="chartOs"></canvas></div></div>
+        <div class="chart-card"><h4>Device Distribution</h4><div class="chart-canvas-wrap"><canvas id="chartDevice"></canvas></div></div>
+        <div class="chart-card"><h4>Country Distribution</h4><div class="chart-canvas-wrap"><canvas id="chartCountry"></canvas></div></div>
+        <div class="chart-card"><h4>Session Duration Distribution</h4><div class="chart-canvas-wrap"><canvas id="chartSessionDuration"></canvas></div></div>
+      </div>
+    </section>
+
+    <section class="chart-section">
+      <h2 class="section-title-sm">Engagement</h2>
+      <div class="chart-grid">
+        <div class="chart-card"><h4>Top Referrers</h4><div class="chart-canvas-wrap"><canvas id="chartReferrers"></canvas></div></div>
+        <div class="chart-card"><h4>Top Pages</h4><div class="chart-canvas-wrap"><canvas id="chartPages"></canvas></div></div>
+        <div class="chart-card"><h4>Top Projects Viewed</h4><div class="chart-canvas-wrap"><canvas id="chartProjects"></canvas></div></div>
+        <div class="chart-card"><h4>Top UTM Campaigns</h4><div class="chart-canvas-wrap"><canvas id="chartUtm"></canvas></div></div>
+        <div class="chart-card"><h4>Button Click Frequency</h4><div class="chart-canvas-wrap"><canvas id="chartButtons"></canvas></div></div>
+      </div>
+    </section>
+
+    <section class="chart-section">
+      <div class="table-toolbar">
+        <h2 class="section-title-sm" style="margin:0;">Visitor Events</h2>
+        <div class="table-controls">
+          <input type="search" id="tableSearch" placeholder="Search visitor, page, browser…">
+          <select id="countryFilter"><option value="">All countries</option></select>
+          <select id="browserFilter"><option value="">All browsers</option></select>
+          <label class="date-filter">From <input type="date" id="dateFrom"></label>
+          <label class="date-filter">To <input type="date" id="dateTo"></label>
+          <button id="csvExportBtn" class="btn btn-secondary btn-sm">Export CSV</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th data-sort="timestamp">Timestamp</th>
+              <th data-sort="visitorId">Visitor ID</th>
+              <th data-sort="sessionId">Session ID</th>
+              <th data-sort="visitCount">Visit #</th>
+              <th data-sort="returningVisitor">Returning</th>
+              <th data-sort="country">Country</th>
+              <th data-sort="region">Region</th>
+              <th data-sort="city">City</th>
+              <th data-sort="browser">Browser</th>
+              <th data-sort="os">OS</th>
+              <th data-sort="device">Device</th>
+              <th data-sort="language">Lang</th>
+              <th>Referrer</th>
+              <th data-sort="page">Page</th>
+              <th data-sort="eventType">Event</th>
+              <th data-sort="button">Button</th>
+              <th data-sort="download">Download</th>
+              <th data-sort="duration">Duration</th>
+              <th data-sort="emailStatus">Email</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="table-footer">
+        <span id="rowCount" class="text-secondary"></span>
+        <div id="pagination" class="pagination"></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="/admin/dashboard.js"></script>
+</body>
+</html>

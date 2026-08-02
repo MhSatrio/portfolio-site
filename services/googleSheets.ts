@@ -35,13 +35,14 @@ function getSheetId(): string {
   return id;
 }
 
-/** Writes the header row only if the sheet is empty. Never duplicates headers. */
+/** Writes the header row if it's missing or doesn't match the expected columns. */
 export async function ensureHeaders(): Promise<void> {
   const sheets = getSheetsClient();
   const spreadsheetId = getSheetId();
-  const existing = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_NAME}!A1:A1` });
-  const hasHeader = Boolean(existing.data.values && existing.data.values.length > 0 && existing.data.values[0][0]);
-  if (hasHeader) return;
+  const existing = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_NAME}!A1:X1` });
+  const currentHeader = existing.data.values?.[0] || [];
+  const matches = SHEET_HEADERS.every((h, i) => currentHeader[i] === h);
+  if (matches) return;
   await sheets.spreadsheets.values.update({
     spreadsheetId,
     range: `${SHEET_NAME}!A1`,
@@ -50,14 +51,25 @@ export async function ensureHeaders(): Promise<void> {
   });
 }
 
+/**
+ * Appends by writing to an explicitly computed row, never via the Sheets API's
+ * own `values.append` table auto-detection. Google Sheets can silently
+ * (re)convert a plain grid into a structured "Table" object behind the
+ * scenes; when it does, `append`'s heuristic follows the Table's tracked
+ * range rather than the sheet's actual last populated row, so new data can
+ * land dozens or hundreds of rows below the real data instead of right after
+ * it. Reading the real row count first and writing with `values.update` at
+ * an exact range sidesteps that heuristic entirely.
+ */
 export async function appendRow(row: SheetRow): Promise<void> {
   const sheets = getSheetsClient();
   const spreadsheetId = getSheetId();
-  await sheets.spreadsheets.values.append({
+  const existingRows = await getAllRows();
+  const targetRow = existingRows.length + 2; // +1 for the header, +1 for 1-based rows
+  await sheets.spreadsheets.values.update({
     spreadsheetId,
-    range: `${SHEET_NAME}!A1`,
+    range: `${SHEET_NAME}!A${targetRow}:X${targetRow}`,
     valueInputOption: 'USER_ENTERED',
-    insertDataOption: 'INSERT_ROWS',
     requestBody: { values: [sheetRowToArray(row)] },
   });
 }

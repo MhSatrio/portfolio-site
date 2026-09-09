@@ -1,0 +1,8902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RevOps Operating System Template — Preview | Muhammad Satrio</title>
+<meta name="description" content="A 21-tab Revenue Operations spreadsheet template covering Property, Hospitality, EXIM/Trading and B2B SaaS — protected view-only preview.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0c;
+  --surface: #131316;
+  --surface-raised: #18181c;
+  --border: #26262b;
+  --text: #f2f2f0;
+  --text-secondary: #a3a3ab;
+  --text-tertiary: #6c6c74;
+  --gold: #c9a86a;
+  --gold-dim: #8a7550;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  -webkit-user-select: none; -moz-user-select: none; user-select: none;
+  cursor: default;
+}
+a { color: inherit; }
+::selection { background: transparent; }
+
+/* ---------- protection watermark ---------- */
+.watermark {
+  position: fixed; inset: 0; z-index: 999; pointer-events: none;
+  opacity: 0.055;
+  background-image: repeating-linear-gradient(-35deg, transparent, transparent 220px, rgba(255,255,255,0.001) 220px);
+}
+.watermark span {
+  position: absolute; white-space: nowrap; font-size: 13px; letter-spacing: 0.18em;
+  color: #fff; font-weight: 600; transform: rotate(-35deg);
+}
+
+/* ---------- top bar ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(10,10,12,0.92); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.brand { display: flex; flex-direction: column; gap: 2px; }
+.brand .word {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 26px;
+  letter-spacing: 0.03em; color: var(--text);
+}
+.brand .tag {
+  font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+}
+.viewonly-badge {
+  font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-secondary); border: 1px solid var(--border); border-radius: 999px;
+  padding: 6px 14px; display: inline-flex; align-items: center; gap: 8px;
+}
+.viewonly-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.back-link { font-size: 13px; color: var(--text-secondary); border: 1px solid var(--border); padding: 8px 16px; border-radius: 999px; }
+.back-link:hover { border-color: var(--gold-dim); color: var(--text); }
+
+/* ---------- hero ---------- */
+.hero {
+  padding: 96px 28px 64px; max-width: 880px; margin: 0 auto; text-align: center;
+}
+.hero .eyebrow {
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 22px; display: block;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(40px, 6vw, 68px);
+  line-height: 1.1; letter-spacing: 0.01em; margin-bottom: 22px;
+}
+.hero p.lede {
+  color: var(--text-secondary); font-size: 17px; max-width: 620px; margin: 0 auto 28px;
+}
+.hero-stats {
+  display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 36px;
+  padding-top: 28px; border-top: 1px solid var(--border);
+}
+.hero-stats .stat-num {
+  font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 30px; color: var(--gold);
+}
+.hero-stats .stat-label {
+  font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-tertiary); margin-top: 4px;
+}
+.notice {
+  max-width: 620px; margin: 32px auto 0; font-size: 13px; color: var(--text-tertiary);
+  border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px;
+}
+
+/* ---------- tab nav ---------- */
+.tabnav-wrap { position: sticky; top: 73px; z-index: 30; background: var(--bg); border-bottom: 1px solid var(--border); }
+.tabnav {
+  display: flex; gap: 6px; overflow-x: auto; padding: 12px 28px; max-width: 1280px; margin: 0 auto;
+  scrollbar-width: thin;
+}
+.tab-btn {
+  flex: none; background: var(--surface); border: 1px solid var(--border); color: var(--text-secondary);
+  font-family: inherit; font-size: 12.5px; padding: 9px 14px; border-radius: 10px; cursor: pointer;
+  white-space: nowrap; transition: border-color .15s ease, color .15s ease;
+}
+.tab-btn span { color: var(--text-tertiary); margin-left: 6px; }
+.tab-btn:hover { border-color: var(--gold-dim); color: var(--text); }
+.tab-btn.active { border-color: var(--gold); color: var(--text); background: var(--surface-raised); }
+
+/* ---------- sheet sections ---------- */
+.sheets { max-width: 1280px; margin: 0 auto; padding: 8px 28px 120px; }
+.sheet-section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+.sheet-section:last-child { border-bottom: none; }
+.sheet-head { display: flex; gap: 20px; align-items: baseline; margin-bottom: 22px; }
+.sheet-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--gold); letter-spacing: 0.08em;
+  border: 1px solid var(--gold-dim); border-radius: 8px; padding: 4px 10px; flex: none;
+}
+.sheet-head h3 { font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+.sheet-head p { color: var(--text-secondary); font-size: 14px; max-width: 640px; }
+
+.table-scroll {
+  overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; background: var(--surface);
+}
+table { border-collapse: collapse; font-size: 12.5px; min-width: 100%; }
+td {
+  padding: 7px 12px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border);
+  white-space: nowrap; color: var(--text-secondary);
+}
+tr:first-child td { color: var(--text); font-weight: 600; background: var(--surface-raised); }
+td.blank { color: var(--text-tertiary); }
+.empty-note { color: var(--text-tertiary); font-size: 13px; padding: 20px; }
+
+/* ---------- footer ---------- */
+.footer-note {
+  text-align: center; padding: 48px 28px 80px; color: var(--text-tertiary); font-size: 12.5px;
+  max-width: 620px; margin: 0 auto;
+}
+
+@media print {
+  body * { display: none !important; }
+  body::after {
+    content: 'Printing and saving this page is disabled.';
+    display: block !important; padding: 120px 40px; text-align: center; font-size: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar { padding: 14px 18px; }
+  .hero { padding: 64px 18px 44px; }
+  .sheets { padding: 8px 18px 90px; }
+}
+</style>
+</head>
+<body oncontextmenu="return false" ondragstart="return false">
+
+<div class="watermark" id="watermark"></div>
+
+<div class="topbar">
+  <div class="brand">
+    <span class="word">RevOps Operating System</span>
+    <span class="tag">Template Preview</span>
+  </div>
+  <div style="display:flex; align-items:center; gap:14px;">
+    <span class="viewonly-badge">View only · Not for redistribution</span>
+    <a class="back-link" href="index.html">&larr; Back to portfolio</a>
+  </div>
+</div>
+
+<section class="hero">
+  <span class="eyebrow">Revenue Operations &middot; Spreadsheet System</span>
+  <h1>One operating system for Property, Hospitality,<br>EXIM &amp; B2B SaaS revenue teams.</h1>
+  <p class="lede">A 21-tab workbook that turns raw leads, pipeline, revenue and cash data into KPIs, forecasts, funnel conversion and revenue-leakage analysis automatically — built so a small or medium company can run RevOps without custom BI. This is a protected, read-only preview of the live workbook.</p>
+  <div class="hero-stats">
+    <div><div class="stat-num">21</div><div class="stat-label">Tabs</div></div>
+    <div><div class="stat-num">4</div><div class="stat-label">Industries</div></div>
+    <div><div class="stat-num">80+</div><div class="stat-label">KPIs defined</div></div>
+    <div><div class="stat-num">0</div><div class="stat-label">Hardcoded targets</div></div>
+  </div>
+  <p class="notice">This preview shows real, computed output from the workbook, trimmed to remove the ~100 blank pre-formatted rows each tab ships with for a team's own data. The underlying file is not linked or downloadable from this page.</p>
+</section>
+
+<div class="tabnav-wrap">
+  <div class="tabnav" id="tabnav">
+<button class="tab-btn" data-target="00-template-guide">00 <span>Template Guide</span></button>
+<button class="tab-btn" data-target="01-glossary">01 <span>Glossary</span></button>
+<button class="tab-btn" data-target="02-settings">02 <span>Settings</span></button>
+<button class="tab-btn" data-target="03-leads">03 <span>Leads</span></button>
+<button class="tab-btn" data-target="04-pipeline">04 <span>Pipeline</span></button>
+<button class="tab-btn" data-target="05-activities">05 <span>Activities</span></button>
+<button class="tab-btn" data-target="06-customers">06 <span>Customers</span></button>
+<button class="tab-btn" data-target="07-revenue">07 <span>Revenue</span></button>
+<button class="tab-btn" data-target="08-cash">08 <span>Cash</span></button>
+<button class="tab-btn" data-target="09-forecast">09 <span>Forecast</span></button>
+<button class="tab-btn" data-target="10-channel">10 <span>Channel</span></button>
+<button class="tab-btn" data-target="11-salesperson">11 <span>Salesperson</span></button>
+<button class="tab-btn" data-target="12-cohort">12 <span>Cohort</span></button>
+<button class="tab-btn" data-target="13-property">13 <span>Property</span></button>
+<button class="tab-btn" data-target="14-hospitality-hotel">14 <span>Hotel</span></button>
+<button class="tab-btn" data-target="15-hospitality-restaurant">15 <span>Restaurant</span></button>
+<button class="tab-btn" data-target="16-exim">16 <span>EXIM / Trading</span></button>
+<button class="tab-btn" data-target="17-tech-saas">17 <span>Tech / SaaS</span></button>
+<button class="tab-btn" data-target="18-revenue-leakage">18 <span>Revenue Leakage</span></button>
+<button class="tab-btn" data-target="19-action-tracker">19 <span>Action Tracker</span></button>
+<button class="tab-btn" data-target="20-dashboard">20 <span>Dashboard</span></button>
+  </div>
+</div>
+
+<div class="sheets" id="sheets">
+
+        <section class="sheet-section" id="00-template-guide">
+          <div class="sheet-head">
+            <span class="sheet-num">00</span>
+            <div>
+              <h3>Template Guide</h3>
+              <p>How the workbook is organized and how a team uses it week to week.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  RevOps Operating System — Template Guide</td>
+</tr>
+<tr>
+<td>A practical Revenue Operations workbook for Property, Hospitality (Hotel &amp; Restaurant), EXIM/Trading, and B2B SaaS companies.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>1. Purpose</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>This workbook is a plug-and-play RevOps operating system: enter operational data (leads, pipeline, revenue, customers, cash) and it automatically calculates KPIs, targets vs. actuals, funnel conversion, forecasts, revenue leakage, and the actions management should take next. It replaces a scattered mix of KPI decks with one live, auditable model.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>2. Who should use this</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Founders, GMs, RevOps/Sales Ops managers, and finance leads at small-to-medium companies who want one shared source of truth for revenue performance across sales, marketing, and customer success — without building custom BI.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>3. What &quot;RevOps&quot; means here</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>RevOps (Revenue Operations) aligns marketing, sales, customer success and finance around one funnel and one set of numbers. In this workbook that means: every KPI on the Dashboard traces back to a raw data table, every target is centralized and editable in Settings, and nothing is hardcoded into a formula.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>4. Industries covered</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Property</td>
+<td>Residential, villa, luxury, commercial &amp; land brokerage/agency — 13_Property</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Hospitality — Hotel</td>
+<td>Rooms revenue, occupancy, ADR, RevPAR, channel mix — 14_Hospitality_Hotel</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Hospitality — Restaurant</td>
+<td>Covers, average check, table turnover, RevPASH — 15_Hospitality_Restaurant</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>EXIM / Import-Export / Trading</td>
+<td>Supplier→landed cost→sale, inventory, cash cycle — 16_EXIM</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Technology / B2B SaaS</td>
+<td>MRR/ARR, expansion &amp; churn, NRR/GRR, CAC:LTV — 17_Tech_SaaS</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>5. The universal RevOps flow</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Leads / Demand  →  Qualified Leads  →  Opportunities  →  Proposal / Quote  →  Won  →  Revenue  →  Gross Profit  →  Cash  →  Retention / Repeat Revenue</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Every universal tab (03–12) sits on this flow. Every industry tab (13–17) adapts the middle of the flow to how that industry actually sells (e.g. Property: Listing→Enquiry→Viewing→Offer→Closed; SaaS: Trial→Opportunity→Subscription→Renewal→Expansion).</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>6. How to use this workbook</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>1. Configure Settings — company, currency, period, and every target/benchmark.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>2. Enter Leads (03) — every inbound/outbound lead, one row each.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>3. Enter Opportunities (04_Pipeline) — once a lead is qualified, log the deal.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>4. Enter Revenue (07) and Cash (08) — actual transactions and payments.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>5. Enter Customer data (06) and the relevant industry tab (13–17).</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>6. Review the Dashboard (20) — weekly/monthly executive snapshot.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>7. Review Revenue Leakage (18) — where money is being lost, and how much.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>8. Work the Action Tracker (19) — every metric below target surfaces here automatically.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>7. Which tabs you fill in manually vs. what&#x27;s automatic</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>MANUAL ENTRY (blue-shaded cells): 02_Settings, 03_Leads, 04_Pipeline, 05_Activities, 06_Customers, 07_Revenue, 08_Cash, 13–17 industry tabs. AUTOMATIC (grey-shaded formula cells): every KPI Summary box, 09_Forecast, 10_Channel, 11_Salesperson, 12_Cohort, 18_Revenue_Leakage, 19_Action_Tracker, 20_Dashboard. TARGETS/ASSUMPTIONS (yellow-shaded cells): 02_Settings only — every formula elsewhere references these cells, never a typed-in number.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>8. Universal vs. industry-specific metrics</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Universal metrics (apply to all five industries): lead volume, qualification rate, win rate, average deal size, sales cycle, pipeline coverage, revenue, gross margin, DSO, retention/churn, forecast accuracy. Industry-specific metrics (only meaningful in one vertical) live only on that industry&#x27;s tab — e.g. RevPAR is meaningless for EXIM, and Landed Cost is meaningless for a hotel. See 01_Glossary column &quot;Applies To&quot; for every metric&#x27;s scope.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>9. Customizing targets</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Go to 02_Settings. Every target/benchmark is laid out as Warning → Target → Excellent. Change the yellow cells only — every formula in the workbook references these by name, so nothing breaks. Reference benchmarks (industry norms sourced externally) are explicitly labeled &quot;Reference Benchmark&quot; — treat them as a starting point, not a guarantee, since they vary by geography, segment and business model.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>10. Recommended data-entry frequency</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Leads &amp; Activities: daily. Pipeline: whenever a deal moves stage (at least weekly). Revenue &amp; Cash: as invoices/payments occur, reconciled weekly. Customers: on acquisition, churn, or expansion events. Industry tabs: match the transaction cycle (e.g. Restaurant = daily service; Property = per listing/viewing/offer).</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>11. Recommended review cadence</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>WEEKLY: Dashboard + Pipeline + Action Tracker (15 min standing review). MONTHLY: full Dashboard, Revenue Leakage, Cohort, Forecast vs. Actual, Salesperson performance. QUARTERLY: re-baseline Settings targets, review benchmark relevance, deep-dive the largest leakage category.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>12. Dashboard traffic-light status</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Green — Excellent</td>
+<td>Metric meets or beats the Excellent threshold in Settings.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Yellow — Warning</td>
+<td>Metric is between Warning and Target — needs attention, not yet critical.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Red — Critical</td>
+<td>Metric is below the Warning threshold — needs immediate action.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Grey/Blue — N/A or informational</td>
+<td>Not enough data yet to calculate, or the cell is purely informational.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>13. Revenue leakage analysis</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>18_Revenue_Leakage compares Potential Value vs. Actual Value at every stage of the funnel (lead, qualification, proposal, close, discount, churn, cancellation, collection, inventory, margin) and quantifies the gap. It answers: where are we losing revenue, how much is it worth, and what should we fix first? Every leakage row that has enough data gets a dollar figure; rows without enough input data show N/A rather than a guess.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>14. Forecast methodology</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>09_Forecast is probability-weighted, not guaranteed revenue. Best Case = all open pipeline weighted at each stage&#x27;s probability, uncapped. Base Case = weighted pipeline only for deals with an expected close date in the period, plus closed revenue. Worst Case = closed revenue plus only pipeline in Negotiation/Proposal stages. All three are clearly labeled as scenarios — treat Base Case as the planning number and Best/Worst as the range.</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="01-glossary">
+          <div class="sheet-head">
+            <span class="sheet-num">01</span>
+            <div>
+              <h3>Glossary</h3>
+              <p>Every KPI used anywhere in the workbook, with its formula spelled out.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Glossary — Every Term, KPI &amp; Formula Used in This Workbook</td>
+</tr>
+<tr>
+<td>Every mathematically derivable metric shows its formula. Metrics with no standard formula are marked &quot;Operational definition&quot;.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td>Term</td>
+<td>Full Name</td>
+<td>Definition</td>
+<td>Formula / Mathematical Derivation</td>
+<td>Unit</td>
+<td>Applies To</td>
+<td>Example</td>
+<td>Notes</td>
+</tr>
+<tr>
+<td>Lead</td>
+<td>Lead</td>
+<td>A person or company that has shown interest but is not yet qualified.</td>
+<td>Operational definition — count of records in 03_Leads</td>
+<td>Count</td>
+<td>Universal</td>
+<td>A form-fill on your website</td>
+</tr>
+<tr>
+<td>Qualified Lead</td>
+<td>Qualified Lead</td>
+<td>A lead confirmed to have budget, need, authority and timing (or the industry equivalent).</td>
+<td>Operational definition — Lead Status = &quot;Qualified&quot;</td>
+<td>Count</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>MQL</td>
+<td>Marketing Qualified Lead</td>
+<td>A lead marketing judges likely to become a customer based on engagement/fit, not yet vetted by sales.</td>
+<td>Operational definition</td>
+<td>Count</td>
+<td>Universal / SaaS</td>
+<td>Downloaded pricing page + opened 3 emails</td>
+<td>Optional — not all industries distinguish MQL from SQL</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>Sales Qualified Lead</td>
+<td>A lead sales has vetted and accepted as worth pursuing (usually becomes an Opportunity).</td>
+<td>Operational definition</td>
+<td>Count</td>
+<td>Universal / SaaS</td>
+</tr>
+<tr>
+<td>Opportunity</td>
+<td>Sales Opportunity</td>
+<td>A qualified lead with an active deal being worked, tracked in the pipeline.</td>
+<td>Operational definition — row in 04_Pipeline</td>
+<td>Count</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>Sales Pipeline</td>
+<td>The total value of all open (not yet Won/Lost) opportunities.</td>
+<td>Pipeline = SUM(Deal Value) where Status = &quot;Open&quot;</td>
+<td>Currency</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Pipeline Coverage</td>
+<td>Pipeline Coverage Ratio</td>
+<td>How many times larger the open pipeline is than the remaining revenue target — a leading indicator of whether enough pipeline exists to hit target.</td>
+<td>Pipeline Coverage = Open Pipeline Value / Revenue Target</td>
+<td>x (ratio)</td>
+<td>Universal</td>
+<td>3.5x means $3.50 of pipeline for every $1 of target</td>
+</tr>
+<tr>
+<td>Conversion Rate</td>
+<td>Stage Conversion Rate</td>
+<td>The % of records that move from one funnel stage to the next.</td>
+<td>Conversion Rate = Count at Stage N+1 / Count at Stage N × 100</td>
+<td>%</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>Definition of &quot;stage&quot; varies by industry — see each industry tab</td>
+</tr>
+<tr>
+<td>Win Rate</td>
+<td>Win Rate</td>
+<td>The % of closed opportunities that were won.</td>
+<td>Win Rate = Won Opportunities / (Won + Lost Opportunities) × 100</td>
+<td>%</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>Excludes still-open opportunities</td>
+</tr>
+<tr>
+<td>Average Deal Size</td>
+<td>Average Deal Size</td>
+<td>The average value of a won opportunity.</td>
+<td>Average Deal Size = SUM(Won Deal Value) / COUNT(Won Deals)</td>
+<td>Currency</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Sales Cycle</td>
+<td>Average Sales Cycle Length</td>
+<td>Average number of days from opportunity creation to close (Won or Lost).</td>
+<td>Sales Cycle = AVERAGE(Close Date − Created Date) for closed deals</td>
+<td>Days</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>CAC</td>
+<td>Customer Acquisition Cost</td>
+<td>The average fully-loaded cost to acquire one new customer.</td>
+<td>CAC = Total Sales &amp; Marketing Cost / Number of New Customers Acquired</td>
+<td>Currency</td>
+<td>Universal (needs cost data)</td>
+<td class='blank'></td>
+<td>Requires marketing/sales spend input — shown N/A without it</td>
+</tr>
+<tr>
+<td>CPL</td>
+<td>Cost per Lead</td>
+<td>The average marketing cost to generate one lead.</td>
+<td>CPL = Marketing Spend / Number of Leads Generated</td>
+<td>Currency</td>
+<td>Universal (needs cost data)</td>
+<td class='blank'></td>
+<td>Requires channel spend input — shown N/A without it</td>
+</tr>
+<tr>
+<td>LTV</td>
+<td>Customer Lifetime Value</td>
+<td>The total gross profit expected from a customer over the life of the relationship.</td>
+<td>LTV = Average Gross Profit per Customer × Average Customer Lifespan (or ARPA × Gross Margin % / Revenue Churn for SaaS)</td>
+<td>Currency</td>
+<td>Universal (needs retention history)</td>
+<td class='blank'></td>
+<td>Not calculated until enough churn history exists</td>
+</tr>
+<tr>
+<td>LTV:CAC</td>
+<td>LTV to CAC Ratio</td>
+<td>How many dollars of lifetime value are generated per dollar spent acquiring the customer.</td>
+<td>LTV:CAC = LTV / CAC</td>
+<td>x (ratio)</td>
+<td>Universal / SaaS</td>
+<td>3x is a common reference benchmark</td>
+<td>Reference Benchmark — varies by business model</td>
+</tr>
+<tr>
+<td>Revenue</td>
+<td>Revenue</td>
+<td>Total value of goods/services sold in a period, before or after discounts as labeled.</td>
+<td>Gross Revenue = SUM(Invoice/Sale Value); Net Revenue = Gross Revenue − Discounts</td>
+<td>Currency</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>ARR</td>
+<td>Annual Recurring Revenue</td>
+<td>The annualized value of recurring (subscription) revenue.</td>
+<td>ARR = MRR × 12</td>
+<td>Currency</td>
+<td>SaaS</td>
+</tr>
+<tr>
+<td>MRR</td>
+<td>Monthly Recurring Revenue</td>
+<td>The total recurring revenue normalized to a monthly value.</td>
+<td>MRR = SUM(active subscription monthly value)</td>
+<td>Currency</td>
+<td>SaaS</td>
+</tr>
+<tr>
+<td>ARPA</td>
+<td>Average Revenue per Account</td>
+<td>Average MRR per active customer account.</td>
+<td>ARPA = Total MRR / Number of Active Accounts</td>
+<td>Currency</td>
+<td>SaaS</td>
+</tr>
+<tr>
+<td>Churn</td>
+<td>Churn (general)</td>
+<td>Loss of customers or revenue over a period.</td>
+<td>See Logo Churn / Revenue Churn</td>
+<td>%</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Logo Churn</td>
+<td>Logo (Customer Count) Churn Rate</td>
+<td>The % of customers lost in a period.</td>
+<td>Logo Churn = Customers Lost in Period / Customers at Start of Period × 100</td>
+<td>%</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Revenue Churn</td>
+<td>Revenue Churn Rate</td>
+<td>The % of recurring revenue lost in a period (before expansion is added back).</td>
+<td>Revenue Churn = Churned MRR / MRR at Start of Period × 100</td>
+<td>%</td>
+<td>SaaS / subscription</td>
+</tr>
+<tr>
+<td>GRR</td>
+<td>Gross Revenue Retention</td>
+<td>The % of starting recurring revenue retained, ignoring any expansion — capped at 100%.</td>
+<td>GRR = (Starting MRR − Churned MRR − Contraction MRR) / Starting MRR × 100</td>
+<td>%</td>
+<td>SaaS</td>
+<td class='blank'></td>
+<td>Must NOT include new-customer revenue</td>
+</tr>
+<tr>
+<td>NRR</td>
+<td>Net Revenue Retention</td>
+<td>The % of starting recurring revenue retained including expansion — can exceed 100%.</td>
+<td>NRR = (Starting MRR − Churned MRR − Contraction MRR + Expansion MRR) / Starting MRR × 100</td>
+<td>%</td>
+<td>SaaS</td>
+<td class='blank'></td>
+<td>Must NOT include new-customer revenue</td>
+</tr>
+<tr>
+<td>Expansion Revenue</td>
+<td>Expansion Revenue / MRR</td>
+<td>Additional recurring revenue from existing customers (upsell/cross-sell/upgrade).</td>
+<td>Expansion MRR = SUM(MRR increase from existing accounts)</td>
+<td>Currency</td>
+<td>SaaS</td>
+</tr>
+<tr>
+<td>Gross Revenue</td>
+<td>Gross Revenue</td>
+<td>Total sales value before discounts.</td>
+<td>Gross Revenue = SUM(Sale/Invoice Value before discount)</td>
+<td>Currency</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Net Revenue</td>
+<td>Net Revenue</td>
+<td>Sales value after discounts.</td>
+<td>Net Revenue = Gross Revenue − Discounts</td>
+<td>Currency</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>COGS</td>
+<td>Cost of Goods Sold</td>
+<td>The direct cost of delivering the product/service sold.</td>
+<td>Operational definition — direct cost input per transaction</td>
+<td>Currency</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Gross Profit</td>
+<td>Gross Profit</td>
+<td>Revenue remaining after direct costs.</td>
+<td>Gross Profit = Net Revenue − COGS</td>
+<td>Currency</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Gross Margin</td>
+<td>Gross Margin</td>
+<td>Gross profit expressed in currency (see Gross Margin % for the ratio).</td>
+<td>Gross Margin = Net Revenue − COGS</td>
+<td>Currency</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>Same as Gross Profit; term used interchangeably</td>
+</tr>
+<tr>
+<td>Gross Margin %</td>
+<td>Gross Margin Percentage</td>
+<td>Gross profit as a % of revenue.</td>
+<td>Gross Margin % = Gross Profit / Net Revenue × 100</td>
+<td>%</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>DSO</td>
+<td>Days Sales Outstanding</td>
+<td>Average number of days it takes to collect payment after a sale.</td>
+<td>DSO = (Accounts Receivable / Total Credit Sales) × Number of Days in Period</td>
+<td>Days</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>DPO</td>
+<td>Days Payable Outstanding</td>
+<td>Average number of days a company takes to pay its suppliers.</td>
+<td>DPO = (Accounts Payable / COGS) × Number of Days in Period</td>
+<td>Days</td>
+<td>EXIM</td>
+</tr>
+<tr>
+<td>Cash Conversion Cycle</td>
+<td>Cash Conversion Cycle (CCC)</td>
+<td>Days between paying for inventory and collecting cash from its sale.</td>
+<td>CCC = Inventory Days + DSO − DPO</td>
+<td>Days</td>
+<td>EXIM</td>
+</tr>
+<tr>
+<td>Inventory Days</td>
+<td>Days Inventory Outstanding</td>
+<td>Average number of days inventory is held before it is sold.</td>
+<td>Inventory Days = (Average Inventory Value / COGS) × Number of Days in Period</td>
+<td>Days</td>
+<td>EXIM</td>
+</tr>
+<tr>
+<td>Inventory Turnover</td>
+<td>Inventory Turnover Ratio</td>
+<td>How many times inventory is sold and replaced in a period.</td>
+<td>Inventory Turnover = COGS / Average Inventory Value</td>
+<td>x (ratio)</td>
+<td>EXIM / Property</td>
+</tr>
+<tr>
+<td>Landed Cost</td>
+<td>Total Landed Cost</td>
+<td>The full cost to get a product to your warehouse, ready to sell.</td>
+<td>Landed Cost = Product Cost + Freight + Insurance + Duties + Customs + Handling + Other Import Costs</td>
+<td>Currency</td>
+<td>EXIM</td>
+<td class='blank'></td>
+<td>Never use supplier purchase price alone as product cost</td>
+</tr>
+<tr>
+<td>Occupancy</td>
+<td>Occupancy Rate</td>
+<td>The % of available rooms sold in a period.</td>
+<td>Occupancy % = Rooms Sold / Rooms Available × 100</td>
+<td>%</td>
+<td>Hotel</td>
+</tr>
+<tr>
+<td>ADR</td>
+<td>Average Daily Rate</td>
+<td>Average revenue earned per occupied room.</td>
+<td>ADR = Room Revenue / Rooms Sold</td>
+<td>Currency</td>
+<td>Hotel</td>
+</tr>
+<tr>
+<td>RevPAR</td>
+<td>Revenue per Available Room</td>
+<td>Room revenue normalized across all available rooms, sold or not.</td>
+<td>RevPAR = Room Revenue / Available Room Nights  (equivalently, Occupancy % × ADR)</td>
+<td>Currency</td>
+<td>Hotel</td>
+</tr>
+<tr>
+<td>RevPASH</td>
+<td>Revenue per Available Seat Hour</td>
+<td>Restaurant revenue normalized by seating capacity and hours open.</td>
+<td>RevPASH = Food &amp; Beverage Revenue / (Available Seats × Operating Hours)</td>
+<td>Currency</td>
+<td>Restaurant</td>
+</tr>
+<tr>
+<td>Covers</td>
+<td>Covers</td>
+<td>Number of guests served in a period.</td>
+<td>Operational definition — count of guests served</td>
+<td>Count</td>
+<td>Restaurant</td>
+</tr>
+<tr>
+<td>Table Turnover</td>
+<td>Table Turnover Rate</td>
+<td>How many times a table is used by different parties in a service period.</td>
+<td>Table Turnover = Covers / (Number of Tables × Seats per Table, or Total Seats used as a proxy)</td>
+<td>x (ratio)</td>
+<td>Restaurant</td>
+</tr>
+<tr>
+<td>No-show Rate</td>
+<td>No-show Rate</td>
+<td>The % of reservations/bookings where the guest did not arrive.</td>
+<td>No-show Rate = No-shows / Total Reservations × 100</td>
+<td>%</td>
+<td>Hotel / Restaurant</td>
+</tr>
+<tr>
+<td>Booking Conversion</td>
+<td>Booking/Reservation Conversion Rate</td>
+<td>The % of enquiries or reservation attempts that convert into a confirmed booking.</td>
+<td>Booking Conversion = Confirmed Bookings / Booking Enquiries × 100</td>
+<td>%</td>
+<td>Hotel / Restaurant</td>
+</tr>
+<tr>
+<td>Days on Market</td>
+<td>Days on Market (DOM)</td>
+<td>Number of days a property listing is active before it sells.</td>
+<td>DOM = Sale Date − Listing Date</td>
+<td>Days</td>
+<td>Property</td>
+</tr>
+<tr>
+<td>Listing Conversion</td>
+<td>Listing-to-Sale Conversion</td>
+<td>The % of active listings that result in a closed sale in the period.</td>
+<td>Listing Conversion = Closed Sales / Active Listings × 100</td>
+<td>%</td>
+<td>Property</td>
+</tr>
+<tr>
+<td>Commission Revenue</td>
+<td>Commission Revenue</td>
+<td>Revenue earned as a % of the transaction value (typical for brokerage models).</td>
+<td>Commission Revenue = Sale Price × Commission %</td>
+<td>Currency</td>
+<td>Property</td>
+</tr>
+<tr>
+<td>Revenue per Customer</td>
+<td>Revenue per Customer</td>
+<td>Average revenue generated per customer.</td>
+<td>Revenue per Customer = Total Revenue / Number of Customers</td>
+<td>Currency</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Repeat Customer Rate</td>
+<td>Repeat Customer Rate</td>
+<td>The % of customers who purchased more than once.</td>
+<td>Repeat Customer Rate = Customers with 2+ Transactions / Total Customers × 100</td>
+<td>%</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Retention Rate</td>
+<td>Customer Retention Rate</td>
+<td>The % of customers retained over a period.</td>
+<td>Retention Rate = (Customers at End − New Customers Acquired) / Customers at Start × 100</td>
+<td>%</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Forecast Revenue</td>
+<td>Forecast Revenue</td>
+<td>Projected revenue for a future period based on closed + weighted open pipeline.</td>
+<td>Forecast Revenue = Closed Revenue + Weighted Open Pipeline (Base Case)</td>
+<td>Currency</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>See 09_Forecast for full methodology</td>
+</tr>
+<tr>
+<td>Weighted Pipeline</td>
+<td>Probability-Weighted Pipeline</td>
+<td>Open pipeline value adjusted by each deal&#x27;s stage probability.</td>
+<td>Weighted Pipeline = SUM(Deal Value × Stage Probability %)</td>
+<td>Currency</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>A forecasting estimate, not guaranteed revenue</td>
+</tr>
+<tr>
+<td>Best Case Forecast</td>
+<td>Best Case Forecast</td>
+<td>The most optimistic realistic forecast scenario.</td>
+<td>Best Case = Closed Revenue + SUM(all open pipeline weighted value, uncapped)</td>
+<td>Currency</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>Forecast scenario — not guaranteed revenue</td>
+</tr>
+<tr>
+<td>Base Case Forecast</td>
+<td>Base Case Forecast</td>
+<td>The most likely forecast scenario, used for planning.</td>
+<td>Base Case = Closed Revenue + SUM(weighted value of deals with Expected Close Date in period)</td>
+<td>Currency</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>Forecast scenario — recommended planning number</td>
+</tr>
+<tr>
+<td>Worst Case Forecast</td>
+<td>Worst Case Forecast</td>
+<td>The most conservative realistic forecast scenario.</td>
+<td>Worst Case = Closed Revenue + SUM(weighted value of Negotiation/Proposal-stage deals only)</td>
+<td>Currency</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>Forecast scenario — not guaranteed revenue</td>
+</tr>
+<tr>
+<td>Revenue Leakage</td>
+<td>Revenue Leakage</td>
+<td>Revenue lost at any funnel/operational stage vs. its potential value.</td>
+<td>Leakage = Potential Value − Actual Value</td>
+<td>Currency</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>See 18_Revenue_Leakage</td>
+</tr>
+<tr>
+<td>Forecast Accuracy</td>
+<td>Forecast Accuracy</td>
+<td>How close a prior forecast was to what actually closed.</td>
+<td>Forecast Accuracy = 1 − ABS(Actual Revenue − Forecast Revenue) / Forecast Revenue, ×100</td>
+<td>%</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>Only calculable once a forecast period has closed</td>
+</tr>
+<tr>
+<td>Target Attainment</td>
+<td>Target Attainment</td>
+<td>Actual performance as a % of the target.</td>
+<td>Target Attainment = Actual / Target × 100</td>
+<td>%</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Growth Rate</td>
+<td>Growth Rate</td>
+<td>The % change in a metric period-over-period.</td>
+<td>Growth Rate = (Current Period − Prior Period) / Prior Period × 100</td>
+<td>%</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Lead-to-Opportunity Rate</td>
+<td>Lead-to-Opportunity Conversion Rate</td>
+<td>The % of leads that become a tracked opportunity.</td>
+<td>Lead-to-Opp Rate = Opportunities Created / Total Leads × 100</td>
+<td>%</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Qualification Rate</td>
+<td>Lead Qualification Rate</td>
+<td>The % of leads that reach Qualified status.</td>
+<td>Qualification Rate = Qualified Leads / Total Leads × 100</td>
+<td>%</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>Stalled Opportunity</td>
+<td>Stalled Opportunity</td>
+<td>An open deal that has not moved stage within a defined period (default 21 days).</td>
+<td>Operational definition — Days in Stage &gt; Settings threshold</td>
+<td>Count</td>
+<td>Universal</td>
+<td class='blank'></td>
+<td>Threshold set in 02_Settings</td>
+</tr>
+<tr>
+<td>CAC Payback</td>
+<td>CAC Payback Period</td>
+<td>Months required to recover the cost of acquiring a customer from their gross margin.</td>
+<td>CAC Payback = CAC / (ARPA × Gross Margin %)</td>
+<td>Months</td>
+<td>SaaS</td>
+</tr>
+<tr>
+<td>Contraction MRR</td>
+<td>Contraction MRR</td>
+<td>Recurring revenue lost from existing customers downgrading (not fully churning).</td>
+<td>Contraction MRR = SUM(MRR decrease from active accounts that did not churn)</td>
+<td>Currency</td>
+<td>SaaS</td>
+</tr>
+<tr>
+<td>Churned MRR</td>
+<td>Churned MRR</td>
+<td>Recurring revenue lost from customers who fully cancelled.</td>
+<td>Churned MRR = SUM(MRR of accounts that churned in period)</td>
+<td>Currency</td>
+<td>SaaS</td>
+</tr>
+<tr>
+<td>Net New MRR</td>
+<td>Net New MRR</td>
+<td>The net change in MRR in a period across all movement types.</td>
+<td>Net New MRR = New MRR + Expansion MRR − Contraction MRR − Churned MRR</td>
+<td>Currency</td>
+<td>SaaS</td>
+</tr>
+<tr>
+<td>Direct Booking %</td>
+<td>Direct Booking Percentage</td>
+<td>The % of room revenue or bookings sourced directly (not via OTA/agent).</td>
+<td>Direct Booking % = Direct Revenue (or Bookings) / Total Revenue (or Bookings) × 100</td>
+<td>%</td>
+<td>Hotel</td>
+<td class='blank'></td>
+<td>Reference Benchmark — target varies by property type/market</td>
+</tr>
+<tr>
+<td>Average Length of Stay</td>
+<td>Average Length of Stay (ALOS)</td>
+<td>Average number of nights per booking.</td>
+<td>ALOS = Total Room Nights Sold / Number of Bookings</td>
+<td>Nights</td>
+<td>Hotel</td>
+</tr>
+<tr>
+<td>Booking Lead Time</td>
+<td>Booking Lead Time</td>
+<td>Average days between booking date and check-in date.</td>
+<td>Lead Time = AVERAGE(Check-in Date − Booking Date)</td>
+<td>Days</td>
+<td>Hotel</td>
+</tr>
+<tr>
+<td>Cancellation Rate</td>
+<td>Cancellation Rate</td>
+<td>The % of confirmed bookings later cancelled.</td>
+<td>Cancellation Rate = Cancellations / Confirmed Bookings × 100</td>
+<td>%</td>
+<td>Hotel</td>
+</tr>
+<tr>
+<td>Repeat Guest %</td>
+<td>Repeat Guest Percentage</td>
+<td>The % of guests who have stayed more than once.</td>
+<td>Repeat Guest % = Guests with 2+ Stays / Total Guests × 100</td>
+<td>%</td>
+<td>Hotel</td>
+</tr>
+<tr>
+<td>Average Check</td>
+<td>Average Check</td>
+<td>Average spend per cover.</td>
+<td>Average Check = Food &amp; Beverage Revenue / Covers</td>
+<td>Currency</td>
+<td>Restaurant</td>
+</tr>
+<tr>
+<td>Seat Utilisation</td>
+<td>Seat Utilisation Rate</td>
+<td>The % of available seat-hours actually used.</td>
+<td>Seat Utilisation = Covers × Avg Dining Duration (hrs) / (Available Seats × Operating Hours) × 100</td>
+<td>%</td>
+<td>Restaurant</td>
+</tr>
+<tr>
+<td>Reservation Conversion</td>
+<td>Reservation Conversion Rate</td>
+<td>The % of reservation requests that are honored (not no-shows or cancellations).</td>
+<td>Reservation Conversion = Seated Reservations / Total Reservations Made × 100</td>
+<td>%</td>
+<td>Restaurant</td>
+</tr>
+<tr>
+<td>Food Cost %</td>
+<td>Food Cost Percentage</td>
+<td>Cost of food/beverage sold as a % of F&amp;B revenue.</td>
+<td>Food Cost % = Food &amp; Beverage Cost / Food &amp; Beverage Revenue × 100</td>
+<td>%</td>
+<td>Restaurant</td>
+<td class='blank'></td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Labor Cost %</td>
+<td>Labor Cost Percentage</td>
+<td>Labor cost as a % of revenue.</td>
+<td>Labor Cost % = Labor Cost / Revenue × 100</td>
+<td>%</td>
+<td>Restaurant / Hotel</td>
+<td class='blank'></td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Enquiries per Listing</td>
+<td>Enquiries per Listing</td>
+<td>Average number of buyer enquiries generated per active listing.</td>
+<td>Enquiries per Listing = Total Enquiries / Active Listings</td>
+<td>Ratio</td>
+<td>Property</td>
+</tr>
+<tr>
+<td>Average Property Value</td>
+<td>Average Property Value</td>
+<td>Average asking or sale price across listings.</td>
+<td>Average Property Value = SUM(Price) / COUNT(Listings)</td>
+<td>Currency</td>
+<td>Property</td>
+</tr>
+<tr>
+<td>Average Commission</td>
+<td>Average Commission per Sale</td>
+<td>Average commission revenue earned per closed sale.</td>
+<td>Average Commission = Total Commission Revenue / Number of Closed Sales</td>
+<td>Currency</td>
+<td>Property</td>
+</tr>
+<tr>
+<td>Revenue per Agent</td>
+<td>Revenue per Agent</td>
+<td>Average commission revenue generated per agent.</td>
+<td>Revenue per Agent = Total Commission Revenue / Number of Active Agents</td>
+<td>Currency</td>
+<td>Property</td>
+</tr>
+<tr>
+<td>RFQ</td>
+<td>Request for Quotation</td>
+<td>A buyer&#x27;s formal request for a price quote.</td>
+<td>Operational definition — row in 16_EXIM sales log</td>
+<td>Count</td>
+<td>EXIM</td>
+</tr>
+<tr>
+<td>Landed Cost per Unit</td>
+<td>Landed Cost per Unit</td>
+<td>Total landed cost divided by units received.</td>
+<td>Landed Cost per Unit = Total Landed Cost / Units Received</td>
+<td>Currency</td>
+<td>EXIM</td>
+</tr>
+<tr>
+<td>Dead Stock</td>
+<td>Dead Stock</td>
+<td>Inventory that has not sold within a defined period (default 180 days).</td>
+<td>Operational definition — units with Days in Inventory &gt; Settings threshold</td>
+<td>Count / Currency</td>
+<td>EXIM</td>
+<td class='blank'></td>
+<td>Threshold set in 02_Settings</td>
+</tr>
+<tr>
+<td>Order-to-Cash Days</td>
+<td>Order-to-Cash Cycle</td>
+<td>Days from purchase order placement to cash collected from the buyer.</td>
+<td>Order-to-Cash Days = Payment Collected Date − PO Date</td>
+<td>Days</td>
+<td>EXIM</td>
+</tr>
+<tr>
+<td>Repeat Buyer %</td>
+<td>Repeat Buyer Percentage</td>
+<td>The % of buyers who have placed more than one order.</td>
+<td>Repeat Buyer % = Buyers with 2+ Orders / Total Buyers × 100</td>
+<td>%</td>
+<td>EXIM</td>
+</tr>
+<tr>
+<td>New MRR</td>
+<td>New MRR</td>
+<td>Recurring revenue from newly acquired customers in a period.</td>
+<td>New MRR = SUM(MRR of accounts acquired in period)</td>
+<td>Currency</td>
+<td>SaaS</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="02-settings">
+          <div class="sheet-head">
+            <span class="sheet-num">02</span>
+            <div>
+              <h3>Settings</h3>
+              <p>One control panel — every target and benchmark, editable, referenced everywhere else.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Settings — Central Control Panel</td>
+</tr>
+<tr>
+<td>Every target and benchmark in this workbook lives here. Change the yellow cells only — formulas elsewhere reference these by name and will update automatically.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>COMPANY &amp; REPORTING PERIOD</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Company Name</td>
+<td>Your Company Pte Ltd</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Primary Industry Focus</td>
+<td>SaaS</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Reporting Currency (code)</td>
+<td>USD</td>
+<td>All money figures workbook-wide are plain numbers in this currency — there is no live currency conversion.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Reporting Period Type</td>
+<td>Monthly</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Fiscal Year Start Month</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Current Fiscal Year</td>
+<td>2026</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Current Report Month (1st of month)</td>
+<td>01-Sep-2026</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Current Report Quarter Start</td>
+<td>01-Jul-2026</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>REVENUE &amp; FINANCIAL TARGETS</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Annual Revenue Target</td>
+<td>1,200,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Monthly Revenue Target</td>
+<td>100,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Quarterly Revenue Target</td>
+<td>300,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Stalled Opportunity Threshold</td>
+<td>21 days</td>
+<td>Days in stage before an open deal is flagged stalled</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Dead Stock Threshold</td>
+<td>180 days</td>
+<td>Days in inventory before EXIM stock is flagged dead</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>BENCHMARK / TARGET TABLE  —  Industry → Segment → Metric → Warning → Target → Excellent</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Industry</td>
+<td>Segment</td>
+<td>Metric</td>
+<td>Unit</td>
+<td>Direction</td>
+<td>Warning</td>
+<td>Target</td>
+<td>Excellent</td>
+<td>Type</td>
+<td>Notes</td>
+</tr>
+<tr>
+<td>Universal||All||Qualification Rate</td>
+<td>Universal</td>
+<td>All</td>
+<td>Qualification Rate</td>
+<td>%</td>
+<td>Higher</td>
+<td>20.0%</td>
+<td>35.0%</td>
+<td>50.0%</td>
+<td>Internal Target</td>
+<td>Qualified leads / total leads</td>
+</tr>
+<tr>
+<td>Universal||All||Lead-to-Opportunity Rate</td>
+<td>Universal</td>
+<td>All</td>
+<td>Lead-to-Opportunity Rate</td>
+<td>%</td>
+<td>Higher</td>
+<td>10.0%</td>
+<td>20.0%</td>
+<td>35.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Universal||All||Win Rate</td>
+<td>Universal</td>
+<td>All</td>
+<td>Win Rate</td>
+<td>%</td>
+<td>Higher</td>
+<td>15.0%</td>
+<td>25.0%</td>
+<td>40.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Universal||All||Sales Cycle</td>
+<td>Universal</td>
+<td>All</td>
+<td>Sales Cycle</td>
+<td>Days</td>
+<td>Lower</td>
+<td>90</td>
+<td>45</td>
+<td>21</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Universal||All||Pipeline Coverage</td>
+<td>Universal</td>
+<td>All</td>
+<td>Pipeline Coverage</td>
+<td>x</td>
+<td>Higher</td>
+<td>2.00x</td>
+<td>3.00x</td>
+<td>5.00x</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Universal||All||Gross Margin %</td>
+<td>Universal</td>
+<td>All</td>
+<td>Gross Margin %</td>
+<td>%</td>
+<td>Higher</td>
+<td>20.0%</td>
+<td>35.0%</td>
+<td>50.0%</td>
+<td>Internal Target</td>
+<td>Overridden per-industry where a vertical row exists below</td>
+</tr>
+<tr>
+<td>Universal||All||DSO</td>
+<td>Universal</td>
+<td>All</td>
+<td>DSO</td>
+<td>Days</td>
+<td>Lower</td>
+<td>60</td>
+<td>30</td>
+<td>15</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Universal||All||Customer Retention Rate</td>
+<td>Universal</td>
+<td>All</td>
+<td>Customer Retention Rate</td>
+<td>%</td>
+<td>Higher</td>
+<td>70.0%</td>
+<td>85.0%</td>
+<td>95.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Universal||All||Logo Churn Rate</td>
+<td>Universal</td>
+<td>All</td>
+<td>Logo Churn Rate</td>
+<td>%</td>
+<td>Lower</td>
+<td>15.0%</td>
+<td>8.0%</td>
+<td>3.0%</td>
+<td>Internal Target</td>
+<td>Annualized</td>
+</tr>
+<tr>
+<td>Universal||All||Forecast Accuracy</td>
+<td>Universal</td>
+<td>All</td>
+<td>Forecast Accuracy</td>
+<td>%</td>
+<td>Higher</td>
+<td>70.0%</td>
+<td>85.0%</td>
+<td>95.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Universal||All||Collection Rate</td>
+<td>Universal</td>
+<td>All</td>
+<td>Collection Rate</td>
+<td>%</td>
+<td>Higher</td>
+<td>80.0%</td>
+<td>92.0%</td>
+<td>98.0%</td>
+<td>Internal Target</td>
+<td>Invoiced amount actually collected</td>
+</tr>
+<tr>
+<td>SaaS||All||NRR</td>
+<td>SaaS</td>
+<td>All</td>
+<td>NRR</td>
+<td>%</td>
+<td>Higher</td>
+<td>90.0%</td>
+<td>105.0%</td>
+<td>120.0%</td>
+<td>Reference Benchmark</td>
+<td>Varies by ACV &amp; segment</td>
+</tr>
+<tr>
+<td>SaaS||All||GRR</td>
+<td>SaaS</td>
+<td>All</td>
+<td>GRR</td>
+<td>%</td>
+<td>Higher</td>
+<td>80.0%</td>
+<td>90.0%</td>
+<td>97.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>SaaS||All||Logo Churn Rate</td>
+<td>SaaS</td>
+<td>All</td>
+<td>Logo Churn Rate</td>
+<td>%</td>
+<td>Lower</td>
+<td>3.0%</td>
+<td>1.5%</td>
+<td>0.5%</td>
+<td>Reference Benchmark</td>
+<td>Monthly, SMB SaaS skews higher</td>
+</tr>
+<tr>
+<td>SaaS||All||LTV:CAC</td>
+<td>SaaS</td>
+<td>All</td>
+<td>LTV:CAC</td>
+<td>x</td>
+<td>Higher</td>
+<td>1.50x</td>
+<td>3.00x</td>
+<td>5.00x</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>SaaS||All||CAC Payback</td>
+<td>SaaS</td>
+<td>All</td>
+<td>CAC Payback</td>
+<td>Months</td>
+<td>Lower</td>
+<td>18</td>
+<td>12</td>
+<td>6</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>SaaS||All||Gross Margin %</td>
+<td>SaaS</td>
+<td>All</td>
+<td>Gross Margin %</td>
+<td>%</td>
+<td>Higher</td>
+<td>60.0%</td>
+<td>75.0%</td>
+<td>85.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>SaaS||All||Win Rate</td>
+<td>SaaS</td>
+<td>All</td>
+<td>Win Rate</td>
+<td>%</td>
+<td>Higher</td>
+<td>15.0%</td>
+<td>25.0%</td>
+<td>35.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>SaaS||All||Sales Cycle</td>
+<td>SaaS</td>
+<td>All</td>
+<td>Sales Cycle</td>
+<td>Days</td>
+<td>Lower</td>
+<td>60</td>
+<td>30</td>
+<td>14</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Hotel||All||Occupancy</td>
+<td>Hotel</td>
+<td>All</td>
+<td>Occupancy</td>
+<td>%</td>
+<td>Higher</td>
+<td>50.0%</td>
+<td>65.0%</td>
+<td>80.0%</td>
+<td>Reference Benchmark</td>
+<td>Highly seasonal/market dependent</td>
+</tr>
+<tr>
+<td>Hotel||All||Direct Booking %</td>
+<td>Hotel</td>
+<td>All</td>
+<td>Direct Booking %</td>
+<td>%</td>
+<td>Higher</td>
+<td>20.0%</td>
+<td>35.0%</td>
+<td>50.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Hotel||All||Cancellation Rate</td>
+<td>Hotel</td>
+<td>All</td>
+<td>Cancellation Rate</td>
+<td>%</td>
+<td>Lower</td>
+<td>15.0%</td>
+<td>8.0%</td>
+<td>3.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Hotel||All||No-show Rate</td>
+<td>Hotel</td>
+<td>All</td>
+<td>No-show Rate</td>
+<td>%</td>
+<td>Lower</td>
+<td>8.0%</td>
+<td>4.0%</td>
+<td>1.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Hotel||All||Repeat Guest %</td>
+<td>Hotel</td>
+<td>All</td>
+<td>Repeat Guest %</td>
+<td>%</td>
+<td>Higher</td>
+<td>15.0%</td>
+<td>30.0%</td>
+<td>45.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Restaurant||All||Food Cost %</td>
+<td>Restaurant</td>
+<td>All</td>
+<td>Food Cost %</td>
+<td>%</td>
+<td>Lower</td>
+<td>35.0%</td>
+<td>30.0%</td>
+<td>25.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Restaurant||All||Labor Cost %</td>
+<td>Restaurant</td>
+<td>All</td>
+<td>Labor Cost %</td>
+<td>%</td>
+<td>Lower</td>
+<td>35.0%</td>
+<td>30.0%</td>
+<td>25.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Restaurant||All||Table Turnover</td>
+<td>Restaurant</td>
+<td>All</td>
+<td>Table Turnover</td>
+<td>x</td>
+<td>Higher</td>
+<td>1.50x</td>
+<td>2.50x</td>
+<td>4.00x</td>
+<td>Reference Benchmark</td>
+<td>Casual dining skews higher, fine dining lower</td>
+</tr>
+<tr>
+<td>Restaurant||All||No-show Rate</td>
+<td>Restaurant</td>
+<td>All</td>
+<td>No-show Rate</td>
+<td>%</td>
+<td>Lower</td>
+<td>15.0%</td>
+<td>8.0%</td>
+<td>3.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Restaurant||All||Reservation Conversion</td>
+<td>Restaurant</td>
+<td>All</td>
+<td>Reservation Conversion</td>
+<td>%</td>
+<td>Higher</td>
+<td>70.0%</td>
+<td>85.0%</td>
+<td>95.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Property||Residential||Days on Market</td>
+<td>Property</td>
+<td>Residential</td>
+<td>Days on Market</td>
+<td>Days</td>
+<td>Lower</td>
+<td>120</td>
+<td>75</td>
+<td>45</td>
+<td>Reference Benchmark</td>
+<td>Local market dependent</td>
+</tr>
+<tr>
+<td>Property||Residential||Lead-to-Viewing</td>
+<td>Property</td>
+<td>Residential</td>
+<td>Lead-to-Viewing</td>
+<td>%</td>
+<td>Higher</td>
+<td>15.0%</td>
+<td>25.0%</td>
+<td>40.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Residential||Viewing-to-Offer</td>
+<td>Property</td>
+<td>Residential</td>
+<td>Viewing-to-Offer</td>
+<td>%</td>
+<td>Higher</td>
+<td>10.0%</td>
+<td>20.0%</td>
+<td>35.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Residential||Offer-to-Sale</td>
+<td>Property</td>
+<td>Residential</td>
+<td>Offer-to-Sale</td>
+<td>%</td>
+<td>Higher</td>
+<td>40.0%</td>
+<td>60.0%</td>
+<td>80.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Residential||Commission %</td>
+<td>Property</td>
+<td>Residential</td>
+<td>Commission %</td>
+<td>%</td>
+<td>Higher</td>
+<td>1.5%</td>
+<td>2.5%</td>
+<td>3.5%</td>
+<td>Reference Benchmark</td>
+<td>Market/regulatory dependent</td>
+</tr>
+<tr>
+<td>Property||Villa||Days on Market</td>
+<td>Property</td>
+<td>Villa</td>
+<td>Days on Market</td>
+<td>Days</td>
+<td>Lower</td>
+<td>150</td>
+<td>90</td>
+<td>50</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Property||Villa||Lead-to-Viewing</td>
+<td>Property</td>
+<td>Villa</td>
+<td>Lead-to-Viewing</td>
+<td>%</td>
+<td>Higher</td>
+<td>10.0%</td>
+<td>20.0%</td>
+<td>35.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Villa||Viewing-to-Offer</td>
+<td>Property</td>
+<td>Villa</td>
+<td>Viewing-to-Offer</td>
+<td>%</td>
+<td>Higher</td>
+<td>15.0%</td>
+<td>25.0%</td>
+<td>40.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Villa||Offer-to-Sale</td>
+<td>Property</td>
+<td>Villa</td>
+<td>Offer-to-Sale</td>
+<td>%</td>
+<td>Higher</td>
+<td>45.0%</td>
+<td>65.0%</td>
+<td>85.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Villa||Commission %</td>
+<td>Property</td>
+<td>Villa</td>
+<td>Commission %</td>
+<td>%</td>
+<td>Higher</td>
+<td>3.0%</td>
+<td>4.0%</td>
+<td>5.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Property||Luxury||Days on Market</td>
+<td>Property</td>
+<td>Luxury</td>
+<td>Days on Market</td>
+<td>Days</td>
+<td>Lower</td>
+<td>240</td>
+<td>150</td>
+<td>90</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Property||Luxury||Lead-to-Viewing</td>
+<td>Property</td>
+<td>Luxury</td>
+<td>Lead-to-Viewing</td>
+<td>%</td>
+<td>Higher</td>
+<td>8.0%</td>
+<td>15.0%</td>
+<td>25.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Luxury||Viewing-to-Offer</td>
+<td>Property</td>
+<td>Luxury</td>
+<td>Viewing-to-Offer</td>
+<td>%</td>
+<td>Higher</td>
+<td>10.0%</td>
+<td>20.0%</td>
+<td>35.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Luxury||Offer-to-Sale</td>
+<td>Property</td>
+<td>Luxury</td>
+<td>Offer-to-Sale</td>
+<td>%</td>
+<td>Higher</td>
+<td>30.0%</td>
+<td>50.0%</td>
+<td>70.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Luxury||Commission %</td>
+<td>Property</td>
+<td>Luxury</td>
+<td>Commission %</td>
+<td>%</td>
+<td>Higher</td>
+<td>2.0%</td>
+<td>3.0%</td>
+<td>4.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Property||Commercial||Days on Market</td>
+<td>Property</td>
+<td>Commercial</td>
+<td>Days on Market</td>
+<td>Days</td>
+<td>Lower</td>
+<td>270</td>
+<td>180</td>
+<td>100</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Property||Commercial||Lead-to-Viewing</td>
+<td>Property</td>
+<td>Commercial</td>
+<td>Lead-to-Viewing</td>
+<td>%</td>
+<td>Higher</td>
+<td>10.0%</td>
+<td>18.0%</td>
+<td>30.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Commercial||Viewing-to-Offer</td>
+<td>Property</td>
+<td>Commercial</td>
+<td>Viewing-to-Offer</td>
+<td>%</td>
+<td>Higher</td>
+<td>12.0%</td>
+<td>22.0%</td>
+<td>38.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Commercial||Offer-to-Sale</td>
+<td>Property</td>
+<td>Commercial</td>
+<td>Offer-to-Sale</td>
+<td>%</td>
+<td>Higher</td>
+<td>35.0%</td>
+<td>55.0%</td>
+<td>75.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Commercial||Commission %</td>
+<td>Property</td>
+<td>Commercial</td>
+<td>Commission %</td>
+<td>%</td>
+<td>Higher</td>
+<td>4.0%</td>
+<td>5.0%</td>
+<td>6.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Property||Land||Days on Market</td>
+<td>Property</td>
+<td>Land</td>
+<td>Days on Market</td>
+<td>Days</td>
+<td>Lower</td>
+<td>300</td>
+<td>200</td>
+<td>120</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>Property||Land||Lead-to-Viewing</td>
+<td>Property</td>
+<td>Land</td>
+<td>Lead-to-Viewing</td>
+<td>%</td>
+<td>Higher</td>
+<td>8.0%</td>
+<td>15.0%</td>
+<td>28.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Land||Viewing-to-Offer</td>
+<td>Property</td>
+<td>Land</td>
+<td>Viewing-to-Offer</td>
+<td>%</td>
+<td>Higher</td>
+<td>8.0%</td>
+<td>18.0%</td>
+<td>32.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Land||Offer-to-Sale</td>
+<td>Property</td>
+<td>Land</td>
+<td>Offer-to-Sale</td>
+<td>%</td>
+<td>Higher</td>
+<td>25.0%</td>
+<td>45.0%</td>
+<td>65.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+<td>Property||Land||Commission %</td>
+<td>Property</td>
+<td>Land</td>
+<td>Commission %</td>
+<td>%</td>
+<td>Higher</td>
+<td>5.0%</td>
+<td>6.5%</td>
+<td>8.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>EXIM||All||Gross Margin %</td>
+<td>EXIM</td>
+<td>All</td>
+<td>Gross Margin %</td>
+<td>%</td>
+<td>Higher</td>
+<td>12.0%</td>
+<td>20.0%</td>
+<td>30.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>EXIM||All||Inventory Days</td>
+<td>EXIM</td>
+<td>All</td>
+<td>Inventory Days</td>
+<td>Days</td>
+<td>Lower</td>
+<td>120</td>
+<td>75</td>
+<td>40</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>EXIM||All||Inventory Turnover</td>
+<td>EXIM</td>
+<td>All</td>
+<td>Inventory Turnover</td>
+<td>x</td>
+<td>Higher</td>
+<td>3.00x</td>
+<td>5.00x</td>
+<td>8.00x</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>EXIM||All||DSO</td>
+<td>EXIM</td>
+<td>All</td>
+<td>DSO</td>
+<td>Days</td>
+<td>Lower</td>
+<td>75</td>
+<td>45</td>
+<td>20</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>EXIM||All||DPO</td>
+<td>EXIM</td>
+<td>All</td>
+<td>DPO</td>
+<td>Days</td>
+<td>Higher</td>
+<td>30</td>
+<td>45</td>
+<td>60</td>
+<td>Reference Benchmark</td>
+<td>Higher DPO improves cash position</td>
+</tr>
+<tr>
+<td>EXIM||All||Cash Conversion Cycle</td>
+<td>EXIM</td>
+<td>All</td>
+<td>Cash Conversion Cycle</td>
+<td>Days</td>
+<td>Lower</td>
+<td>150</td>
+<td>90</td>
+<td>40</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>EXIM||All||Repeat Buyer %</td>
+<td>EXIM</td>
+<td>All</td>
+<td>Repeat Buyer %</td>
+<td>%</td>
+<td>Higher</td>
+<td>20.0%</td>
+<td>40.0%</td>
+<td>60.0%</td>
+<td>Reference Benchmark</td>
+</tr>
+<tr>
+<td>EXIM||All||Quote-to-Order Rate</td>
+<td>EXIM</td>
+<td>All</td>
+<td>Quote-to-Order Rate</td>
+<td>%</td>
+<td>Higher</td>
+<td>15.0%</td>
+<td>30.0%</td>
+<td>45.0%</td>
+<td>Internal Target</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>HOW TO CUSTOMIZE</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Edit only the yellow (Warning/Target/Excellent) and blue (input) cells above. Never type a target number directly into a formula on another tab — always add or edit a row here instead, since 09_Forecast, 18_Revenue_Leakage, 19_Action_Tracker and 20_Dashboard all read live from this table. &quot;Reference Benchmark&quot; rows are external industry norms (sourced from public RevOps/industry literature) — treat as a starting point, not a guarantee; they vary by geography, company size and business model. &quot;Internal Target&quot; rows are targets you set for your own team.</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="03-leads">
+          <div class="sheet-head">
+            <span class="sheet-num">03</span>
+            <div>
+              <h3>Leads</h3>
+              <p>Demand capture — one row per lead, source performance calculated automatically.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Leads — Demand Capture</td>
+</tr>
+<tr>
+<td>Enter one row per inbound/outbound lead. KPIs below recalculate automatically.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Leads</td>
+<td>12</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Qualified Leads</td>
+<td>6</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Qualification Rate</td>
+<td>#VALUE!</td>
+<td>35.0%</td>
+<td>#VALUE!</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Opportunities Created</td>
+<td>6</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Lead-to-Opportunity Rate</td>
+<td>#VALUE!</td>
+<td>20.0%</td>
+<td>#VALUE!</td>
+<td>Row references are relative — see column B for the raw counts above.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Marketing Spend (period, optional)</td>
+<td>0</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Type total marketing spend for the period here to unlock Cost per Lead.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Cost per Lead</td>
+<td>#VALUE!</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A until marketing spend is entered above.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>LEAD SOURCE PERFORMANCE</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Lead Source</td>
+<td>Leads</td>
+<td>Qualified</td>
+<td>Qual. Rate</td>
+<td>Opportunities</td>
+<td>Lead→Opp Rate</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Referral</td>
+<td>3</td>
+<td>1</td>
+<td>33.3%</td>
+<td>1</td>
+<td>33.3%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Organic</td>
+<td>2</td>
+<td>1</td>
+<td>50.0%</td>
+<td>1</td>
+<td>50.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Paid Ads</td>
+<td>2</td>
+<td>1</td>
+<td>50.0%</td>
+<td>1</td>
+<td>50.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Social</td>
+<td>1</td>
+<td>0</td>
+<td>0.0%</td>
+<td>0</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Search</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>1</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Partner</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>1</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Direct</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>1</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Marketplace</td>
+<td>1</td>
+<td>0</td>
+<td>0.0%</td>
+<td>0</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>OTA</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Other</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Lead ID</td>
+<td>Date</td>
+<td>Company</td>
+<td>Contact</td>
+<td>Industry</td>
+<td>Lead Source</td>
+<td>Campaign</td>
+<td>Salesperson</td>
+<td>Lead Status</td>
+<td>Qualification Status</td>
+<td>Estimated Value</td>
+<td>First Contact Date</td>
+<td>Qualification Date</td>
+<td>Opportunity Created?</td>
+<td>Outcome</td>
+<td>Lost Reason</td>
+</tr>
+<tr>
+<td>L-0001</td>
+<td>03-Aug-2026</td>
+<td>Meadow Residences</td>
+<td>Ana Wirawan</td>
+<td>Property</td>
+<td>Referral</td>
+<td>-</td>
+<td>Budi</td>
+<td>Converted</td>
+<td>Qualified</td>
+<td>15,000</td>
+<td>04-Aug-2026</td>
+<td>06-Aug-2026</td>
+<td>Yes</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>L-0002</td>
+<td>04-Aug-2026</td>
+<td>Kembang Villas Group</td>
+<td>Made Sujana</td>
+<td>Property</td>
+<td>Organic</td>
+<td>SEO-Villas</td>
+<td>Budi</td>
+<td>Qualified</td>
+<td>Qualified</td>
+<td>42,000</td>
+<td>05-Aug-2026</td>
+<td>09-Aug-2026</td>
+<td>Yes</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>L-0003</td>
+<td>05-Aug-2026</td>
+<td>Java Coast Resort</td>
+<td>Sri Handayani</td>
+<td>Hotel</td>
+<td>Paid Ads</td>
+<td>Q3-OTA-Push</td>
+<td>Citra</td>
+<td>Unqualified</td>
+<td>Disqualified</td>
+<td>8,000</td>
+<td>06-Aug-2026</td>
+<td class='blank'></td>
+<td>No</td>
+<td>Lost</td>
+<td>Budget Freeze</td>
+</tr>
+<tr>
+<td>L-0004</td>
+<td>06-Aug-2026</td>
+<td>Warung Nusantara Group</td>
+<td>Eko Prasetyo</td>
+<td>Restaurant</td>
+<td>Social</td>
+<td>IG-Reels</td>
+<td>Citra</td>
+<td>Contacted</td>
+<td>In Progress</td>
+<td>5,000</td>
+<td>07-Aug-2026</td>
+<td class='blank'></td>
+<td>No</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>L-0005</td>
+<td>07-Aug-2026</td>
+<td>Trimitra Import Co.</td>
+<td>Lina Kartika</td>
+<td>EXIM</td>
+<td>Partner</td>
+<td>-</td>
+<td>Dedi</td>
+<td>Converted</td>
+<td>Qualified</td>
+<td>65,000</td>
+<td>08-Aug-2026</td>
+<td>10-Aug-2026</td>
+<td>Yes</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>L-0006</td>
+<td>08-Aug-2026</td>
+<td>Northstar Robotics</td>
+<td>James Ho</td>
+<td>SaaS</td>
+<td>Search</td>
+<td>Google-Brand</td>
+<td>Dedi</td>
+<td>Converted</td>
+<td>Qualified</td>
+<td>28,000</td>
+<td>09-Aug-2026</td>
+<td>11-Aug-2026</td>
+<td>Yes</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>L-0007</td>
+<td>10-Aug-2026</td>
+<td>Pantai Biru Hotel</td>
+<td>Wayan Ardika</td>
+<td>Hotel</td>
+<td>Direct</td>
+<td>-</td>
+<td>Citra</td>
+<td>Qualified</td>
+<td>Qualified</td>
+<td>12,000</td>
+<td>11-Aug-2026</td>
+<td>14-Aug-2026</td>
+<td>Yes</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>L-0008</td>
+<td>12-Aug-2026</td>
+<td>Rasa Kita Bistro</td>
+<td>Fitri Amalia</td>
+<td>Restaurant</td>
+<td>Referral</td>
+<td>-</td>
+<td>Citra</td>
+<td>Lost</td>
+<td>Disqualified</td>
+<td>3,000</td>
+<td>13-Aug-2026</td>
+<td class='blank'></td>
+<td>No</td>
+<td>Lost</td>
+<td>No Response</td>
+</tr>
+<tr>
+<td>L-0009</td>
+<td>13-Aug-2026</td>
+<td>Delta Freight Traders</td>
+<td>Hendra Wijaya</td>
+<td>EXIM</td>
+<td>Organic</td>
+<td>SEO-Sourcing</td>
+<td>Dedi</td>
+<td>Contacted</td>
+<td>In Progress</td>
+<td>51,000</td>
+<td>14-Aug-2026</td>
+<td class='blank'></td>
+<td>No</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>L-0010</td>
+<td>15-Aug-2026</td>
+<td>CloudLedger Inc.</td>
+<td>Priya Nair</td>
+<td>SaaS</td>
+<td>Paid Ads</td>
+<td>LinkedIn-ABM</td>
+<td>Dedi</td>
+<td>Qualified</td>
+<td>Qualified</td>
+<td>34,000</td>
+<td>16-Aug-2026</td>
+<td>18-Aug-2026</td>
+<td>Yes</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>L-0011</td>
+<td>17-Aug-2026</td>
+<td>Bali Land Partners</td>
+<td>Kadek Surya</td>
+<td>Property</td>
+<td>Marketplace</td>
+<td>-</td>
+<td>Budi</td>
+<td>New</td>
+<td>In Progress</td>
+<td>20,000</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>No</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>L-0012</td>
+<td>19-Aug-2026</td>
+<td>Anchor Tech Systems</td>
+<td>Marco Silva</td>
+<td>SaaS</td>
+<td>Referral</td>
+<td>-</td>
+<td>Dedi</td>
+<td>Unqualified</td>
+<td>Disqualified</td>
+<td>9,000</td>
+<td>20-Aug-2026</td>
+<td class='blank'></td>
+<td>No</td>
+<td>Lost</td>
+<td>Poor Fit</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="04-pipeline">
+          <div class="sheet-head">
+            <span class="sheet-num">04</span>
+            <div>
+              <h3>Pipeline</h3>
+              <p>Every open, won and lost opportunity — weighted forecasting, stage and source breakdowns.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Pipeline — Every Open, Won &amp; Lost Opportunity</td>
+</tr>
+<tr>
+<td>One row per opportunity. Weighted Value, Days in Stage and Sales Cycle calculate automatically.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Open Pipeline</td>
+<td>145,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Weighted Pipeline</td>
+<td>59,750</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Forecast estimate — deal value × probability. Not guaranteed revenue.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Win Rate</td>
+<td>50.0%</td>
+<td>25.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Average Deal Size (Won)</td>
+<td>46,500</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Average Sales Cycle</td>
+<td>18 days</td>
+<td>45 days</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Pipeline Coverage (vs. Quarterly Target)</td>
+<td>0.48x</td>
+<td>3.00x</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Stalled Opportunities</td>
+<td>0</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Open deals with no stage movement past the Settings threshold.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Expected Revenue (Weighted, Open)</td>
+<td>59,750</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Same as Weighted Pipeline — see 09_Forecast for Best/Base/Worst case scenarios.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>PIPELINE BY STAGE</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Stage</td>
+<td>Count</td>
+<td>Value</td>
+<td>Weighted Value</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>New</td>
+<td>1</td>
+<td>20,000</td>
+<td>2,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Qualified</td>
+<td>1</td>
+<td>51,000</td>
+<td>12,750</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Discovery</td>
+<td>1</td>
+<td>12,000</td>
+<td>4,800</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Proposal</td>
+<td>2</td>
+<td>47,000</td>
+<td>28,200</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Negotiation</td>
+<td>1</td>
+<td>15,000</td>
+<td>12,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Won</td>
+<td>2</td>
+<td>93,000</td>
+<td>93,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Lost</td>
+<td>2</td>
+<td>42,000</td>
+<td>0</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>PIPELINE BY SOURCE</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Source</td>
+<td>Open Value</td>
+<td>Win Rate</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Referral</td>
+<td>15,000</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Organic</td>
+<td>93,000</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Paid Ads</td>
+<td>0</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Social</td>
+<td>5,000</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Search</td>
+<td>0</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Partner</td>
+<td>0</td>
+<td>100.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Direct</td>
+<td>12,000</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Marketplace</td>
+<td>20,000</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>OTA</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Other</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Opportunity ID</td>
+<td>Company</td>
+<td>Contact</td>
+<td>Source</td>
+<td>Owner</td>
+<td>Stage</td>
+<td>Created Date</td>
+<td>Expected Close Date</td>
+<td>Deal Value</td>
+<td>Probability</td>
+<td>Weighted Value</td>
+<td>Product / Service</td>
+<td>Industry</td>
+<td>Lost Reason</td>
+<td>Next Action</td>
+<td>Next Action Date</td>
+<td>Stage Entry Date</td>
+<td>Days in Stage</td>
+<td>Actual Close Date</td>
+<td>Total Sales Cycle</td>
+<td>Status</td>
+</tr>
+<tr>
+<td>OP-0001</td>
+<td>Meadow Residences</td>
+<td>Ana Wirawan</td>
+<td>Referral</td>
+<td>Budi</td>
+<td>Negotiation</td>
+<td>06-Aug-2026</td>
+<td>20-Sep-2026</td>
+<td>15,000</td>
+<td>80%</td>
+<td>12,000</td>
+<td>Villa Listing Package</td>
+<td>Property</td>
+<td class='blank'></td>
+<td>Send final contract</td>
+<td>12-Sep-2026</td>
+<td>05-Sep-2026</td>
+<td>3</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Open</td>
+</tr>
+<tr>
+<td>OP-0002</td>
+<td>Kembang Villas Group</td>
+<td>Made Sujana</td>
+<td>Organic</td>
+<td>Budi</td>
+<td>Proposal</td>
+<td>09-Aug-2026</td>
+<td>25-Sep-2026</td>
+<td>42,000</td>
+<td>60%</td>
+<td>25,200</td>
+<td>Exclusive Agency Mandate</td>
+<td>Property</td>
+<td class='blank'></td>
+<td>Follow up on proposal</td>
+<td>14-Sep-2026</td>
+<td>02-Sep-2026</td>
+<td>6</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Open</td>
+</tr>
+<tr>
+<td>OP-0003</td>
+<td>Trimitra Import Co.</td>
+<td>Lina Kartika</td>
+<td>Partner</td>
+<td>Dedi</td>
+<td>Won</td>
+<td>10-Aug-2026</td>
+<td>28-Aug-2026</td>
+<td>65,000</td>
+<td>100%</td>
+<td>65,000</td>
+<td>Annual Sourcing Contract</td>
+<td>EXIM</td>
+<td class='blank'></td>
+<td>-</td>
+<td class='blank'></td>
+<td>22-Aug-2026</td>
+<td class='blank'></td>
+<td>27-Aug-2026</td>
+<td>17</td>
+<td>Won</td>
+</tr>
+<tr>
+<td>OP-0004</td>
+<td>Northstar Robotics</td>
+<td>James Ho</td>
+<td>Search</td>
+<td>Dedi</td>
+<td>Won</td>
+<td>11-Aug-2026</td>
+<td>30-Aug-2026</td>
+<td>28,000</td>
+<td>100%</td>
+<td>28,000</td>
+<td>Growth Plan - Annual</td>
+<td>SaaS</td>
+<td class='blank'></td>
+<td>-</td>
+<td class='blank'></td>
+<td>24-Aug-2026</td>
+<td class='blank'></td>
+<td>29-Aug-2026</td>
+<td>18</td>
+<td>Won</td>
+</tr>
+<tr>
+<td>OP-0005</td>
+<td>Pantai Biru Hotel</td>
+<td>Wayan Ardika</td>
+<td>Direct</td>
+<td>Citra</td>
+<td>Discovery</td>
+<td>14-Aug-2026</td>
+<td>30-Sep-2026</td>
+<td>12,000</td>
+<td>40%</td>
+<td>4,800</td>
+<td>Revenue Mgmt Retainer</td>
+<td>Hotel</td>
+<td class='blank'></td>
+<td>Site visit</td>
+<td>10-Sep-2026</td>
+<td>30-Aug-2026</td>
+<td>9</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Open</td>
+</tr>
+<tr>
+<td>OP-0006</td>
+<td>CloudLedger Inc.</td>
+<td>Priya Nair</td>
+<td>Paid Ads</td>
+<td>Dedi</td>
+<td>Lost</td>
+<td>18-Aug-2026</td>
+<td>05-Sep-2026</td>
+<td>34,000</td>
+<td>0%</td>
+<td>0</td>
+<td>Pro Plan - Annual</td>
+<td>SaaS</td>
+<td>Price</td>
+<td>-</td>
+<td class='blank'></td>
+<td>01-Sep-2026</td>
+<td class='blank'></td>
+<td>04-Sep-2026</td>
+<td>17</td>
+<td>Lost</td>
+</tr>
+<tr>
+<td>OP-0007</td>
+<td>Delta Freight Traders</td>
+<td>Hendra Wijaya</td>
+<td>Organic</td>
+<td>Dedi</td>
+<td>Qualified</td>
+<td>20-Aug-2026</td>
+<td>10-Oct-2026</td>
+<td>51,000</td>
+<td>25%</td>
+<td>12,750</td>
+<td>Import Consolidation Deal</td>
+<td>EXIM</td>
+<td class='blank'></td>
+<td>Send RFQ</td>
+<td>08-Sep-2026</td>
+<td>20-Aug-2026</td>
+<td>19</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Open</td>
+</tr>
+<tr>
+<td>OP-0008</td>
+<td>Java Coast Resort</td>
+<td>Sri Handayani</td>
+<td>Paid Ads</td>
+<td>Citra</td>
+<td>Lost</td>
+<td>06-Aug-2026</td>
+<td>25-Aug-2026</td>
+<td>8,000</td>
+<td>0%</td>
+<td>0</td>
+<td>Booking Engine Setup</td>
+<td>Hotel</td>
+<td>Budget Freeze</td>
+<td>-</td>
+<td class='blank'></td>
+<td>20-Aug-2026</td>
+<td class='blank'></td>
+<td>24-Aug-2026</td>
+<td>18</td>
+<td>Lost</td>
+</tr>
+<tr>
+<td>OP-0009</td>
+<td>Bali Land Partners</td>
+<td>Kadek Surya</td>
+<td>Marketplace</td>
+<td>Budi</td>
+<td>New</td>
+<td>25-Aug-2026</td>
+<td>15-Oct-2026</td>
+<td>20,000</td>
+<td>10%</td>
+<td>2,000</td>
+<td>Land Brokerage Mandate</td>
+<td>Property</td>
+<td class='blank'></td>
+<td>Qualify budget</td>
+<td>09-Sep-2026</td>
+<td>25-Aug-2026</td>
+<td>14</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Open</td>
+</tr>
+<tr>
+<td>OP-0010</td>
+<td>Warung Nusantara Group</td>
+<td>Eko Prasetyo</td>
+<td>Social</td>
+<td>Citra</td>
+<td>Proposal</td>
+<td>09-Aug-2026</td>
+<td>15-Sep-2026</td>
+<td>5,000</td>
+<td>60%</td>
+<td>3,000</td>
+<td>POS + Loyalty Setup</td>
+<td>Restaurant</td>
+<td class='blank'></td>
+<td>Confirm pricing tier</td>
+<td>06-Sep-2026</td>
+<td>28-Aug-2026</td>
+<td>11</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Open</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="05-activities">
+          <div class="sheet-head">
+            <span class="sheet-num">05</span>
+            <div>
+              <h3>Activities</h3>
+              <p>The sales effort log — read alongside Pipeline, never as a substitute for it.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Activities — Sales &amp; Customer-Facing Effort Log</td>
+</tr>
+<tr>
+<td>One row per activity. More activity does not automatically mean better performance — read alongside 04_Pipeline and 11_Salesperson conversion rates.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Activities Logged</td>
+<td>12</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Meetings → has linked Opportunity</td>
+<td>100.0%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>% of logged meetings tied to a tracked opportunity.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Proposals Sent</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Proposal → Won (proxy)</td>
+<td>200.0%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Won opportunities (04_Pipeline) ÷ Proposals sent — a proxy, not a 1:1 join.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Follow-ups Logged</td>
+<td>4</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Follow-up Response Rate</td>
+<td>25.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Activities per Opportunity (open)</td>
+<td>2.0</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Total activities ÷ currently-open opportunities in 04_Pipeline.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>ACTIVITIES BY TYPE</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Activity Type</td>
+<td>Count</td>
+<td>% of Total</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Call</td>
+<td>2</td>
+<td>16.7%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Email</td>
+<td>1</td>
+<td>8.3%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Meeting</td>
+<td>1</td>
+<td>8.3%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Demo</td>
+<td>1</td>
+<td>8.3%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Site Visit</td>
+<td>1</td>
+<td>8.3%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Follow-up</td>
+<td>4</td>
+<td>33.3%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Proposal</td>
+<td>1</td>
+<td>8.3%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Quote</td>
+<td>1</td>
+<td>8.3%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Other</td>
+<td>0</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Activity ID</td>
+<td>Date</td>
+<td>Salesperson</td>
+<td>Activity Type</td>
+<td>Opportunity ID</td>
+<td>Company</td>
+<td>Outcome / Notes</td>
+<td>Response Received?</td>
+</tr>
+<tr>
+<td>A-0001</td>
+<td>06-Aug-2026</td>
+<td>Budi</td>
+<td>Site Visit</td>
+<td>OP-0001</td>
+<td>Meadow Residences</td>
+<td>Walked the villa with buyer</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>A-0002</td>
+<td>09-Aug-2026</td>
+<td>Budi</td>
+<td>Proposal</td>
+<td>OP-0002</td>
+<td>Kembang Villas Group</td>
+<td>Sent exclusive mandate proposal</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>A-0003</td>
+<td>10-Aug-2026</td>
+<td>Dedi</td>
+<td>Call</td>
+<td>OP-0003</td>
+<td>Trimitra Import Co.</td>
+<td>Confirmed contract terms</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>A-0004</td>
+<td>11-Aug-2026</td>
+<td>Dedi</td>
+<td>Demo</td>
+<td>OP-0004</td>
+<td>Northstar Robotics</td>
+<td>Product demo, strong interest</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>A-0005</td>
+<td>14-Aug-2026</td>
+<td>Citra</td>
+<td>Meeting</td>
+<td>OP-0005</td>
+<td>Pantai Biru Hotel</td>
+<td>Discussed revenue mgmt scope</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>A-0006</td>
+<td>18-Aug-2026</td>
+<td>Dedi</td>
+<td>Follow-up</td>
+<td>OP-0006</td>
+<td>CloudLedger Inc.</td>
+<td>Chased pricing objection</td>
+<td>No</td>
+</tr>
+<tr>
+<td>A-0007</td>
+<td>20-Aug-2026</td>
+<td>Dedi</td>
+<td>Email</td>
+<td>OP-0007</td>
+<td>Delta Freight Traders</td>
+<td>Sent RFQ template</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>A-0008</td>
+<td>22-Aug-2026</td>
+<td>Citra</td>
+<td>Follow-up</td>
+<td>OP-0008</td>
+<td>Java Coast Resort</td>
+<td>Checked on budget freeze</td>
+<td>No</td>
+</tr>
+<tr>
+<td>A-0009</td>
+<td>25-Aug-2026</td>
+<td>Budi</td>
+<td>Call</td>
+<td>OP-0009</td>
+<td>Bali Land Partners</td>
+<td>Qualified budget &amp; timeline</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>A-0010</td>
+<td>28-Aug-2026</td>
+<td>Citra</td>
+<td>Quote</td>
+<td>OP-0010</td>
+<td>Warung Nusantara Group</td>
+<td>Sent POS + loyalty quote</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>A-0011</td>
+<td>29-Aug-2026</td>
+<td>Budi</td>
+<td>Follow-up</td>
+<td>OP-0001</td>
+<td>Meadow Residences</td>
+<td>Confirmed contract signing date</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>A-0012</td>
+<td>30-Aug-2026</td>
+<td>Dedi</td>
+<td>Follow-up</td>
+<td>OP-0007</td>
+<td>Delta Freight Traders</td>
+<td>Awaiting RFQ response</td>
+<td>No</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="06-customers">
+          <div class="sheet-head">
+            <span class="sheet-num">06</span>
+            <div>
+              <h3>Customers</h3>
+              <p>Acquisition, revenue and retention pulled live from the Revenue ledger.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Customers — Acquisition, Value &amp; Retention</td>
+</tr>
+<tr>
+<td>One row per customer. Purchase history, revenue, gross profit and repeat status pull automatically from 07_Revenue.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Customers</td>
+<td>12</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Active Customers</td>
+<td>8</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>New Customers (since Report Month)</td>
+<td>0</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Repeat Customers</td>
+<td>2</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Repeat Customer Rate</td>
+<td>16.7%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Retention Rate</td>
+<td>91.7%</td>
+<td>85.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Logo Churn Rate</td>
+<td>8.3%</td>
+<td>8.0%</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Revenue per Customer</td>
+<td>25,667</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Customer LTV (avg, needs churn history)</td>
+<td>145,600</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Avg gross profit per customer ÷ churn rate. Shown only once churn history exists.</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Customer ID</td>
+<td>Customer Name</td>
+<td>Industry</td>
+<td>Acquisition Date</td>
+<td>Acquisition Source</td>
+<td>Account Owner</td>
+<td>Customer Status</td>
+<td>First Purchase</td>
+<td>Latest Purchase</td>
+<td>Total Revenue</td>
+<td>Gross Profit</td>
+<td>Number of Transactions</td>
+<td>Avg Transaction Value</td>
+<td>Repeat Customer?</td>
+<td>Churn Status</td>
+<td>Churn Date</td>
+<td>Churn Reason</td>
+<td>Expansion Revenue</td>
+</tr>
+<tr>
+<td>CU-0001</td>
+<td>Trimitra Import Co.</td>
+<td>EXIM</td>
+<td>22-Aug-2026</td>
+<td>Partner</td>
+<td>Dedi</td>
+<td>Active</td>
+<td>22-Aug-2026</td>
+<td>22-Aug-2026</td>
+<td>65,000</td>
+<td>16,250</td>
+<td>1</td>
+<td>65,000</td>
+<td>No</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+</tr>
+<tr>
+<td>CU-0002</td>
+<td>Northstar Robotics</td>
+<td>SaaS</td>
+<td>24-Aug-2026</td>
+<td>Search</td>
+<td>Dedi</td>
+<td>Active</td>
+<td>01-Aug-2026</td>
+<td>24-Aug-2026</td>
+<td>31,000</td>
+<td>23,800</td>
+<td>2</td>
+<td>15,500</td>
+<td>Yes</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>4,000</td>
+</tr>
+<tr>
+<td>CU-0003</td>
+<td>Java Reef Resorts</td>
+<td>Hotel</td>
+<td>03-Jul-2026</td>
+<td>Direct</td>
+<td>Citra</td>
+<td>Active</td>
+<td>03-Jul-2026</td>
+<td>03-Jul-2026</td>
+<td>9,500</td>
+<td>4,750</td>
+<td>1</td>
+<td>9,500</td>
+<td>No</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+</tr>
+<tr>
+<td>CU-0004</td>
+<td>Seven Seas Trading</td>
+<td>EXIM</td>
+<td>15-Jun-2026</td>
+<td>Referral</td>
+<td>Dedi</td>
+<td>At Risk</td>
+<td>15-Jun-2026</td>
+<td>15-Jun-2026</td>
+<td>41,000</td>
+<td>8,200</td>
+<td>1</td>
+<td>41,000</td>
+<td>No</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+</tr>
+<tr>
+<td>CU-0005</td>
+<td>Anchor Tech Systems</td>
+<td>SaaS</td>
+<td>02-May-2026</td>
+<td>Referral</td>
+<td>Dedi</td>
+<td>Churned</td>
+<td>02-May-2026</td>
+<td>02-May-2026</td>
+<td>9,000</td>
+<td>6,750</td>
+<td>1</td>
+<td>9,000</td>
+<td>No</td>
+<td>Churned</td>
+<td>15-Aug-2026</td>
+<td>Price</td>
+<td>0</td>
+</tr>
+<tr>
+<td>CU-0006</td>
+<td>Rasa Kita Bistro Group</td>
+<td>Restaurant</td>
+<td>20-Apr-2026</td>
+<td>Referral</td>
+<td>Citra</td>
+<td>Active</td>
+<td>20-Apr-2026</td>
+<td>20-Apr-2026</td>
+<td>5,500</td>
+<td>3,300</td>
+<td>1</td>
+<td>5,500</td>
+<td>No</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+</tr>
+<tr>
+<td>CU-0007</td>
+<td>Bukit Vista Villas</td>
+<td>Property</td>
+<td>10-Mar-2026</td>
+<td>Organic</td>
+<td>Budi</td>
+<td>Active</td>
+<td>10-Mar-2026</td>
+<td>10-Mar-2026</td>
+<td>15,000</td>
+<td>13,500</td>
+<td>1</td>
+<td>15,000</td>
+<td>No</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+</tr>
+<tr>
+<td>CU-0008</td>
+<td>CloudLedger Inc.</td>
+<td>SaaS</td>
+<td>18-Feb-2026</td>
+<td>Paid Ads</td>
+<td>Dedi</td>
+<td>Active</td>
+<td>18-Feb-2026</td>
+<td>05-Aug-2026</td>
+<td>30,000</td>
+<td>23,250</td>
+<td>2</td>
+<td>15,000</td>
+<td>Yes</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>6,000</td>
+</tr>
+<tr>
+<td>CU-0009</td>
+<td>Warung Sedap Group</td>
+<td>Restaurant</td>
+<td>25-Jan-2026</td>
+<td>Social</td>
+<td>Citra</td>
+<td>Active</td>
+<td>25-Jan-2026</td>
+<td>25-Jan-2026</td>
+<td>13,000</td>
+<td>7,800</td>
+<td>1</td>
+<td>13,000</td>
+<td>No</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+</tr>
+<tr>
+<td>CU-0010</td>
+<td>Coastal Suites Hotel</td>
+<td>Hotel</td>
+<td>05-Dec-2025</td>
+<td>OTA</td>
+<td>Citra</td>
+<td>Active</td>
+<td>05-Dec-2025</td>
+<td>05-Dec-2025</td>
+<td>11,000</td>
+<td>5,500</td>
+<td>1</td>
+<td>11,000</td>
+<td>No</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+</tr>
+<tr>
+<td>CU-0011</td>
+<td>Kintani Land Group</td>
+<td>Property</td>
+<td>08-Nov-2025</td>
+<td>Marketplace</td>
+<td>Budi</td>
+<td>At Risk</td>
+<td>08-Nov-2025</td>
+<td>08-Nov-2025</td>
+<td>20,000</td>
+<td>18,000</td>
+<td>1</td>
+<td>20,000</td>
+<td>No</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+</tr>
+<tr>
+<td>CU-0012</td>
+<td>Pacific Sourcing Ltd.</td>
+<td>EXIM</td>
+<td>01-Oct-2025</td>
+<td>Partner</td>
+<td>Dedi</td>
+<td>Reactivated</td>
+<td>01-Oct-2025</td>
+<td>01-Oct-2025</td>
+<td>58,000</td>
+<td>14,500</td>
+<td>1</td>
+<td>58,000</td>
+<td>No</td>
+<td>Active</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="07-revenue">
+          <div class="sheet-head">
+            <span class="sheet-num">07</span>
+            <div>
+              <h3>Revenue</h3>
+              <p>The transaction ledger — gross, net, margin, all calculated, never typed in twice.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Revenue — Transaction Ledger</td>
+</tr>
+<tr>
+<td>One row per invoiced transaction. Net Revenue, Gross Profit and Gross Margin % calculate automatically.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Net Revenue (all data)</td>
+<td>323,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Revenue — Current Report Month</td>
+<td>0</td>
+<td>100,000</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Revenue Growth (MoM)</td>
+<td>-100.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>New Business Revenue</td>
+<td>313,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Existing/Expansion Revenue</td>
+<td>10,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Gross Profit</td>
+<td>159,100</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Gross Margin %</td>
+<td>49.3%</td>
+<td>35.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Target Attainment (Month)</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Average Transaction Value</td>
+<td>21,533</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>REVENUE BY CHANNEL</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Channel</td>
+<td>Net Revenue</td>
+<td>Gross Profit</td>
+<td>Gross Margin %</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Referral</td>
+<td>85,500</td>
+<td>45,250</td>
+<td>52.9%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Organic</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Paid Ads</td>
+<td>30,000</td>
+<td>23,250</td>
+<td>77.5%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Social</td>
+<td>13,000</td>
+<td>7,800</td>
+<td>60.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Search</td>
+<td>31,000</td>
+<td>23,800</td>
+<td>76.8%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Partner</td>
+<td>123,000</td>
+<td>30,750</td>
+<td>25.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Direct</td>
+<td>9,500</td>
+<td>4,750</td>
+<td>50.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Marketplace</td>
+<td>20,000</td>
+<td>18,000</td>
+<td>90.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>OTA</td>
+<td>11,000</td>
+<td>5,500</td>
+<td>50.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Other</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Transaction ID</td>
+<td>Date</td>
+<td>Customer</td>
+<td>Product / Service</td>
+<td>Industry</td>
+<td>Revenue Type</td>
+<td>New / Existing Customer</td>
+<td>Deal ID</td>
+<td>Invoice #</td>
+<td>Gross Revenue</td>
+<td>Discounts</td>
+<td>Net Revenue</td>
+<td>COGS</td>
+<td>Gross Profit</td>
+<td>Gross Margin %</td>
+<td>Salesperson</td>
+<td>Channel</td>
+</tr>
+<tr>
+<td>TXN-0001</td>
+<td>22-Aug-2026</td>
+<td>Trimitra Import Co.</td>
+<td>Annual Sourcing Contract</td>
+<td>EXIM</td>
+<td>New Business</td>
+<td>New</td>
+<td>OP-0003</td>
+<td>INV-1001</td>
+<td>65,000</td>
+<td>0</td>
+<td>65,000</td>
+<td>48,750</td>
+<td>16,250</td>
+<td>25.0%</td>
+<td>Dedi</td>
+<td>Partner</td>
+</tr>
+<tr>
+<td>TXN-0002</td>
+<td>24-Aug-2026</td>
+<td>Northstar Robotics</td>
+<td>Growth Plan - Annual</td>
+<td>SaaS</td>
+<td>New Business</td>
+<td>New</td>
+<td>OP-0004</td>
+<td>INV-1002</td>
+<td>28,000</td>
+<td>1,000</td>
+<td>27,000</td>
+<td>6,300</td>
+<td>20,700</td>
+<td>76.7%</td>
+<td>Dedi</td>
+<td>Search</td>
+</tr>
+<tr>
+<td>TXN-0003</td>
+<td>03-Jul-2026</td>
+<td>Java Reef Resorts</td>
+<td>Revenue Mgmt Setup</td>
+<td>Hotel</td>
+<td>New Business</td>
+<td>New</td>
+<td class='blank'></td>
+<td>INV-0950</td>
+<td>9,500</td>
+<td>0</td>
+<td>9,500</td>
+<td>4,750</td>
+<td>4,750</td>
+<td>50.0%</td>
+<td>Citra</td>
+<td>Direct</td>
+</tr>
+<tr>
+<td>TXN-0004</td>
+<td>15-Jun-2026</td>
+<td>Seven Seas Trading</td>
+<td>Consolidation Deal</td>
+<td>EXIM</td>
+<td>New Business</td>
+<td>New</td>
+<td class='blank'></td>
+<td>INV-0880</td>
+<td>41,000</td>
+<td>0</td>
+<td>41,000</td>
+<td>32,800</td>
+<td>8,200</td>
+<td>20.0%</td>
+<td>Dedi</td>
+<td>Referral</td>
+</tr>
+<tr>
+<td>TXN-0005</td>
+<td>01-Aug-2026</td>
+<td>Northstar Robotics</td>
+<td>Growth Plan - Renewal Add-on</td>
+<td>SaaS</td>
+<td>Expansion</td>
+<td>Existing</td>
+<td class='blank'></td>
+<td>INV-1010</td>
+<td>4,000</td>
+<td>0</td>
+<td>4,000</td>
+<td>900</td>
+<td>3,100</td>
+<td>77.5%</td>
+<td>Dedi</td>
+<td>Search</td>
+</tr>
+<tr>
+<td>TXN-0006</td>
+<td>20-Apr-2026</td>
+<td>Rasa Kita Bistro Group</td>
+<td>POS + Loyalty Setup</td>
+<td>Restaurant</td>
+<td>New Business</td>
+<td>New</td>
+<td class='blank'></td>
+<td>INV-0700</td>
+<td>6,000</td>
+<td>500</td>
+<td>5,500</td>
+<td>2,200</td>
+<td>3,300</td>
+<td>60.0%</td>
+<td>Citra</td>
+<td>Referral</td>
+</tr>
+<tr>
+<td>TXN-0007</td>
+<td>10-Mar-2026</td>
+<td>Bukit Vista Villas</td>
+<td>Villa Sale Commission</td>
+<td>Property</td>
+<td>New Business</td>
+<td>New</td>
+<td>OP-0001</td>
+<td>INV-0650</td>
+<td>15,000</td>
+<td>0</td>
+<td>15,000</td>
+<td>1,500</td>
+<td>13,500</td>
+<td>90.0%</td>
+<td>Budi</td>
+<td>Referral</td>
+</tr>
+<tr>
+<td>TXN-0008</td>
+<td>18-Feb-2026</td>
+<td>CloudLedger Inc.</td>
+<td>Pro Plan - Annual</td>
+<td>SaaS</td>
+<td>New Business</td>
+<td>New</td>
+<td class='blank'></td>
+<td>INV-0500</td>
+<td>24,000</td>
+<td>0</td>
+<td>24,000</td>
+<td>5,400</td>
+<td>18,600</td>
+<td>77.5%</td>
+<td>Dedi</td>
+<td>Paid Ads</td>
+</tr>
+<tr>
+<td>TXN-0009</td>
+<td>05-Aug-2026</td>
+<td>CloudLedger Inc.</td>
+<td>Add-on Seats</td>
+<td>SaaS</td>
+<td>Expansion</td>
+<td>Existing</td>
+<td class='blank'></td>
+<td>INV-1012</td>
+<td>6,000</td>
+<td>0</td>
+<td>6,000</td>
+<td>1,350</td>
+<td>4,650</td>
+<td>77.5%</td>
+<td>Dedi</td>
+<td>Paid Ads</td>
+</tr>
+<tr>
+<td>TXN-0010</td>
+<td>25-Jan-2026</td>
+<td>Warung Sedap Group</td>
+<td>POS Rollout - 3 outlets</td>
+<td>Restaurant</td>
+<td>New Business</td>
+<td>New</td>
+<td class='blank'></td>
+<td>INV-0300</td>
+<td>14,000</td>
+<td>1,000</td>
+<td>13,000</td>
+<td>5,200</td>
+<td>7,800</td>
+<td>60.0%</td>
+<td>Citra</td>
+<td>Social</td>
+</tr>
+<tr>
+<td>TXN-0011</td>
+<td>05-Dec-2025</td>
+<td>Coastal Suites Hotel</td>
+<td>Channel Manager Setup</td>
+<td>Hotel</td>
+<td>New Business</td>
+<td>New</td>
+<td class='blank'></td>
+<td>INV-0100</td>
+<td>11,000</td>
+<td>0</td>
+<td>11,000</td>
+<td>5,500</td>
+<td>5,500</td>
+<td>50.0%</td>
+<td>Citra</td>
+<td>OTA</td>
+</tr>
+<tr>
+<td>TXN-0012</td>
+<td>08-Nov-2025</td>
+<td>Kintani Land Group</td>
+<td>Land Brokerage Commission</td>
+<td>Property</td>
+<td>New Business</td>
+<td>New</td>
+<td class='blank'></td>
+<td>INV-0050</td>
+<td>20,000</td>
+<td>0</td>
+<td>20,000</td>
+<td>2,000</td>
+<td>18,000</td>
+<td>90.0%</td>
+<td>Budi</td>
+<td>Marketplace</td>
+</tr>
+<tr>
+<td>TXN-0013</td>
+<td>01-Oct-2025</td>
+<td>Pacific Sourcing Ltd.</td>
+<td>Trading Contract Y1</td>
+<td>EXIM</td>
+<td>New Business</td>
+<td>New</td>
+<td class='blank'></td>
+<td>INV-0010</td>
+<td>58,000</td>
+<td>0</td>
+<td>58,000</td>
+<td>43,500</td>
+<td>14,500</td>
+<td>25.0%</td>
+<td>Dedi</td>
+<td>Partner</td>
+</tr>
+<tr>
+<td>TXN-0014</td>
+<td>27-Aug-2026</td>
+<td>Meadow Residences</td>
+<td>Villa Listing Package</td>
+<td>Property</td>
+<td>New Business</td>
+<td>New</td>
+<td>OP-0001</td>
+<td>INV-1020</td>
+<td>15,000</td>
+<td>0</td>
+<td>15,000</td>
+<td>1,500</td>
+<td>13,500</td>
+<td>90.0%</td>
+<td>Budi</td>
+<td>Referral</td>
+</tr>
+<tr>
+<td>TXN-0015</td>
+<td>02-May-2026</td>
+<td>Anchor Tech Systems</td>
+<td>Starter Plan - Annual (churned)</td>
+<td>SaaS</td>
+<td>New Business</td>
+<td>New</td>
+<td class='blank'></td>
+<td>INV-0600</td>
+<td>9,000</td>
+<td>0</td>
+<td>9,000</td>
+<td>2,250</td>
+<td>6,750</td>
+<td>75.0%</td>
+<td>Dedi</td>
+<td>Referral</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="08-cash">
+          <div class="sheet-head">
+            <span class="sheet-num">08</span>
+            <div>
+              <h3>Cash</h3>
+              <p>Invoicing, collections and DSO, with an automatic aging schedule.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Cash — Invoicing, Collections &amp; DSO</td>
+</tr>
+<tr>
+<td>One row per invoice. Outstanding balance and days outstanding calculate automatically.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Invoiced</td>
+<td>241,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Cash Collected</td>
+<td>189,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Outstanding Receivables</td>
+<td>52,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Collection Rate</td>
+<td>78.4%</td>
+<td>92.0%</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>DSO (annualized)</td>
+<td>59 days</td>
+<td>30 days</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Overdue Invoices</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Revenue-to-Cash Conversion</td>
+<td>58.5%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Cash collected ÷ total net revenue booked — indicates how much booked revenue has actually been collected.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AGING BUCKETS  (unpaid balance only)</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Bucket</td>
+<td>Outstanding Value</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>0-30 days</td>
+<td>0</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>31-60 days</td>
+<td>6,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>61-90 days</td>
+<td>41,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>90+ days</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Invoice #</td>
+<td>Customer</td>
+<td>Invoice Date</td>
+<td>Due Date</td>
+<td>Invoice Value</td>
+<td>Payment Date</td>
+<td>Amount Paid</td>
+<td>Outstanding</td>
+<td>Days Outstanding</td>
+<td>Payment Status</td>
+</tr>
+<tr>
+<td>INV-1001</td>
+<td>Trimitra Import Co.</td>
+<td>22-Aug-2026</td>
+<td>21-Sep-2026</td>
+<td>65,000</td>
+<td>10-Sep-2026</td>
+<td>65,000</td>
+<td>0</td>
+<td>19</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td>INV-1002</td>
+<td>Northstar Robotics</td>
+<td>24-Aug-2026</td>
+<td>08-Sep-2026</td>
+<td>27,000</td>
+<td>05-Sep-2026</td>
+<td>27,000</td>
+<td>0</td>
+<td>12</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td>INV-0950</td>
+<td>Java Reef Resorts</td>
+<td>03-Jul-2026</td>
+<td>02-Aug-2026</td>
+<td>9,500</td>
+<td>01-Aug-2026</td>
+<td>9,500</td>
+<td>0</td>
+<td>29</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td>INV-0880</td>
+<td>Seven Seas Trading</td>
+<td>15-Jun-2026</td>
+<td>15-Jul-2026</td>
+<td>41,000</td>
+<td class='blank'></td>
+<td>0</td>
+<td>41,000</td>
+<td>85</td>
+<td>Overdue</td>
+</tr>
+<tr>
+<td>INV-1010</td>
+<td>Northstar Robotics</td>
+<td>01-Aug-2026</td>
+<td>31-Aug-2026</td>
+<td>4,000</td>
+<td>28-Aug-2026</td>
+<td>4,000</td>
+<td>0</td>
+<td>27</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td>INV-0700</td>
+<td>Rasa Kita Bistro Group</td>
+<td>20-Apr-2026</td>
+<td>20-May-2026</td>
+<td>5,500</td>
+<td>18-May-2026</td>
+<td>5,500</td>
+<td>0</td>
+<td>28</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td>INV-0650</td>
+<td>Bukit Vista Villas</td>
+<td>10-Mar-2026</td>
+<td>09-Apr-2026</td>
+<td>15,000</td>
+<td>15-Apr-2026</td>
+<td>15,000</td>
+<td>0</td>
+<td>36</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td>INV-0500</td>
+<td>CloudLedger Inc.</td>
+<td>18-Feb-2026</td>
+<td>20-Mar-2026</td>
+<td>24,000</td>
+<td>15-Mar-2026</td>
+<td>24,000</td>
+<td>0</td>
+<td>25</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td>INV-1012</td>
+<td>CloudLedger Inc.</td>
+<td>05-Aug-2026</td>
+<td>04-Sep-2026</td>
+<td>6,000</td>
+<td class='blank'></td>
+<td>0</td>
+<td>6,000</td>
+<td>34</td>
+<td>Unpaid</td>
+</tr>
+<tr>
+<td>INV-0300</td>
+<td>Warung Sedap Group</td>
+<td>25-Jan-2026</td>
+<td>24-Feb-2026</td>
+<td>13,000</td>
+<td>20-Feb-2026</td>
+<td>13,000</td>
+<td>0</td>
+<td>26</td>
+<td>Paid</td>
+</tr>
+<tr>
+<td>INV-0100</td>
+<td>Coastal Suites Hotel</td>
+<td>05-Dec-2025</td>
+<td>04-Jan-2026</td>
+<td>11,000</td>
+<td class='blank'></td>
+<td>6,000</td>
+<td>5,000</td>
+<td>277</td>
+<td>Partially Paid</td>
+</tr>
+<tr>
+<td>INV-0050</td>
+<td>Kintani Land Group</td>
+<td>08-Nov-2025</td>
+<td>08-Dec-2025</td>
+<td>20,000</td>
+<td>01-Dec-2025</td>
+<td>20,000</td>
+<td>0</td>
+<td>23</td>
+<td>Paid</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="09-forecast">
+          <div class="sheet-head">
+            <span class="sheet-num">09</span>
+            <div>
+              <h3>Forecast</h3>
+              <p>Best / Base / Worst case — probability-weighted, clearly labeled as a scenario.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Forecast — Probability-Weighted Revenue Scenarios</td>
+</tr>
+<tr>
+<td>Best / Base / Worst Case are forecasting scenarios, not guaranteed revenue. Base Case is the recommended planning number.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>MONTHLY FORECAST — Current Report Month</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Monthly Revenue Target</td>
+<td>100,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Closed Revenue (period)</td>
+<td>0</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Open Pipeline (all)</td>
+<td>145,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Weighted Pipeline (all, forecast)</td>
+<td>59,750</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Probability-weighted — a forecasting estimate, not guaranteed revenue.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Best Case Forecast</td>
+<td>59,750</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Closed + ALL open pipeline weighted, uncapped. Scenario, not guaranteed.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Base Case Forecast</td>
+<td>45,000</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Closed + weighted pipeline expected to close within the period. Recommended planning number.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Worst Case Forecast</td>
+<td>40,200</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Closed + only Negotiation/Proposal-stage weighted pipeline. Scenario, not guaranteed.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Forecast Gap (Target − Base Case)</td>
+<td>55,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Target Attainment</td>
+<td>0.0%</td>
+<td>85.0%</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Pipeline Coverage</td>
+<td>1.45x</td>
+<td>3.00x</td>
+<td>Below Target</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>QUARTERLY FORECAST — Current Report Quarter</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Quarterly Revenue Target</td>
+<td>300,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Closed Revenue (period)</td>
+<td>126,500</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Open Pipeline (all)</td>
+<td>145,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Weighted Pipeline (all, forecast)</td>
+<td>59,750</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Probability-weighted — a forecasting estimate, not guaranteed revenue.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Best Case Forecast</td>
+<td>186,250</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Closed + ALL open pipeline weighted, uncapped. Scenario, not guaranteed.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Base Case Forecast</td>
+<td>171,500</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Closed + weighted pipeline expected to close within the period. Recommended planning number.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Worst Case Forecast</td>
+<td>166,700</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Closed + only Negotiation/Proposal-stage weighted pipeline. Scenario, not guaranteed.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Forecast Gap (Target − Base Case)</td>
+<td>128,500</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Target Attainment</td>
+<td>42.2%</td>
+<td>85.0%</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Pipeline Coverage</td>
+<td>0.48x</td>
+<td>3.00x</td>
+<td>Below Target</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>FORECAST ACCURACY LOG  (log each period&#x27;s Base Case forecast, then its actual result, once the period closes)</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Period</td>
+<td>Forecast Made (Base Case)</td>
+<td>Actual Result</td>
+<td>Accuracy</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>2026-06</td>
+<td>95,000</td>
+<td>101,000</td>
+<td>93.7%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>2026-07</td>
+<td>110,000</td>
+<td>104,000</td>
+<td>94.5%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>2026-08</td>
+<td>108,000</td>
+<td>112,000</td>
+<td>96.3%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Average Forecast Accuracy</td>
+<td>94.8%</td>
+<td>85.0%</td>
+<td>On Target</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="10-channel">
+          <div class="sheet-head">
+            <span class="sheet-num">10</span>
+            <div>
+              <h3>Channel</h3>
+              <p>Where revenue actually comes from — CAC and ROI once spend is entered.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Channel Performance — Where Revenue Actually Comes From</td>
+</tr>
+<tr>
+<td>Type Marketing Spend per channel (optional) to unlock CAC and ROI. Metrics with no cost data show N/A rather than a misleading zero.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Marketing Spend (entered)</td>
+<td>0</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Blank until you enter spend in the table below.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Attributed Revenue</td>
+<td>323,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Best Converting Channel</td>
+<td>Partner</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Top Revenue Channel</td>
+<td>Partner</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Highest ROI Channel</td>
+<td>N/A — enter spend to unlock</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>CHANNEL PERFORMANCE  (blue Marketing Spend cells are optional inputs)</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Channel</td>
+<td>Leads</td>
+<td>Opportunities</td>
+<td>Customers</td>
+<td>Revenue</td>
+<td>Gross Profit</td>
+<td>Marketing Spend</td>
+<td>CAC</td>
+<td>Conv. Rate (Lead→Customer)</td>
+<td>Revenue / Lead</td>
+<td>ROI</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Referral</td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>85,500</td>
+<td>45,250</td>
+<td>0</td>
+<td>N/A</td>
+<td>100.0%</td>
+<td>28,500</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Organic</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+<td>50.0%</td>
+<td>0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Paid Ads</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>30,000</td>
+<td>23,250</td>
+<td>0</td>
+<td>N/A</td>
+<td>50.0%</td>
+<td>15,000</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Social</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>13,000</td>
+<td>7,800</td>
+<td>0</td>
+<td>N/A</td>
+<td>100.0%</td>
+<td>13,000</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Search</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>31,000</td>
+<td>23,800</td>
+<td>0</td>
+<td>N/A</td>
+<td>100.0%</td>
+<td>31,000</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Partner</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>123,000</td>
+<td>30,750</td>
+<td>0</td>
+<td>N/A</td>
+<td>200.0%</td>
+<td>123,000</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Direct</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>9,500</td>
+<td>4,750</td>
+<td>0</td>
+<td>N/A</td>
+<td>100.0%</td>
+<td>9,500</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Marketplace</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>20,000</td>
+<td>18,000</td>
+<td>0</td>
+<td>N/A</td>
+<td>100.0%</td>
+<td>20,000</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>OTA</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>11,000</td>
+<td>5,500</td>
+<td>0</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Other</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="11-salesperson">
+          <div class="sheet-head">
+            <span class="sheet-num">11</span>
+            <div>
+              <h3>Salesperson</h3>
+              <p>Individual rep performance against team average and target.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Salesperson Performance</td>
+</tr>
+<tr>
+<td>Enter each rep&#x27;s name below (Team Roster). Do not rank by activity volume alone — read Win Rate and Revenue alongside it.</td>
+</tr>
+<tr>
+<td>Salesperson</td>
+<td>Leads</td>
+<td>Qualified Leads</td>
+<td>Opportunities</td>
+<td>Open Pipeline</td>
+<td>Won Deals</td>
+<td>Revenue</td>
+<td>Gross Profit</td>
+<td>Win Rate</td>
+<td>Avg Deal Size</td>
+<td>Avg Sales Cycle</td>
+<td>Activities Logged</td>
+<td>Individual Revenue Target (optional)</td>
+<td>Target Attainment</td>
+</tr>
+<tr>
+<td>Budi</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>77,000</td>
+<td>0</td>
+<td>50,000</td>
+<td>45,000</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>4</td>
+<td>0</td>
+<td>N/A — set individual target</td>
+</tr>
+<tr>
+<td>Citra</td>
+<td>4</td>
+<td>1</td>
+<td>3</td>
+<td>17,000</td>
+<td>0</td>
+<td>39,000</td>
+<td>21,350</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>3</td>
+<td>0</td>
+<td>N/A — set individual target</td>
+</tr>
+<tr>
+<td>Dedi</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+<td>51,000</td>
+<td>2</td>
+<td>234,000</td>
+<td>92,750</td>
+<td>66.7%</td>
+<td>117,000</td>
+<td>18 days</td>
+<td>5</td>
+<td>0</td>
+<td>N/A — set individual target</td>
+</tr>
+<tr>
+<td>TEAM AVERAGE</td>
+<td>4</td>
+<td>2</td>
+<td>3</td>
+<td>48,333</td>
+<td>1</td>
+<td>107,667</td>
+<td>53,033</td>
+<td>66.7%</td>
+<td>117,000</td>
+<td>18 days</td>
+<td>4</td>
+<td class='blank'></td>
+<td>N/A</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="12-cohort">
+          <div class="sheet-head">
+            <span class="sheet-num">12</span>
+            <div>
+              <h3>Cohort</h3>
+              <p>Retention and repeat revenue by the month a customer was acquired.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Cohort Analysis — Retention &amp; Repeat Revenue by Acquisition Month</td>
+</tr>
+<tr>
+<td>Rolling 12-month view, grouped by the month each customer was acquired (06_Customers). SaaS businesses: see 17_Tech_SaaS for account-level MRR retention, NRR &amp; GRR — more precise than deriving them from this monthly view.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td>Cohort Month</td>
+<td>Customers Acquired</td>
+<td>Active Today</td>
+<td>Churned</td>
+<td>Retention %</td>
+<td>Repeat Purchase Rate</td>
+<td>Revenue to Date</td>
+<td>Revenue / Customer</td>
+<td>Expansion Revenue</td>
+</tr>
+<tr>
+<td>2025-Oct</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.0%</td>
+<td>0.0%</td>
+<td>58,000</td>
+<td>58,000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2025-Nov</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.0%</td>
+<td>0.0%</td>
+<td>20,000</td>
+<td>20,000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2025-Dec</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>11,000</td>
+<td>11,000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2026-Jan</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>13,000</td>
+<td>13,000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2026-Feb</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>100.0%</td>
+<td>100.0%</td>
+<td>30,000</td>
+<td>30,000</td>
+<td>6,000</td>
+</tr>
+<tr>
+<td>2026-Mar</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>15,000</td>
+<td>15,000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2026-Apr</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>5,500</td>
+<td>5,500</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2026-May</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0.0%</td>
+<td>0.0%</td>
+<td>9,000</td>
+<td>9,000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2026-Jun</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.0%</td>
+<td>0.0%</td>
+<td>41,000</td>
+<td>41,000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2026-Jul</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>100.0%</td>
+<td>0.0%</td>
+<td>9,500</td>
+<td>9,500</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2026-Aug</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>100.0%</td>
+<td>50.0%</td>
+<td>96,000</td>
+<td>48,000</td>
+<td>4,000</td>
+</tr>
+<tr>
+<td>2026-Sep</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="13-property">
+          <div class="sheet-head">
+            <span class="sheet-num">13</span>
+            <div>
+              <h3>Property</h3>
+              <p>Listing → viewing → offer → sale, with different targets per property segment.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Property — Listing, Viewing &amp; Commission Funnel</td>
+</tr>
+<tr>
+<td>Funnel: Listings → Enquiries → Qualified Buyers → Viewings → Offers → Negotiation → Closed. Targets vary by segment — see the table below and 02_Settings.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY (all segments blended)</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Active Listings</td>
+<td>5</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Active Listing Value</td>
+<td>3,970,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Enquiries per Listing</td>
+<td>27.0</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Lead → Qualified</td>
+<td>35.6%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Qualified → Viewing</td>
+<td>62.5%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Viewing → Offer</td>
+<td>40.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Offer → Sale</td>
+<td>25.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Lead → Sale (overall)</td>
+<td>2.2%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>PERFORMANCE BY SEGMENT  (targets differ by segment — see 02_Settings)</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Segment</td>
+<td>Active Listings</td>
+<td>Avg Days on Market</td>
+<td>DOM Target</td>
+<td>Lead→Viewing</td>
+<td>Viewing→Offer</td>
+<td>Offer→Sale</td>
+<td>Avg Commission %</td>
+<td>Commission Revenue</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Residential</td>
+<td>1</td>
+<td>85</td>
+<td>75</td>
+<td>25.9%</td>
+<td>42.9%</td>
+<td>33.3%</td>
+<td>2.5%</td>
+<td>4,400</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Villa</td>
+<td>1</td>
+<td>111</td>
+<td>90</td>
+<td>25.0%</td>
+<td>45.5%</td>
+<td>20.0%</td>
+<td>4.0%</td>
+<td>23,400</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Luxury</td>
+<td>1</td>
+<td>160</td>
+<td>150</td>
+<td>20.8%</td>
+<td>40.0%</td>
+<td>50.0%</td>
+<td>3.0%</td>
+<td>90,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Commercial</td>
+<td>1</td>
+<td>N/A</td>
+<td>180</td>
+<td>22.7%</td>
+<td>40.0%</td>
+<td>0.0%</td>
+<td>N/A</td>
+<td>0</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Land</td>
+<td>1</td>
+<td>N/A</td>
+<td>200</td>
+<td>11.1%</td>
+<td>0.0%</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Property ID</td>
+<td>Property Type</td>
+<td>Location</td>
+<td>Listing Date</td>
+<td>Asking Price</td>
+<td>Current Price</td>
+<td>Owner</td>
+<td>Agent</td>
+<td>Listing Status</td>
+<td>Leads</td>
+<td>Qualified Leads</td>
+<td>Viewings</td>
+<td>Offers</td>
+<td>Closed Sale?</td>
+<td>Sale Date</td>
+<td>Sale Price</td>
+<td>Commission %</td>
+<td>Commission Revenue</td>
+<td>Days on Market</td>
+</tr>
+<tr>
+<td>PR-001</td>
+<td>Villa</td>
+<td>Canggu</td>
+<td>01-May-2026</td>
+<td>620,000</td>
+<td>590,000</td>
+<td>I Made Sutrisna</td>
+<td>Budi</td>
+<td>Sold</td>
+<td>24</td>
+<td>9</td>
+<td>6</td>
+<td>3</td>
+<td>Yes</td>
+<td>20-Aug-2026</td>
+<td>585,000</td>
+<td>4.0%</td>
+<td>23,400</td>
+<td>111</td>
+</tr>
+<tr>
+<td>PR-002</td>
+<td>Residential</td>
+<td>Denpasar</td>
+<td>01-Jun-2026</td>
+<td>185,000</td>
+<td>179,000</td>
+<td>Ni Luh Ariani</td>
+<td>Budi</td>
+<td>Sold</td>
+<td>18</td>
+<td>7</td>
+<td>5</td>
+<td>2</td>
+<td>Yes</td>
+<td>25-Aug-2026</td>
+<td>176,000</td>
+<td>2.5%</td>
+<td>4,400</td>
+<td>85</td>
+</tr>
+<tr>
+<td>PR-003</td>
+<td>Luxury</td>
+<td>Uluwatu</td>
+<td>01-Mar-2026</td>
+<td>2,100,000</td>
+<td>2,100,000</td>
+<td>Global Estates Ltd.</td>
+<td>Budi</td>
+<td>Active</td>
+<td>10</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+<td>No</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>3.0%</td>
+<td>0</td>
+<td>191</td>
+</tr>
+<tr>
+<td>PR-004</td>
+<td>Land</td>
+<td>Tabanan</td>
+<td>01-Apr-2026</td>
+<td>340,000</td>
+<td>320,000</td>
+<td>Wayan Gede</td>
+<td>Budi</td>
+<td>Active</td>
+<td>12</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>No</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>6.5%</td>
+<td>0</td>
+<td>160</td>
+</tr>
+<tr>
+<td>PR-005</td>
+<td>Commercial</td>
+<td>Kuta</td>
+<td>01-Feb-2026</td>
+<td>780,000</td>
+<td>750,000</td>
+<td>PT Sinar Jaya</td>
+<td>Budi</td>
+<td>Under Offer</td>
+<td>15</td>
+<td>6</td>
+<td>4</td>
+<td>2</td>
+<td>No</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>5.0%</td>
+<td>0</td>
+</tr>
+<tr>
+<td>PR-006</td>
+<td>Residential</td>
+<td>Ubud</td>
+<td>01-Jul-2026</td>
+<td>210,000</td>
+<td>210,000</td>
+<td>Kadek Wira</td>
+<td>Budi</td>
+<td>Active</td>
+<td>9</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>No</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>2.5%</td>
+<td>0</td>
+<td>69</td>
+</tr>
+<tr>
+<td>PR-007</td>
+<td>Villa</td>
+<td>Seminyak</td>
+<td>15-Jun-2026</td>
+<td>750,000</td>
+<td>730,000</td>
+<td>Made Suarsana</td>
+<td>Budi</td>
+<td>Active</td>
+<td>20</td>
+<td>8</td>
+<td>5</td>
+<td>2</td>
+<td>No</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>4.0%</td>
+<td>0</td>
+<td>85</td>
+</tr>
+<tr>
+<td>PR-008</td>
+<td>Luxury</td>
+<td>Jimbaran</td>
+<td>01-Jan-2026</td>
+<td>3,200,000</td>
+<td>3,050,000</td>
+<td>Overseas Holdings SA</td>
+<td>Budi</td>
+<td>Sold</td>
+<td>14</td>
+<td>5</td>
+<td>3</td>
+<td>1</td>
+<td>Yes</td>
+<td>10-Jun-2026</td>
+<td>3,000,000</td>
+<td>3.0%</td>
+<td>90,000</td>
+<td>160</td>
+</tr>
+<tr>
+<td>PR-009</td>
+<td>Land</td>
+<td>Nusa Dua</td>
+<td>15-May-2026</td>
+<td>480,000</td>
+<td>480,000</td>
+<td>Ketut Ardana</td>
+<td>Budi</td>
+<td>Withdrawn</td>
+<td>6</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>No</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>6.5%</td>
+<td>0</td>
+</tr>
+<tr>
+<td>PR-010</td>
+<td>Commercial</td>
+<td>Sanur</td>
+<td>10-Jul-2026</td>
+<td>610,000</td>
+<td>610,000</td>
+<td>PT Mitra Bangun</td>
+<td>Budi</td>
+<td>Active</td>
+<td>7</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>No</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>5.0%</td>
+<td>0</td>
+<td>60</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="14-hospitality-hotel">
+          <div class="sheet-head">
+            <span class="sheet-num">14</span>
+            <div>
+              <h3>Hotel</h3>
+              <p>Occupancy, ADR and RevPAR — the three numbers a GM checks every morning.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Hotel — Occupancy, Rate &amp; Channel Mix</td>
+</tr>
+<tr>
+<td>One row per booking (stay). Occupancy, ADR and RevPAR need Available Rooms entered below.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Available Rooms (property capacity):</td>
+<td>20</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+<td class='blank'></td>
+<td>Period Days (for occupancy):</td>
+<td>31</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Occupancy %</td>
+<td>4.5%</td>
+<td>65.0%</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>ADR (Average Daily Rate)</td>
+<td>1,648,214</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>RevPAR</td>
+<td>74,435</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Booking Lead Time (avg days)</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Average Length of Stay</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Cancellation Rate</td>
+<td>8.3%</td>
+<td>8.0%</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>No-show Rate</td>
+<td>8.3%</td>
+<td>4.0%</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Direct Booking %</td>
+<td>54.6%</td>
+<td>35.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Revenue per Guest</td>
+<td>1,709,259</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Repeat Guest %</td>
+<td>33.3%</td>
+<td>30.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>REVENUE BY BOOKING SOURCE</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Booking Source</td>
+<td>Room Revenue</td>
+<td>Bookings</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Direct Website</td>
+<td>10,600,000</td>
+<td>3</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Direct Phone/Walk-in</td>
+<td>3,000,000</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>OTA - Booking.com</td>
+<td>9,600,000</td>
+<td>3</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>OTA - Agoda</td>
+<td>11,300,000</td>
+<td>2</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>OTA - Expedia</td>
+<td>950,000</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Travel Agent</td>
+<td>8,000,000</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Corporate</td>
+<td>3,600,000</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Other OTA</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Booking ID</td>
+<td>Property</td>
+<td>Room Type</td>
+<td>Booking Source</td>
+<td>Direct / OTA</td>
+<td>Booking Date</td>
+<td>Check-in</td>
+<td>Check-out</td>
+<td>Nights</td>
+<td>Guests</td>
+<td>Rooms Booked</td>
+<td>Room Revenue</td>
+<td>Cancellation?</td>
+<td>No-show?</td>
+<td>Repeat Guest?</td>
+</tr>
+<tr>
+<td>BK-001</td>
+<td>Java Coast Resort</td>
+<td>Deluxe Garden</td>
+<td>Direct Website</td>
+<td>Direct</td>
+<td>01-Aug-2026</td>
+<td>10-Aug-2026</td>
+<td>13-Aug-2026</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>4,500,000</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BK-002</td>
+<td>Java Coast Resort</td>
+<td>Standard</td>
+<td>OTA - Booking.com</td>
+<td>OTA</td>
+<td>02-Aug-2026</td>
+<td>12-Aug-2026</td>
+<td>14-Aug-2026</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1,800,000</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>BK-003</td>
+<td>Java Coast Resort</td>
+<td>Suite</td>
+<td>OTA - Agoda</td>
+<td>OTA</td>
+<td>20-Jul-2026</td>
+<td>05-Aug-2026</td>
+<td>09-Aug-2026</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td>6,800,000</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>BK-004</td>
+<td>Java Coast Resort</td>
+<td>Deluxe Garden</td>
+<td>Direct Phone/Walk-in</td>
+<td>Direct</td>
+<td>05-Aug-2026</td>
+<td>06-Aug-2026</td>
+<td>08-Aug-2026</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>3,000,000</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BK-005</td>
+<td>Java Coast Resort</td>
+<td>Standard</td>
+<td>OTA - Booking.com</td>
+<td>OTA</td>
+<td>28-Jul-2026</td>
+<td>15-Aug-2026</td>
+<td>16-Aug-2026</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>900,000</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>BK-006</td>
+<td>Java Coast Resort</td>
+<td>Suite</td>
+<td>Corporate</td>
+<td>Direct</td>
+<td>10-Aug-2026</td>
+<td>18-Aug-2026</td>
+<td>20-Aug-2026</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>3,600,000</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>BK-007</td>
+<td>Java Coast Resort</td>
+<td>Deluxe Garden</td>
+<td>Travel Agent</td>
+<td>Direct</td>
+<td>01-Aug-2026</td>
+<td>20-Aug-2026</td>
+<td>24-Aug-2026</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+<td>8,000,000</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>BK-008</td>
+<td>Java Coast Resort</td>
+<td>Standard</td>
+<td>OTA - Expedia</td>
+<td>OTA</td>
+<td>12-Aug-2026</td>
+<td>22-Aug-2026</td>
+<td>23-Aug-2026</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>950,000</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>BK-009</td>
+<td>Java Coast Resort</td>
+<td>Deluxe Garden</td>
+<td>Direct Website</td>
+<td>Direct</td>
+<td>15-Jul-2026</td>
+<td>25-Aug-2026</td>
+<td>28-Aug-2026</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>4,200,000</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BK-010</td>
+<td>Java Coast Resort</td>
+<td>Suite</td>
+<td>OTA - Booking.com</td>
+<td>OTA</td>
+<td>18-Aug-2026</td>
+<td>29-Aug-2026</td>
+<td>31-Aug-2026</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>6,900,000</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>BK-011</td>
+<td>Java Coast Resort</td>
+<td>Standard</td>
+<td>Direct Website</td>
+<td>Direct</td>
+<td>20-Aug-2026</td>
+<td>30-Aug-2026</td>
+<td>01-Sep-2026</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1,900,000</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>BK-012</td>
+<td>Java Coast Resort</td>
+<td>Deluxe Garden</td>
+<td>OTA - Agoda</td>
+<td>OTA</td>
+<td>22-Aug-2026</td>
+<td>01-Sep-2026</td>
+<td>04-Sep-2026</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>4,500,000</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="15-hospitality-restaurant">
+          <div class="sheet-head">
+            <span class="sheet-num">15</span>
+            <div>
+              <h3>Restaurant</h3>
+              <p>Covers, average check and table turnover — a different economics than a hotel.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Restaurant — Covers, Check Size &amp; Table Economics</td>
+</tr>
+<tr>
+<td>One row per service day per location. Distinct from Hotel KPIs — a restaurant sells table-time and covers, not room-nights.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Covers</td>
+<td>1,680</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Average Check</td>
+<td>56,542</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Table Turnover</td>
+<td>1.75x</td>
+<td>2.50x</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>RevPASH</td>
+<td>8,995</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Revenue per Seat</td>
+<td>98,948</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Reservation Conversion</td>
+<td>93.2%</td>
+<td>85.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>No-show Rate</td>
+<td>6.8%</td>
+<td>8.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Repeat Customer % (est.)</td>
+<td>32.3%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Food Cost %</td>
+<td>35.7%</td>
+<td>30.0%</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Labor Cost %</td>
+<td>28.0%</td>
+<td>30.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Gross Margin %</td>
+<td>36.3%</td>
+<td>35.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Log ID</td>
+<td>Date</td>
+<td>Location</td>
+<td>Covers</td>
+<td>Reservations</td>
+<td>No-shows</td>
+<td>Walk-ins</td>
+<td>Tables</td>
+<td>Available Seats</td>
+<td>Operating Hours</td>
+<td>Revenue</td>
+<td>Discounts</td>
+<td>Food Cost</td>
+<td>Labor Cost</td>
+<td>Repeat Covers (est.)</td>
+<td>Channel</td>
+<td>Net Revenue</td>
+<td>Seat-Hours</td>
+</tr>
+<tr>
+<td>RD-001</td>
+<td>01-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>140</td>
+<td>90</td>
+<td>6</td>
+<td>50</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>8,200,000</td>
+<td>300,000</td>
+<td>2,800,000</td>
+<td>2,200,000</td>
+<td>45</td>
+<td>Online/App</td>
+<td>7,900,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-002</td>
+<td>02-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>110</td>
+<td>70</td>
+<td>4</td>
+<td>40</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>6,400,000</td>
+<td>150,000</td>
+<td>2,200,000</td>
+<td>2,100,000</td>
+<td>32</td>
+<td>Walk-in</td>
+<td>6,250,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-003</td>
+<td>03-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>160</td>
+<td>100</td>
+<td>8</td>
+<td>60</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>9,500,000</td>
+<td>400,000</td>
+<td>3,300,000</td>
+<td>2,300,000</td>
+<td>55</td>
+<td>Referral</td>
+<td>9,100,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-004</td>
+<td>08-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>130</td>
+<td>85</td>
+<td>5</td>
+<td>45</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>7,600,000</td>
+<td>250,000</td>
+<td>2,600,000</td>
+<td>2,200,000</td>
+<td>40</td>
+<td>Online/App</td>
+<td>7,350,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-005</td>
+<td>09-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>155</td>
+<td>95</td>
+<td>7</td>
+<td>60</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>9,100,000</td>
+<td>350,000</td>
+<td>3,100,000</td>
+<td>2,250,000</td>
+<td>50</td>
+<td>Social</td>
+<td>8,750,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-006</td>
+<td>15-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>100</td>
+<td>60</td>
+<td>3</td>
+<td>40</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>5,800,000</td>
+<td>100,000</td>
+<td>2,000,000</td>
+<td>2,100,000</td>
+<td>28</td>
+<td>Walk-in</td>
+<td>5,700,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-007</td>
+<td>16-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>145</td>
+<td>88</td>
+<td>6</td>
+<td>57</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>8,500,000</td>
+<td>300,000</td>
+<td>2,900,000</td>
+<td>2,200,000</td>
+<td>47</td>
+<td>Online/App</td>
+<td>8,200,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-008</td>
+<td>22-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>165</td>
+<td>105</td>
+<td>9</td>
+<td>60</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>9,700,000</td>
+<td>420,000</td>
+<td>3,400,000</td>
+<td>2,300,000</td>
+<td>58</td>
+<td>Referral</td>
+<td>9,280,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-009</td>
+<td>23-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>120</td>
+<td>75</td>
+<td>4</td>
+<td>45</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>7,000,000</td>
+<td>200,000</td>
+<td>2,400,000</td>
+<td>2,150,000</td>
+<td>36</td>
+<td>Walk-in</td>
+<td>6,800,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-010</td>
+<td>29-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>150</td>
+<td>92</td>
+<td>6</td>
+<td>58</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>8,800,000</td>
+<td>320,000</td>
+<td>3,000,000</td>
+<td>2,250,000</td>
+<td>49</td>
+<td>Online/App</td>
+<td>8,480,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-011</td>
+<td>30-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>135</td>
+<td>80</td>
+<td>5</td>
+<td>55</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>7,900,000</td>
+<td>270,000</td>
+<td>2,700,000</td>
+<td>2,200,000</td>
+<td>42</td>
+<td>Social</td>
+<td>7,630,000</td>
+<td>880</td>
+</tr>
+<tr>
+<td>RD-012</td>
+<td>31-Aug-2026</td>
+<td>Warung Nusantara - Main</td>
+<td>170</td>
+<td>108</td>
+<td>8</td>
+<td>62</td>
+<td>20</td>
+<td>80</td>
+<td>11</td>
+<td>10,000,000</td>
+<td>450,000</td>
+<td>3,500,000</td>
+<td>2,350,000</td>
+<td>60</td>
+<td>Referral</td>
+<td>9,550,000</td>
+<td>880</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="16-exim">
+          <div class="sheet-head">
+            <span class="sheet-num">16</span>
+            <div>
+              <h3>EXIM / Trading</h3>
+              <p>Supplier → landed cost → sale — profitability that never uses supplier price alone.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  EXIM / Import-Export / Trading</td>
+</tr>
+<tr>
+<td>Funnel: Supplier → Product → RFQ → Quote → Buyer → PO → Import → Customs → Warehouse → Sale → Collection. Profitability always uses Landed Cost, never supplier price alone.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>SALES &amp; MARGIN SUMMARY</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>RFQs Received</td>
+<td>6</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Quotes Sent</td>
+<td>5</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Quote → Order Rate</td>
+<td>80.0%</td>
+<td>30.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Orders Confirmed</td>
+<td>4</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Average Order Value</td>
+<td>14,663</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Gross Revenue</td>
+<td>58,650</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Gross Margin %</td>
+<td>21.7%</td>
+<td>20.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>INVENTORY &amp; CASH CYCLE</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Inventory Value (on hand)</td>
+<td>63,057</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Dead Stock Value</td>
+<td>0</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Units unsold past the Dead Stock Threshold set in 02_Settings.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Inventory Days</td>
+<td>501 days</td>
+<td>75 days</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Inventory Turnover</td>
+<td>0.73x</td>
+<td>5.00x</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Order-to-Cash Days (DSO proxy)</td>
+<td>N/A</td>
+<td>45 days</td>
+<td>N/A</td>
+<td>Array formula — evaluates natively in Excel 365 &amp; Google Sheets.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>DPO (avg supplier payment terms)</td>
+<td>41 days</td>
+<td>45 days</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Cash Conversion Cycle (Inventory Days + Order-to-Cash − DPO)</td>
+<td>N/A</td>
+<td>90 days</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>SUPPLIER / PROCUREMENT  (master data)</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Supplier ID</td>
+<td>Supplier Name</td>
+<td>Country</td>
+<td>Product</td>
+<td>Purchase Price (unit)</td>
+<td>MOQ</td>
+<td>Lead Time (days)</td>
+<td>Payment Terms (days)</td>
+</tr>
+<tr>
+<td>SUP-01</td>
+<td>Guangdong Fastener Co.</td>
+<td>China</td>
+<td>Steel Fasteners</td>
+<td>0</td>
+<td>20,000</td>
+<td>35</td>
+<td>45</td>
+</tr>
+<tr>
+<td>SUP-02</td>
+<td>Anatolia Textile Mills</td>
+<td>Turkey</td>
+<td>Cotton Fabric Rolls</td>
+<td>3</td>
+<td>5,000</td>
+<td>25</td>
+<td>30</td>
+</tr>
+<tr>
+<td>SUP-03</td>
+<td>Nusantara Coconut Traders</td>
+<td>Indonesia</td>
+<td>Coconut Oil (bulk)</td>
+<td>2</td>
+<td>8,000</td>
+<td>15</td>
+<td>30</td>
+</tr>
+<tr>
+<td>SUP-04</td>
+<td>Kanto Precision Parts</td>
+<td>Japan</td>
+<td>Machined Components</td>
+<td>6</td>
+<td>2,000</td>
+<td>40</td>
+<td>60</td>
+<td>← sample rows end here</td>
+</tr>
+<tr>
+<td>IMPORT / LANDED COST  (per shipment)</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Shipment ID</td>
+<td>Product</td>
+<td>Supplier ID</td>
+<td>Quantity Received</td>
+<td>Received Date</td>
+<td>Purchase Cost</td>
+<td>Freight</td>
+<td>Insurance</td>
+<td>Duties</td>
+<td>Customs</td>
+<td>Port Charges</td>
+<td>Handling</td>
+<td>Warehouse</td>
+<td>Other Costs</td>
+<td>Total Landed Cost</td>
+<td>Landed Cost per Unit</td>
+<td>Qty Sold</td>
+<td>Qty Remaining</td>
+<td>Inventory Value</td>
+<td>Days in Inventory</td>
+<td>Dead Stock?</td>
+</tr>
+<tr>
+<td>SHP-001</td>
+<td>Steel Fasteners</td>
+<td>SUP-01</td>
+<td>50,000</td>
+<td>01-Jun-2026</td>
+<td>21,000</td>
+<td>2,400</td>
+<td>300</td>
+<td>1,800</td>
+<td>600</td>
+<td>400</td>
+<td>500</td>
+<td>300</td>
+<td>200</td>
+<td>27,500</td>
+<td>1</td>
+<td>20,000</td>
+<td>30,000</td>
+<td>16,500</td>
+<td>99</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SHP-002</td>
+<td>Cotton Fabric Rolls</td>
+<td>SUP-02</td>
+<td>8,000</td>
+<td>15-Jun-2026</td>
+<td>24,800</td>
+<td>1,800</td>
+<td>250</td>
+<td>1,200</td>
+<td>400</td>
+<td>300</td>
+<td>350</td>
+<td>200</td>
+<td>150</td>
+<td>29,450</td>
+<td>4</td>
+<td>3,000</td>
+<td>5,000</td>
+<td>18,406</td>
+<td>85</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SHP-003</td>
+<td>Coconut Oil (bulk)</td>
+<td>SUP-03</td>
+<td>12,000</td>
+<td>01-Jul-2026</td>
+<td>22,200</td>
+<td>1,200</td>
+<td>180</td>
+<td>900</td>
+<td>350</td>
+<td>250</td>
+<td>300</td>
+<td>150</td>
+<td>100</td>
+<td>25,630</td>
+<td>2</td>
+<td>5,000</td>
+<td>7,000</td>
+<td>14,951</td>
+<td>69</td>
+<td>No</td>
+</tr>
+<tr>
+<td>SHP-004</td>
+<td>Machined Components</td>
+<td>SUP-04</td>
+<td>3,000</td>
+<td>10-May-2026</td>
+<td>19,200</td>
+<td>2,600</td>
+<td>350</td>
+<td>2,000</td>
+<td>700</td>
+<td>450</td>
+<td>500</td>
+<td>350</td>
+<td>250</td>
+<td>26,400</td>
+<td>9</td>
+<td>1,500</td>
+<td>1,500</td>
+<td>13,200</td>
+<td>121</td>
+<td>No</td>
+<td>← sample rows end here</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>N/A</td>
+<td>0</td>
+<td class='blank'></td>
+<td>0</td>
+<td class='blank'></td>
+<td>No</td>
+</tr>
+<tr>
+<td>SALES</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Order ID</td>
+<td>Buyer</td>
+<td>Product</td>
+<td>Shipment ID</td>
+<td>RFQ Received?</td>
+<td>Quote Sent?</td>
+<td>Order Confirmed?</td>
+<td>Selling Price (unit)</td>
+<td>Quantity</td>
+<td>Order Date</td>
+<td>Payment Collected Date</td>
+<td>Revenue</td>
+<td>COGS</td>
+<td>Gross Profit</td>
+<td>Gross Margin %</td>
+</tr>
+<tr>
+<td>SO-001</td>
+<td>Trimitra Import Co.</td>
+<td>Steel Fasteners</td>
+<td>SHP-001</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>1</td>
+<td>20,000</td>
+<td>20-Jun-2026</td>
+<td>25-Jul-2026</td>
+<td>13,600</td>
+<td>11,000</td>
+<td>2,600</td>
+<td>19.1%</td>
+</tr>
+<tr>
+<td>SO-002</td>
+<td>Seven Seas Trading</td>
+<td>Cotton Fabric Rolls</td>
+<td>SHP-002</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>5</td>
+<td>3,000</td>
+<td>01-Jul-2026</td>
+<td>10-Aug-2026</td>
+<td>15,600</td>
+<td>11,044</td>
+<td>4,556</td>
+<td>29.2%</td>
+</tr>
+<tr>
+<td>SO-003</td>
+<td>Pacific Sourcing Ltd.</td>
+<td>Coconut Oil (bulk)</td>
+<td>SHP-003</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>3</td>
+<td>5,000</td>
+<td>15-Jul-2026</td>
+<td>20-Aug-2026</td>
+<td>14,750</td>
+<td>10,679</td>
+<td>4,071</td>
+<td>27.6%</td>
+</tr>
+<tr>
+<td>SO-004</td>
+<td>Delta Freight Traders</td>
+<td>Steel Fasteners</td>
+<td>SHP-001</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>1</td>
+<td>10,000</td>
+<td>20-Aug-2026</td>
+<td class='blank'></td>
+<td>7,000</td>
+<td>5,500</td>
+<td>1,500</td>
+<td>21.4%</td>
+</tr>
+<tr>
+<td>SO-005</td>
+<td>Trimitra Import Co.</td>
+<td>Machined Components</td>
+<td>SHP-004</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>10</td>
+<td>1,500</td>
+<td>01-Jun-2026</td>
+<td>05-Jul-2026</td>
+<td>14,700</td>
+<td>13,200</td>
+<td>1,500</td>
+<td>10.2%</td>
+</tr>
+<tr>
+<td>SO-006</td>
+<td>Global Parts Buyers Inc.</td>
+<td>Cotton Fabric Rolls</td>
+<td>SHP-002</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>N/A</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="17-tech-saas">
+          <div class="sheet-head">
+            <span class="sheet-num">17</span>
+            <div>
+              <h3>Tech / SaaS</h3>
+              <p>MRR movement split into new, expansion, contraction and churn — NRR and GRR done properly.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Technology / B2B SaaS — MRR, Retention &amp; Unit Economics</td>
+</tr>
+<tr>
+<td>Funnel: Visitor → Lead → Demo/Trial → Opportunity → Customer → Subscription → Renewal → Expansion. One row per account (add a second row for a mid-period expansion/contraction event on the same account).</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>AUTO-CALCULATED SUMMARY</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Blended Gross Margin % (for LTV):</td>
+<td>75.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td>Note</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total MRR</td>
+<td>16,866</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>ARR</td>
+<td>202,392</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>New MRR (this period)</td>
+<td>2,933</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Expansion MRR (this period)</td>
+<td>833</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Contraction MRR (this period)</td>
+<td>300</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Churned MRR (this period)</td>
+<td>2,350</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Net New MRR</td>
+<td>1,116</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Logo Churn Rate (this period)</td>
+<td>16.7%</td>
+<td>1.5%</td>
+<td>Below Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>GRR (Gross Revenue Retention)</td>
+<td>83.2%</td>
+<td>90.0%</td>
+<td>Below Target</td>
+<td>Excludes new-customer revenue by construction — uses only Starting MRR + contraction/churn.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>NRR (Net Revenue Retention)</td>
+<td>88.5%</td>
+<td>105.0%</td>
+<td>Below Target</td>
+<td>Can exceed 100% — expansion included, new business excluded.</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>ARPA</td>
+<td>1,874</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>CAC (average, entered)</td>
+<td>1,405</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>LTV</td>
+<td>8,353</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>LTV : CAC</td>
+<td>5.95x</td>
+<td>3.00x</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>CAC Payback (months)</td>
+<td>1.0</td>
+<td>12.0</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td>ENTER DATA BELOW — one row per record  (blue = you type, grey = auto-calculated)</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>Plan</td>
+<td>Current MRR</td>
+<td>ARR</td>
+<td>Contract Start</td>
+<td>Renewal Date</td>
+<td>MRR Movement Type (this period)</td>
+<td>MRR Movement Amount</td>
+<td>Customer Status</td>
+<td>Acquisition Source</td>
+<td>CAC</td>
+<td>Gross Margin %</td>
+</tr>
+<tr>
+<td>Northstar Robotics</td>
+<td>Growth</td>
+<td>2,333</td>
+<td>27,996</td>
+<td>24-Aug-2026</td>
+<td>24-Aug-2027</td>
+<td>New</td>
+<td>2,333</td>
+<td>Active</td>
+<td>Search</td>
+<td>1,200</td>
+<td>75.0%</td>
+</tr>
+<tr>
+<td>Northstar Robotics - Add-on</td>
+<td>Growth</td>
+<td>333</td>
+<td>3,996</td>
+<td>24-Aug-2026</td>
+<td>24-Aug-2027</td>
+<td>Expansion</td>
+<td>333</td>
+<td>Active</td>
+<td>Search</td>
+<td>0</td>
+<td>75.0%</td>
+</tr>
+<tr>
+<td>CloudLedger Inc.</td>
+<td>Pro</td>
+<td>2,000</td>
+<td>24,000</td>
+<td>18-Feb-2026</td>
+<td>18-Feb-2027</td>
+<td>No Change</td>
+<td>0</td>
+<td>Active</td>
+<td>Paid Ads</td>
+<td>1,800</td>
+<td>72.0%</td>
+</tr>
+<tr>
+<td>CloudLedger Inc. - Seats</td>
+<td>Pro</td>
+<td>500</td>
+<td>6,000</td>
+<td>05-Aug-2026</td>
+<td>18-Feb-2027</td>
+<td>Expansion</td>
+<td>500</td>
+<td>Active</td>
+<td>Paid Ads</td>
+<td>0</td>
+<td>72.0%</td>
+</tr>
+<tr>
+<td>Anchor Tech Systems</td>
+<td>Starter</td>
+<td>0</td>
+<td>0</td>
+<td>02-May-2026</td>
+<td>15-Aug-2026</td>
+<td>Churn</td>
+<td>750</td>
+<td>Churned</td>
+<td>Referral</td>
+<td>900</td>
+<td>70.0%</td>
+</tr>
+<tr>
+<td>Beacon Analytics</td>
+<td>Growth</td>
+<td>1,800</td>
+<td>21,600</td>
+<td>10-Jan-2026</td>
+<td>10-Jan-2027</td>
+<td>No Change</td>
+<td>0</td>
+<td>Active</td>
+<td>Direct</td>
+<td>1,100</td>
+<td>76.0%</td>
+</tr>
+<tr>
+<td>Vertex Logistics Tech</td>
+<td>Pro</td>
+<td>2,200</td>
+<td>26,400</td>
+<td>12-Mar-2026</td>
+<td>12-Mar-2027</td>
+<td>Contraction</td>
+<td>300</td>
+<td>Active</td>
+<td>Partner</td>
+<td>1,500</td>
+<td>74.0%</td>
+</tr>
+<tr>
+<td>Harbor Freight Systems</td>
+<td>Enterprise</td>
+<td>5,200</td>
+<td>62,400</td>
+<td>01-Nov-2025</td>
+<td>01-Nov-2026</td>
+<td>No Change</td>
+<td>0</td>
+<td>Active</td>
+<td>Referral</td>
+<td>3,200</td>
+<td>78.0%</td>
+</tr>
+<tr>
+<td>Nimbus Data Co.</td>
+<td>Starter</td>
+<td>600</td>
+<td>7,200</td>
+<td>01-Jul-2026</td>
+<td>01-Jul-2027</td>
+<td>New</td>
+<td>600</td>
+<td>Active</td>
+<td>Social</td>
+<td>500</td>
+<td>68.0%</td>
+</tr>
+<tr>
+<td>Fieldwork Robotics</td>
+<td>Growth</td>
+<td>1,900</td>
+<td>22,800</td>
+<td>05-Jun-2026</td>
+<td>05-Jun-2027</td>
+<td>No Change</td>
+<td>0</td>
+<td>Active</td>
+<td>Organic</td>
+<td>1,000</td>
+<td>75.0%</td>
+</tr>
+<tr>
+<td>Solace Ops Platform</td>
+<td>Pro</td>
+<td>0</td>
+<td>0</td>
+<td>01-Feb-2026</td>
+<td>01-Aug-2026</td>
+<td>Churn</td>
+<td>1,600</td>
+<td>Churned</td>
+<td>Paid Ads</td>
+<td>1,900</td>
+<td>71.0%</td>
+</tr>
+<tr>
+<td>Meridian CRM</td>
+<td>Growth</td>
+<td>1,750</td>
+<td>21,000</td>
+<td>18-Apr-2026</td>
+<td>18-Apr-2027</td>
+<td>Reactivation</td>
+<td>1,750</td>
+<td>Reactivated</td>
+<td>Direct</td>
+<td>950</td>
+<td>75.0%</td>
+<td>← sample rows end here</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="18-revenue-leakage">
+          <div class="sheet-head">
+            <span class="sheet-num">18</span>
+            <div>
+              <h3>Revenue Leakage</h3>
+              <p>Where the money is actually being lost, quantified, stage by stage.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Revenue Leakage — Where Are We Losing Revenue?</td>
+</tr>
+<tr>
+<td>Potential vs. Actual value at every stage. Lost Value is calculated automatically where the data exists; Root Cause / Owner / Action are for management to fill in.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td>Leakage Type</td>
+<td>Stage</td>
+<td>Potential Value</td>
+<td>Actual Value</td>
+<td>Lost Value</td>
+<td>Root Cause</td>
+<td>Owner</td>
+<td>Action</td>
+<td>Status</td>
+</tr>
+<tr>
+<td>Lead Leakage</td>
+<td>Lead → Qualified</td>
+<td>292,000</td>
+<td>196,000</td>
+<td>96,000</td>
+<td>Poor lead quality or slow follow-up</td>
+<td>Marketing/Sales Lead</td>
+<td>Review lead scoring &amp; SLA for first contact</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Qualification Leakage</td>
+<td>Qualified → Opportunity</td>
+<td>196,000</td>
+<td>196,000</td>
+<td>0</td>
+<td>Qualified leads not converted to tracked deals</td>
+<td>Sales Manager</td>
+<td>Audit why qualified leads stall before opportunity</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Opportunity Leakage (Stalled Pipeline)</td>
+<td>Opportunity → Won</td>
+<td>145,000</td>
+<td>145,000</td>
+<td>0</td>
+<td>Open deals with no stage movement past the Settings threshold</td>
+<td>Sales Manager</td>
+<td>Review stalled opportunities weekly; re-engage or disqualify</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Lost Deals</td>
+<td>Negotiation/Proposal → Lost</td>
+<td>42,000</td>
+<td>0</td>
+<td>42,000</td>
+<td>See Lost Reason in 04_Pipeline</td>
+<td>Sales Manager</td>
+<td>Analyze top Lost Reasons and address root cause</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Discount Leakage</td>
+<td>Quote → Invoice</td>
+<td>325,500</td>
+<td>323,000</td>
+<td>2,500</td>
+<td>Discounting beyond policy</td>
+<td>RevOps / Finance</td>
+<td>Set and enforce a discount approval matrix</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Churn Leakage (SaaS)</td>
+<td>Subscription → Renewal</td>
+<td>15,750</td>
+<td>13,400</td>
+<td>2,350</td>
+<td>Customer churn — see 17_Tech_SaaS Churn Reason</td>
+<td>Customer Success</td>
+<td>Run churn win-back / at-risk playbook</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Cancellation Leakage (Hotel)</td>
+<td>Booking → Stay</td>
+<td>47,050,000</td>
+<td>46,150,000</td>
+<td>900,000</td>
+<td>Booking cancellations</td>
+<td>Revenue Manager</td>
+<td>Review cancellation policy &amp; deposit terms</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>No-show Leakage (Restaurant)</td>
+<td>Reservation → Seated</td>
+<td>59,255,667</td>
+<td>55,241,208</td>
+<td>4,014,458</td>
+<td>Reservation no-shows</td>
+<td>Restaurant Manager</td>
+<td>Add confirmation SMS / deposit for large parties</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Inventory Leakage (EXIM Dead Stock)</td>
+<td>Warehouse → Sale</td>
+<td>N/A — informational only</td>
+<td>N/A — see Lost Value</td>
+<td>0</td>
+<td>Overstocked / slow-moving SKUs</td>
+<td>Procurement / Sales</td>
+<td>Discount or liquidate stock past Dead Stock threshold</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Collection Leakage (Cash)</td>
+<td>Invoice → Collection</td>
+<td>241,000</td>
+<td>200,000</td>
+<td>41,000</td>
+<td>Overdue invoices</td>
+<td>Finance / Collections</td>
+<td>Escalate overdue accounts, tighten payment terms</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>Margin Leakage</td>
+<td>Revenue → Gross Profit</td>
+<td>113,050</td>
+<td>159,100</td>
+<td>0</td>
+<td>Actual margin below target margin</td>
+<td>Finance / RevOps</td>
+<td>Review COGS drivers and pricing</td>
+<td>Open</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td>TOTAL ESTIMATED REVENUE LEAKAGE</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>0</td>
+</tr>
+<tr>
+<td>LARGEST LEAKAGE CATEGORY</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>No-show Leakage (Restaurant)</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="19-action-tracker">
+          <div class="sheet-head">
+            <span class="sheet-num">19</span>
+            <div>
+              <h3>Action Tracker</h3>
+              <p>Every metric below target, surfaced automatically — never a fabricated recommendation.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Action Tracker — What Needs Management Attention Now</td>
+</tr>
+<tr>
+<td>Every metric below pulls live from its source tab. Priority and Status calculate automatically; Root Cause, Recommended Action, Owner and Deadline are for management to fill in — never fabricated.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Metric</td>
+<td>Actual</td>
+<td>Target</td>
+<td>Variance</td>
+<td>Estimated Impact</td>
+<td>Root Cause</td>
+<td>Recommended Action</td>
+<td>Owner</td>
+<td>Deadline</td>
+<td>Status</td>
+<td class='blank'></td>
+<td>(Warning threshold — hidden helper)</td>
+<td>(Excellent threshold — hidden helper)</td>
+</tr>
+<tr>
+<td>#VALUE!</td>
+<td>Qualification Rate (Leads)</td>
+<td>#VALUE!</td>
+<td>35.0%</td>
+<td>#VALUE!</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>#VALUE!</td>
+<td class='blank'></td>
+<td>20.0%</td>
+<td>50.0%</td>
+</tr>
+<tr>
+<td>#VALUE!</td>
+<td>Lead-to-Opportunity Rate</td>
+<td>#VALUE!</td>
+<td>20.0%</td>
+<td>#VALUE!</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>#VALUE!</td>
+<td class='blank'></td>
+<td>10.0%</td>
+<td>35.0%</td>
+</tr>
+<tr>
+<td>P4 - None</td>
+<td>Win Rate (Pipeline)</td>
+<td>50.0%</td>
+<td>25.0%</td>
+<td>25.0%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Excellent</td>
+<td class='blank'></td>
+<td>15.0%</td>
+<td>40.0%</td>
+</tr>
+<tr>
+<td>P4 - None</td>
+<td>Average Sales Cycle</td>
+<td>18 days</td>
+<td>45 days</td>
+<td>28 days</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Excellent</td>
+<td class='blank'></td>
+<td>90 days</td>
+<td>21 days</td>
+</tr>
+<tr>
+<td>P1 - Urgent</td>
+<td>Pipeline Coverage</td>
+<td>0.48x</td>
+<td>3.00x</td>
+<td>-2.52x</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Critical</td>
+<td class='blank'></td>
+<td>2.00x</td>
+<td>5.00x</td>
+</tr>
+<tr>
+<td>P3 - Low</td>
+<td>Gross Margin % (Company-wide)</td>
+<td>49.3%</td>
+<td>35.0%</td>
+<td>14.3%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>On Target</td>
+<td class='blank'></td>
+<td>20.0%</td>
+<td>50.0%</td>
+</tr>
+<tr>
+<td>P2 - Monitor</td>
+<td>DSO (Cash)</td>
+<td>59 days</td>
+<td>30 days</td>
+<td>-29 days</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Warning</td>
+<td class='blank'></td>
+<td>60 days</td>
+<td>15 days</td>
+</tr>
+<tr>
+<td>P3 - Low</td>
+<td>Customer Retention Rate</td>
+<td>91.7%</td>
+<td>85.0%</td>
+<td>6.7%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>On Target</td>
+<td class='blank'></td>
+<td>70.0%</td>
+<td>95.0%</td>
+</tr>
+<tr>
+<td>P2 - Monitor</td>
+<td>Logo Churn Rate (Customers)</td>
+<td>8.3%</td>
+<td>8.0%</td>
+<td>-0.3%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Warning</td>
+<td class='blank'></td>
+<td>15.0%</td>
+<td>3.0%</td>
+</tr>
+<tr>
+<td>P1 - Urgent</td>
+<td>Monthly Target Attainment (Forecast)</td>
+<td>0.0%</td>
+<td>85.0%</td>
+<td>-85.0%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Critical</td>
+<td class='blank'></td>
+<td>70.0%</td>
+<td>95.0%</td>
+</tr>
+<tr>
+<td>P1 - Urgent</td>
+<td>Hotel Occupancy %</td>
+<td>4.5%</td>
+<td>65.0%</td>
+<td>-60.5%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Critical</td>
+<td class='blank'></td>
+<td>50.0%</td>
+<td>80.0%</td>
+</tr>
+<tr>
+<td>P1 - Urgent</td>
+<td>Restaurant Food Cost %</td>
+<td>35.7%</td>
+<td>30.0%</td>
+<td>-5.7%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Critical</td>
+<td class='blank'></td>
+<td>35.0%</td>
+<td>25.0%</td>
+</tr>
+<tr>
+<td>P3 - Low</td>
+<td>Restaurant Labor Cost %</td>
+<td>28.0%</td>
+<td>30.0%</td>
+<td>2.0%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>On Target</td>
+<td class='blank'></td>
+<td>35.0%</td>
+<td>25.0%</td>
+</tr>
+<tr>
+<td>P2 - Monitor</td>
+<td>Property Days on Market (Residential)</td>
+<td>85</td>
+<td>75</td>
+<td>-10</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Warning</td>
+<td class='blank'></td>
+<td>120</td>
+<td>45</td>
+</tr>
+<tr>
+<td>P3 - Low</td>
+<td>EXIM Gross Margin %</td>
+<td>21.7%</td>
+<td>20.0%</td>
+<td>1.7%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>On Target</td>
+<td class='blank'></td>
+<td>12.0%</td>
+<td>30.0%</td>
+</tr>
+<tr>
+<td>P1 - Urgent</td>
+<td>SaaS NRR</td>
+<td>88.5%</td>
+<td>105.0%</td>
+<td>-16.5%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Critical</td>
+<td class='blank'></td>
+<td>90.0%</td>
+<td>120.0%</td>
+</tr>
+<tr>
+<td>P2 - Monitor</td>
+<td>SaaS GRR</td>
+<td>83.2%</td>
+<td>90.0%</td>
+<td>-6.8%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Warning</td>
+<td class='blank'></td>
+<td>80.0%</td>
+<td>97.0%</td>
+</tr>
+</table></div>
+        </section>
+        
+
+        <section class="sheet-section" id="20-dashboard">
+          <div class="sheet-head">
+            <span class="sheet-num">20</span>
+            <div>
+              <h3>Dashboard</h3>
+              <p>The executive view — every number traces back to a source tab, nothing hardcoded.</p>
+            </div>
+          </div>
+          <div class='table-scroll'><table>
+<tr>
+<td>  Executive Dashboard</td>
+</tr>
+<tr>
+<td>Every figure below traces to a source tab — nothing here is a hardcoded number. Green = Excellent/On Target, Yellow = Warning, Red = Critical, Blue = N/A or informational.</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>REVENUE &amp; PROFITABILITY</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>CHART DATA</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+<td class='blank'></td>
+<td>Category</td>
+<td>Value</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Actual Revenue (Current Month)</td>
+<td>0</td>
+<td>100,000</td>
+<td>Below Target</td>
+<td class='blank'></td>
+<td>Actual Revenue</td>
+<td>0</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Revenue Growth (MoM)</td>
+<td>-100.0%</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Revenue Target</td>
+<td>100,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Target Attainment (Month)</td>
+<td>0.0%</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Forecast Revenue (Base Case, Month)</td>
+<td>45,000</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Sales Funnel Stage</td>
+<td>Count</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Forecast Gap (Month)</td>
+<td>55,000</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Leads</td>
+<td>12</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Gross Profit (all data)</td>
+<td>159,100</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Qualified</td>
+<td>6</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Gross Margin %</td>
+<td>49.3%</td>
+<td>35.0%</td>
+<td>On Target</td>
+<td class='blank'></td>
+<td>Opportunities</td>
+<td>6</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Won</td>
+<td>2</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>PIPELINE</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Total Open Pipeline</td>
+<td>145,000</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Month</td>
+<td>Revenue</td>
+<td>New Customers</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Weighted Pipeline</td>
+<td>59,750</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Apr-26</td>
+<td>5,500</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Pipeline Coverage</td>
+<td>0.48x</td>
+<td>3.00x</td>
+<td>Below Target</td>
+<td class='blank'></td>
+<td>May-26</td>
+<td>9,000</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Win Rate</td>
+<td>50.0%</td>
+<td>25.0%</td>
+<td>On Target</td>
+<td class='blank'></td>
+<td>Jun-26</td>
+<td>41,000</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Average Deal Size</td>
+<td>46,500</td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Jul-26</td>
+<td>9,500</td>
+<td>1</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Average Sales Cycle</td>
+<td>18 days</td>
+<td>45 days</td>
+<td>On Target</td>
+<td class='blank'></td>
+<td>Aug-26</td>
+<td>117,000</td>
+<td>2</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td class='blank'></td>
+<td>Sep-26</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>CUSTOMER</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>New Customers</td>
+<td>0</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Active Customers</td>
+<td>8</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Repeat Customers</td>
+<td>2</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Retention Rate</td>
+<td>91.7%</td>
+<td>85.0%</td>
+<td>On Target</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Logo Churn Rate</td>
+<td>8.3%</td>
+<td>8.0%</td>
+<td>Below Target</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>CASH</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Metric</td>
+<td>Value</td>
+<td>Target</td>
+<td>Status</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Cash Collected</td>
+<td>189,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Outstanding Receivables</td>
+<td>52,000</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>DSO</td>
+<td>59 days</td>
+<td>30 days</td>
+<td>Below Target</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>REVENUE LEAKAGE</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Estimated Revenue Leakage (total)</td>
+<td>0</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Largest Leakage Category</td>
+<td>No-show Leakage (Restaurant)</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>CHANNEL</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Top Revenue Channel</td>
+<td>Partner</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Best Converting Channel</td>
+<td>Partner</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Highest ROI Channel</td>
+<td>N/A — enter spend to unlock</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>TEAM PERFORMANCE</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>Team Average Revenue (per rep, entered reps only)</td>
+<td>107,667</td>
+</tr>
+<tr>
+<td class='blank'></td>
+<td>See 11_Salesperson for full rep-by-rep detail.</td>
+</tr>
+</table></div>
+        </section>
+        
+</div>
+
+<p class="footer-note">RevOps Operating System Template — designed and built by Muhammad Satrio. Viewing this page does not grant any license to copy, reproduce, or redistribute this template.</p>
+
+<script>
+(function () {
+  // Watermark tiling
+  var wm = document.getElementById('watermark');
+  var label = 'MUHAMMAD SATRIO · VIEW ONLY PREVIEW';
+  for (var y = -100; y < window.innerHeight + 400; y += 140) {
+    for (var x = -200; x < window.innerWidth + 400; x += 420) {
+      var s = document.createElement('span');
+      s.style.left = x + 'px'; s.style.top = y + 'px';
+      s.textContent = label;
+      wm.appendChild(s);
+    }
+  }
+
+  // Tab navigation
+  var buttons = document.querySelectorAll('.tab-btn');
+  var sections = document.querySelectorAll('.sheet-section');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        buttons.forEach(function (b) { b.classList.remove('active'); });
+        var btn = document.querySelector('.tab-btn[data-target="' + e.target.id + '"]');
+        if (btn) { btn.classList.add('active'); btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }); }
+      }
+    });
+  }, { rootMargin: '-160px 0px -70% 0px' });
+  sections.forEach(function (s) { io.observe(s); });
+
+  // Friction against casual copy / download / devtools (best-effort, not foolproof)
+  document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  document.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  document.addEventListener('selectstart', function (e) { e.preventDefault(); });
+  document.addEventListener('copy', function (e) { e.preventDefault(); });
+  document.addEventListener('cut', function (e) { e.preventDefault(); });
+  document.addEventListener('keydown', function (e) {
+    var k = e.key ? e.key.toLowerCase() : '';
+    var blockedCombo = (e.ctrlKey || e.metaKey) && ['c', 's', 'p', 'u', 'a', 'x'].indexOf(k) !== -1;
+    var devtools = (e.ctrlKey && e.shiftKey && ['i', 'j', 'c'].indexOf(k) !== -1) || k === 'f12';
+    if (blockedCombo || devtools) e.preventDefault();
+  });
+})();
+</script>
+</body>
+</html>

@@ -848,6 +848,26 @@
           </div>
         </div>
       </div>
+      <div class="project-card" data-project="Indonesia Property BD Database">
+        <div class="project-thumb"><span class="mono">// property-bd-database</span></div>
+        <div class="project-body">
+          <span class="project-status">Internal · Redacted Preview</span>
+          <h4>Indonesia Property BD Database — Research Pipeline</h4>
+          <p>A batched, source-verified research pipeline that builds a curated business-development database for an Indonesian property business — real people and companies across real estate, legal, architecture, hospitality, wealth, and more, each with a verification source and priority score, not a scraped directory dump.</p>
+          <ul>
+            <li>Orchestrated parallel research agents per category cluster (agencies, international markets, legal/tax, architecture/hospitality, wealth/relocation, media/proptech), each independently web-verifying every record against an official site, LinkedIn, or press source before inclusion.</li>
+            <li>Built a cross-batch deduplication pipeline (exact + targeted near-duplicate review) so the database can be extended batch after batch without re-adding the same prospect under a slightly different name.</li>
+            <li>Automated push to Google Sheets via a service-account-authenticated Sheets/Drive API client, with continuous ID numbering so the two live tables (People, Companies) grow cleanly across research batches.</li>
+            <li>Generated this redacted duplicate programmatically from the live dataset — every cell in sensitive columns masked after 3 characters, category/country/priority metadata left visible to show scope without exposing real prospects.</li>
+          </ul>
+          <div class="tool-badges">
+            <span class="tool-badge">Python</span><span class="tool-badge">Google Sheets API</span><span class="tool-badge">Google Drive API</span><span class="tool-badge">Research Automation</span><span class="tool-badge">Data Verification</span>
+          </div>
+          <div class="btn-row" style="margin-top: 4px;">
+            <a class="btn btn-secondary btn-sm" href="property-database-preview.html" target="_blank" rel="noopener">View Redacted Preview</a>
+          </div>
+        </div>
+      </div>
       <div class="project-card" data-project="Portfolio Visitor Analytics System">
         <div class="project-thumb has-image">
           <img src="assets/images/visitor-analytics-dashboard.png" alt="Portfolio Visitor Analytics admin dashboard showing overview stat cards and daily/weekly/monthly visitor trend charts" loading="lazy">

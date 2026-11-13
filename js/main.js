@@ -58,7 +58,7 @@
       },
       // threshold: 0 fires as soon as any part of an element enters the
       // viewport. A fractional threshold (e.g. 0.12) requires that % of the
-      // element's OWN height to be visible at once — for a tall single
+      // element's OWN height to be visible at once, for a tall single
       // container like a stacked mobile card-grid (which can run several
       // times taller than the viewport once cards stack into one column),
       // that requirement is literally impossible to satisfy and the
@@ -81,7 +81,7 @@
       companyBlocks.forEach(function (block) {
         var cards = block.querySelectorAll('.card[data-category]');
         if (cards.length === 0) {
-          // Additional Experience strip has no filterable cards — always visible
+          // Additional Experience strip has no filterable cards, always visible
           block.style.display = '';
           return;
         }

@@ -1,4 +1,4 @@
-# Muhammad Satrio — Portfolio
+# Muhammad Satrio, Portfolio
 
 Static HTML/CSS/JS site (no framework, no build step for the pages themselves)
 deployed on Vercel, plus a TypeScript visitor-analytics backend running as
@@ -15,7 +15,7 @@ Open `index.html` directly in a browser, or serve it:
 npx serve .
 ```
 
-(`/api` functions and `/admin` need a real Vercel deploy or `vercel dev` — see below.)
+(`/api` functions and `/admin` need a real Vercel deploy or `vercel dev`, see below.)
 
 ## Deploy
 
@@ -25,7 +25,7 @@ npm run build:client   # compiles src/tracking.ts -> js/tracking.js and admin-sr
 vercel --prod
 ```
 
-**After every prod deploy, re-point the custom alias** — Vercel only
+**After every prod deploy, re-point the custom alias**, Vercel only
 auto-updates its own generated `*-<hash>-muhammad-satrio.vercel.app` /
 `portfolio-site-snowy-six.vercel.app` domains, not the custom
 `muhammadsatrio.vercel.app` alias:
@@ -48,7 +48,7 @@ vercel alias set <new-deployment-url> muhammadsatrio.vercel.app
 Architecture: browser → `src/tracking.ts` (compiled to `js/tracking.js`) →
 `POST /api/track` → Google Sheets (via a service account) → `GET
 /api/admin/data` → the dashboard at `/admin` (password-gated, reads live from
-the sheet — no separate database).
+the sheet, no separate database).
 
 ```
 api/track.ts                 Validates, rate-limits, geo/UA-enriches, computes
@@ -82,12 +82,12 @@ scripts/setup-sheet.ts        One-off local script: verifies the service
 |---|---|
 | `GOOGLE_PROJECT_ID` | From the service-account JSON key's `project_id`. |
 | `GOOGLE_CLIENT_EMAIL` | From the key's `client_email`. |
-| `GOOGLE_PRIVATE_KEY` | From the key's `private_key` — paste with real newlines or `\n` escapes, both are handled. |
+| `GOOGLE_PRIVATE_KEY` | From the key's `private_key`, paste with real newlines or `\n` escapes, both are handled. |
 | `GOOGLE_SHEET_ID` | The ID from the sheet's URL (`.../d/<THIS>/edit`). |
-| `ADMIN_PASSWORD` | Password for `/admin`. Also used to key the session-cookie HMAC — changing it invalidates all logged-in sessions. |
+| `ADMIN_PASSWORD` | Password for `/admin`. Also used to key the session-cookie HMAC, changing it invalidates all logged-in sessions. |
 | `EMAIL_PROVIDER` | `gmail`. |
-| `EMAIL_USERNAME` | Gmail address to send from. **Optional** — see below. |
-| `EMAIL_PASSWORD` | A Gmail **App Password**, not your real password. **Optional** — see below. |
+| `EMAIL_USERNAME` | Gmail address to send from. **Optional**, see below. |
+| `EMAIL_PASSWORD` | A Gmail **App Password**, not your real password. **Optional**, see below. |
 
 `.env.example` documents the same list for local reference (never commit a
 real `.env`).
@@ -95,7 +95,7 @@ real `.env`).
 ### One-time Google Sheet setup
 
 Service accounts on personal (non-Workspace) GCP projects have **zero Drive
-storage quota** — they cannot create/own a new spreadsheet themselves. Create
+storage quota**, they cannot create/own a new spreadsheet themselves. Create
 it yourself instead, then hand it to the service account:
 
 1. sheets.google.com → **Blank spreadsheet** → rename it however you like.
@@ -110,12 +110,12 @@ it yourself instead, then hand it to the service account:
    sheet before continuing.
 4. Copy the Sheet ID from the URL and set `GOOGLE_SHEET_ID`.
 5. Run `npm run setup:sheet -- <SHEET_ID>` locally (reads the downloaded
-   service-account JSON key from `~/Downloads/` by default — edit the
+   service-account JSON key from `~/Downloads/` by default, edit the
    `KEY_FILE` constant in `scripts/setup-sheet.ts` if yours lives elsewhere)
    to verify access and write the real header row.
 6. Also enable the **Google Sheets API** and **Google Drive API** for the
    GCP project the service account belongs to (Cloud Console → APIs &
-   Services) — a fresh service-account project has neither enabled by
+   Services), a fresh service-account project has neither enabled by
    default, and the service account itself doesn't have permission to
    self-enable them.
 
@@ -123,26 +123,26 @@ it yourself instead, then hand it to the service account:
 
 Left unconfigured on purpose. Until `EMAIL_USERNAME`/`EMAIL_PASSWORD` are
 set, every new-session row records `Email Status = "Not Configured"` and no
-SMTP is attempted — this is expected, not an error. To turn it on:
+SMTP is attempted, this is expected, not an error. To turn it on:
 
 1. Turn on 2-Step Verification on the sending Gmail account (required for App Passwords).
 2. Google Account → Security → 2-Step Verification → **App passwords** → generate one for "Mail".
 3. Set `EMAIL_USERNAME` (the Gmail address) and `EMAIL_PASSWORD` (the 16-character app password, no spaces) as Vercel env vars.
-4. Redeploy (`vercel --prod`) — env var changes only take effect on a new deployment, not retroactively on the current one.
+4. Redeploy (`vercel --prod`), env var changes only take effect on a new deployment, not retroactively on the current one.
 
 ### Notes on the design
 
 - **Rate limiting** on `/api/track` and `/api/admin/login` is a best-effort,
-  in-memory, per-lambda-instance token bucket — it resets on cold start and
+  in-memory, per-lambda-instance token bucket, it resets on cold start and
   isn't shared across concurrent instances. Adequate for a personal
   portfolio's traffic; not a substitute for a real edge rate limiter at
   scale.
-- **Sheet reads scale linearly** — `getAllRows()` fetches the whole sheet on
+- **Sheet reads scale linearly**, `getAllRows()` fetches the whole sheet on
   every `/api/track` call (to compute returning-visitor/visit-count) and
   every `/admin` refresh. Fine into the tens of thousands of rows; revisit
   with a smaller indexed read if this ever becomes a personal-scale project's
   bottleneck (unlikely).
-- **No "Project" column** in the sheet schema (per the original spec) —
+- **No "Project" column** in the sheet schema (per the original spec) -
   `project_open` events store the project name in the `Button` column, same
   slot other click labels use.
 - Data-project attribution for the Featured Projects cards comes from

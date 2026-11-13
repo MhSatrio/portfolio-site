@@ -1,0 +1,117 @@
+/* VierApparatus section layout. Colours and type come from style.css (brand palette). */
+
+.vier-section { padding: 96px 0; }
+
+.vier-head { max-width: 760px; margin-bottom: 40px; }
+
+.vier-logo {
+  display: block;
+  height: 56px;
+  width: auto;
+  margin-bottom: 28px;
+}
+
+.vier-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 16px;
+}
+
+
+.vier-head h2 {
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.12;
+  margin-bottom: 16px;
+}
+
+.vier-lede { font-size: 19px; color: var(--text-secondary); }
+
+.vier-actions { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+.vier-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 2px solid var(--blue);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.vier-btn-primary { background: var(--blue); color: var(--white); }
+.vier-btn-primary:hover { background: var(--ink); border-color: var(--ink); color: var(--white); }
+
+.vier-metrics {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin: 48px 0 8px;
+}
+.vier-metric {
+  background: var(--surface-tint);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+.vier-num { font-size: 36px; font-weight: 600; color: var(--blue); line-height: 1.1; }
+.vier-label { font-size: 14px; color: var(--text-secondary); margin-top: 8px; line-height: 1.45; }
+
+.vier-subhead { font-size: 24px; margin: 56px 0 18px; }
+
+.vier-ops { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.vier-op {
+  background: var(--white);
+  border: 1px solid var(--sky);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+.vier-op h4 { font-size: 18px; color: var(--blue); margin-bottom: 8px; }
+.vier-op p { font-size: 16px; color: var(--text-secondary); line-height: 1.6; }
+
+.vier-shot-frame {
+  border: 1px solid var(--sky);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  max-width: 900px;
+}
+
+@media (max-width: 960px) {
+  .vier-section { padding: 72px 0; }
+  .vier-metrics { grid-template-columns: repeat(2, 1fr); }
+  .vier-ops { grid-template-columns: repeat(2, 1fr); }
+  .vier-section .card-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .vier-section { padding: 56px 0; }
+  .vier-metrics { grid-template-columns: 1fr; }
+  .vier-ops { grid-template-columns: 1fr; }
+  .vier-num { font-size: 30px; }
+}
+
+.vier-btn-secondary { background: var(--white); color: var(--blue); }
+.vier-btn-secondary:hover { background: var(--sky); color: var(--ink); }
+
+.vier-admin { display: flex; flex-direction: column; gap: 40px; }
+.vier-admin-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+.vier-admin-shot { border: 1px solid var(--sky); border-radius: var(--radius-md); overflow: hidden; background: var(--surface-tint); }
+.vier-admin-shot img { width: 100%; height: auto; display: block; }
+.vier-admin-copy h4 { font-size: 24px; margin-bottom: 10px; }
+.vier-admin-copy p { font-size: 17px; color: var(--text-secondary); margin-bottom: 14px; }
+.vier-admin-copy ul { display: flex; flex-direction: column; gap: 8px; }
+.vier-admin-copy li { position: relative; padding-left: 18px; font-size: 16px; color: var(--text-secondary); line-height: 1.55; }
+.vier-admin-copy li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+@media (max-width: 860px) {
+  .vier-admin-row { grid-template-columns: 1fr; gap: 20px; }
+}

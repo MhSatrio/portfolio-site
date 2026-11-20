@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=8">
 <link rel="stylesheet" href="css/sliders.css?v=8">
-<link rel="stylesheet" href="css/vierapparatus.css?v=8">
+<link rel="stylesheet" href="css/vierapparatus.css?v=12">
 </head>
 <body>
 
@@ -1053,6 +1053,334 @@
           <div class="btn-row" style="margin-top: 4px;">
             <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/DCE" target="_blank" rel="noopener">View Repository</a>
           </div>
+        </div>
+      </div>
+      <div class="project-card" data-project="VierApparatus Hiring Pipeline">
+        <div class="shots" data-slider tabindex="0" aria-roledescription="carousel" aria-label="VierApparatus hiring pipeline screenshots">
+          <div class="shots-track">
+            <figure class="shot"><img src="assets/images/projects/hiring-pipeline/viercrm-applicants.png" alt="VierCRM applicant base with fictional applicants, showing the token and token expires columns filled by the Issue tokens action, with the tokens masked" loading="lazy"><figcaption>VierCRM applicant base after Issue tokens (fictional people, masked tokens)</figcaption></figure>
+            <figure class="shot"><img src="assets/images/projects/hiring-pipeline/viercrm-automation.png" alt="VierCRM automation that sends the assessment invitation on a schedule when the token and e-mail fields are not empty, in test mode" loading="lazy"><figcaption>The invitation automation: schedule, conditions, then send. It starts off and in test mode</figcaption></figure>
+            <figure class="shot"><img src="assets/images/projects/hiring-pipeline/portal-overview.png" alt="The assessment portal overview with five sections, a time estimate and the statement that AI tools are permitted" loading="lazy"><figcaption>The portal: five sections, no timer, AI tools permitted and declared</figcaption></figure>
+            <figure class="shot"><img src="assets/images/projects/hiring-pipeline/commentary.png" alt="A scientific commentary case with comments on a fictional post and the candidate's reply under one comment" loading="lazy"><figcaption>Commentary exercise: reply to individual comments on a fictional post</figcaption></figure>
+            <figure class="shot"><img src="assets/images/projects/hiring-pipeline/review-and-submit.png" alt="The review page where the candidate declares whether and how AI was used before submitting" loading="lazy"><figcaption>Review and submit, with the AI-use declaration</figcaption></figure>
+            <figure class="shot"><img src="assets/images/projects/hiring-pipeline/reviewer-area.png" alt="The reviewer area showing a submission with the declared AI use, an evidence summary and a table of commentary replies" loading="lazy"><figcaption>Reviewer area: an evidence summary, never a decision</figcaption></figure>
+          </div>
+          <button type="button" class="shots-btn prev" aria-label="Previous screenshot">&#8249;</button>
+          <button type="button" class="shots-btn next" aria-label="Next screenshot">&#8250;</button>
+          <div class="shots-dots"></div>
+        </div>
+        <div class="project-body">
+          <span class="project-status">Operations system · Public repository</span>
+          <h4>VierApparatus Hiring Pipeline: Token-based Assessment System</h4>
+          <p>A hiring process that does not start with a CV. Applicants are invited from VierCRM, sign in with a personal username and a random token, take one written assessment, and the result reaches the reviewers as a single e-mail.</p>
+          <ul>
+            <li>VierCRM issues one random token per applicant through an authenticated API. Only a keyed hash is stored, and the token expires after four days.</li>
+            <li>An HTML invitation with merge fields for the name and the token goes out from an automation that starts off and in test mode.</li>
+            <li>The assessment covers ethical judgment, resource trade-offs, checking claims and sources, and replying to harsh online comments. AI use is allowed and declared.</li>
+            <li>Submitting freezes a snapshot, queues one e-mail with retry, and opens an evidence draft. The reviewers set the levels.</li>
+          </ul>
+          <div class="tool-badges">
+            <span class="tool-badge">Next.js 16</span><span class="tool-badge">TypeScript</span><span class="tool-badge">Turso / libSQL</span><span class="tool-badge">Resend</span><span class="tool-badge">VierCRM</span><span class="tool-badge">Tailwind CSS</span><span class="tool-badge">Vitest</span><span class="tool-badge">Playwright</span>
+          </div>
+          <div class="btn-row" style="margin-top: 4px;">
+            <a class="btn btn-secondary btn-sm" href="#hiring-pipeline">Read the write-up</a>
+            <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/vier-assessment" target="_blank" rel="noopener">View Repository</a>
+            <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/vier-assessment/blob/main/email/vier-candidate-invitation-email-v2.html" target="_blank" rel="noopener">Invitation e-mail (HTML)</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card" data-project="VierVideo">
+        <div class="shots shots-fit" data-slider tabindex="0" aria-roledescription="carousel" aria-label="VierVideo screenshots">
+          <div class="shots-track">
+            <figure class="shot"><img src="assets/images/projects/viervideo/studio-overview.png" alt="VierVideo with the example project open: asset library, a 9:16 preview, project settings and a five-track timeline" loading="lazy"><figcaption>The studio with the example project: library, preview, settings and timeline</figcaption></figure>
+            <figure class="shot"><img src="assets/images/projects/viervideo/inspect-element.png" alt="VierVideo studio with the text 'Moving mirror' selected, showing its size, position and canvas part number" loading="lazy"><figcaption>Inspecting a part painted on a canvas: its text, size and place</figcaption></figure>
+            <figure class="shot"><img src="assets/images/projects/viervideo/element-added.png" alt="VierVideo studio with a pasted HTML element added as a layer over the animation" loading="lazy"><figcaption>A pasted HTML element becomes a layer; the animation file is untouched</figcaption></figure>
+            <figure class="shot"><img src="assets/images/projects/viervideo/animation-devtools.png" alt="The animation's own window with Chromium developer tools open on its elements" loading="lazy"><figcaption>Developer tools for the animation, in its own window</figcaption></figure>
+            <figure class="shot"><img src="assets/images/projects/viervideo/script-json.png" alt="A JSON script imported into VierVideo, detected as three timed segments ready to become narration" loading="lazy"><figcaption>A JSON script, read as three timed narration segments</figcaption></figure>
+            <figure class="shot"><img src="assets/images/projects/viervideo/export-done.png" alt="VierVideo after an export: the status line reports 240 frames and sound from 2 clips" loading="lazy"><figcaption>Export finished: 240 frames, sound mixed from 2 clips</figcaption></figure>
+          </div>
+          <button type="button" class="shots-btn prev" aria-label="Previous screenshot">&#8249;</button>
+          <button type="button" class="shots-btn next" aria-label="Next screenshot">&#8250;</button>
+          <div class="shots-dots"></div>
+        </div>
+        <div class="project-body">
+          <span class="project-status">Desktop app · Public repository</span>
+          <h4>VierVideo: HTML-to-Video Editor and Narration Studio</h4>
+          <p>AI assistants can write an animation as HTML. VierVideo makes that animation inspectable, editable and exportable as an MP4 with narration, without regenerating it or editing code for every change.</p>
+          <ul>
+            <li>Click a part of the animation, even one painted on a single canvas, and drag it. The move is saved in the project, not in the animation file.</li>
+            <li>Add text, shapes, images and pasted HTML elements as timeline layers, read and edit the animation's code, or open its own developer tools.</li>
+            <li>Local narration with Kokoro voices from TXT, Markdown, JSON or CSV scripts, mixed with music into one MP4 (H.264 video, AAC audio).</li>
+            <li>Rendering runs on a virtual clock, so the same time always gives the same frame. Everything runs offline on your own machine.</li>
+          </ul>
+          <div class="tool-badges">
+            <span class="tool-badge">Electron 45</span><span class="tool-badge">React 19</span><span class="tool-badge">TypeScript</span><span class="tool-badge">Vite</span><span class="tool-badge">FFmpeg</span><span class="tool-badge">Kokoro-82M</span><span class="tool-badge">Python</span><span class="tool-badge">Playwright</span>
+          </div>
+          <div class="btn-row" style="margin-top: 4px;">
+            <a class="btn btn-secondary btn-sm" href="#viervideo">Read the write-up</a>
+            <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/VierVideo" target="_blank" rel="noopener">View Repository</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ CASE STUDY: HIRING PIPELINE ============ -->
+    <div class="vier-case" id="hiring-pipeline">
+      <div class="vier-case-head reveal">
+        <div class="vier-eyebrow">Case study · Operations system</div>
+        <h3 class="vier-case-title">The VierApparatus hiring pipeline</h3>
+        <p class="vier-case-lede">A recruitment process that evaluates how a person reasons, built as a chain of small systems: applicant records in VierCRM, token issuing, an HTML invitation, a candidate portal, and result delivery. Everything below was checked against the source code and the running application.</p>
+      </div>
+
+      <h4 class="vier-case-h">The problem, and why I built it</h4>
+      <div class="vier-prose reveal">
+        <p>Conventional hiring starts by screening CVs. That rewards the school, the employer and the network a person already has, and it asks a small team to read a large pile of documents before it learns anything about how anyone thinks.</p>
+        <p>I wanted a process that is open to people from any background, looks at reasoning and potential, is short for both sides (one test, no rounds of interviews), and does not depend on someone copying credentials and e-mails by hand for every applicant. Our species is called <em>Homo sapiens</em>, the one that thinks and knows. The process takes that seriously: nobody is expected to know everything, but a candidate should be able to reason, say what they do not know, and change their mind when the evidence says so.</p>
+      </div>
+      <div class="vier-ops reveal">
+        <div class="vier-op"><h4>Inclusion and equal opportunity</h4><p>Potential should not be limited by schooling, previous employers, institutional prestige or professional connections.</p></div>
+        <div class="vier-op"><h4>Willingness to learn</h4><p>We do not expect applicants to know everything. We value people who know what they do not know.</p></div>
+        <div class="vier-op"><h4>Intellectual curiosity</h4><p>The questions reward asking how and why, not reciting a position.</p></div>
+        <div class="vier-op"><h4>Independent thinking</h4><p>The answer should show the candidate's own reasoning, not a generic one.</p></div>
+        <div class="vier-op"><h4>Courage to question</h4><p>Including established assumptions, and one's own.</p></div>
+        <div class="vier-op"><h4>Correcting mistakes</h4><p>Noticing an error and fixing it counts as a strength, not as a failure.</p></div>
+      </div>
+
+      <h4 class="vier-case-h">The pipeline, stage by stage</h4>
+      <ol class="vier-flow reveal">
+        <li><h5>Job publication</h5><p>Vacancies go to relevant job portals and channels, aimed at attracting people with different backgrounds instead of a narrow set of conventional qualifications.</p></li>
+        <li><h5>Collection in VierCRM</h5><p>Applications are gathered in VierCRM, a Chrome extension I built. It is the single working environment for applicant records, and the data stays in the browser.</p></li>
+        <li><h5>Data curation</h5><p>One clean record per applicant, with a full name and an e-mail address. Structured, consistent records are what make the later steps automatic and safe: a missing name, a name that another record already holds, or an address that is present but invalid stops a token from being issued.</p></li>
+        <li><h5>Invitation e-mail</h5><p>An HTML template with merge fields for the applicant's name and token, an explanation of the assessment, a button to the portal, the expiry notice and sign-in steps.</p></li>
+        <li><h5>Credentials</h5><p><strong>Issue tokens</strong> in VierCRM asks the assessment server for one random token per selected applicant and writes the token and its expiry back into the record.</p></li>
+        <li><h5>Assessment and result</h5><p>The candidate signs in, answers (autosaved), declares AI use and submits. The result arrives as one e-mail, and the reviewers also see an evidence summary.</p></li>
+      </ol>
+
+      <h4 class="vier-case-h">How the credentials work</h4>
+      <div class="vier-prose reveal">
+        <p>The credential layer is the part I wanted to be least improvised, so I describe it from the code, not from memory. The server lives at <a href="https://test.vierapparatus.com/" target="_blank" rel="noopener">test.vierapparatus.com</a>.</p>
+      </div>
+      <dl class="vier-facts reveal">
+        <dt>Username</dt><dd>The applicant's full name, normalised for case, spaces and trailing separators. The VierCRM record id is the candidate's identity, so a corrected name renames the same candidate and keeps the answers. A name already held by another record is refused.</dd>
+        <dt>Token</dt><dd><code>VA-XXXX-XXXX-XXXX-XXXX</code>: 16 random symbols from a 32-symbol alphabet without I, O, 0 and 1, so it is easy to type. That is 80 bits from the operating system's random generator. It is never derived from the name.</dd>
+        <dt>Storage</dt><dd>In the Turso (libSQL) database only a keyed HMAC-SHA256 digest of the token is stored, with the expiry. The token itself is returned once to VierCRM, which keeps it in the applicant's record so the team can e-mail it.</dd>
+        <dt>Issuing</dt><dd><code>POST /api/issuer/tokens</code>, protected by a bearer key that is separate from the reviewer password and compared in constant time. Up to 20 people per request, and 20 new tokens per UTC day. A still-valid token is replaced only when the recruiter explicitly chooses <em>Re-issue</em>.</dd>
+        <dt>Expiry</dt><dd>Four days from issue. The candidate's session cookie lasts exactly as long as the token. Expired, never-completed sessions are removed by a daily maintenance job.</dd>
+        <dt>Sign-in</dt><dd>Username plus token. A wrong token and an unknown name give the same message. At most 8 attempts per name and 40 per address in 15 minutes. One active browser session per candidate, in an HttpOnly, SameSite=Strict cookie whose value is also stored only as a digest.</dd>
+        <dt>After submission</dt><dd>A candidate who has submitted cannot sign in again or be issued another token.</dd>
+      </dl>
+      <ol class="vier-flow vier-flow-compact reveal">
+        <li><h5>VierCRM</h5><p>Issue tokens for the selected records</p></li>
+        <li><h5>Server</h5><p>Validate, generate, store the digest</p></li>
+        <li><h5>VierCRM record</h5><p>Token and expiry written back</p></li>
+        <li><h5>Invitation</h5><p>Automation sends the template</p></li>
+        <li><h5>Candidate</h5><p>Signs in with name and token</p></li>
+        <li><h5>Session</h5><p>Cookie valid until the token expires</p></li>
+      </ol>
+
+      <h4 class="vier-case-h">The invitation e-mail</h4>
+      <div class="vier-split reveal">
+        <figure class="vier-admin-shot vier-fig-tall"><img src="assets/images/projects/hiring-pipeline/invitation-email.png" alt="The VierApparatus candidate invitation e-mail rendered with fictional values: an introduction, a pull quote, a personal access card with a masked token and a button to the portal, sign-in steps and what happens next" loading="lazy"><figcaption>The V2 template rendered with fictional values and a masked token</figcaption></figure>
+        <div class="vier-prose">
+          <p>The template is a single HTML file with inline styles and tables, so mail clients render it consistently. It carries an introduction to the principle behind the process, the reason for the test, a card with the username, the token, a button and the expiry notice, three sign-in steps, and what happens next.</p>
+          <p>In VierCRM it is stored as an HTML template with a live preview. Merge fields such as <code>{First Name | fallback: there}</code>, <code>{Full Name}</code> and <code>{token}</code> are filled from the applicant's record and HTML-escaped. An automation sends it on a schedule, only when the token and e-mail fields are not empty. New automations start off and in test mode, and a global &ldquo;Allow sending&rdquo; switch must also be on, so nothing goes out by accident.</p>
+          <p>The e-mail quotes a line attributed to an IBM training slide from 1979: <em>&ldquo;A computer can never be held accountable.&rdquo;</em> It is the idea behind the whole test: people stay responsible for what they publish and act on, even when AI helped them.</p>
+          <div class="vier-links">
+            <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/vier-assessment/blob/main/email/vier-candidate-invitation-email-v2.html" target="_blank" rel="noopener">View the HTML template</a>
+            <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/vier-assessment/tree/main/email" target="_blank" rel="noopener">Notes on its merge fields</a>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="vier-case-h">Submission and result delivery</h4>
+      <div class="vier-prose reveal">
+        <p>When a candidate submits, the server checks that both written responses, the claims answers and at least one reply in each commentary case are present. Then, in a single database transaction, it locks the session as completed, builds a frozen snapshot of what the candidate saw and wrote, builds the evidence draft, and queues exactly one e-mail in an outbox. Later edits cannot change what was submitted.</p>
+        <p>The e-mail goes out through Resend. If it fails, it is retried with exponential backoff (5 minutes, doubling, capped at 6 hours, up to 8 attempts), and the daily maintenance job retries too. Sending never fails the submission itself. The message carries the candidate's full name, the e-mail address that came with the token request, a submission reference, the assessment version, the AI-use declaration and the full responses. The link between a response and its credentials is the candidate's session row, created when the token was issued for one VierCRM record.</p>
+        <p>The reviewers' area shows the same material plus an <em>evidence summary</em> of observed facts. It sets no score. The reviewer records a level for each dimension with written reasoning.</p>
+      </div>
+
+      <h4 class="vier-case-h">Why the assessment looks the way it does</h4>
+      <div class="vier-prose reveal">
+        <p>The assessment is built around frameworks, not conventional interview questions. It has five sections: two written ethical scenarios, a claims-and-sources exercise, a commentary exercise, and an optional About-yourself section that is never scored. I describe the thinking here; the scoring descriptors and the claims answer key are deliberately not published, so no candidate can read what a high score looks like in advance.</p>
+      </div>
+
+      <div class="vier-ops reveal">
+        <div class="vier-op vier-op-wide">
+          <h4>AI is allowed, and declared</h4>
+          <p>We cannot realistically fight AI, and AI is already part of everyday work. The assessment does not try to detect it. Candidates declare whether they used AI, which tools and how, and the questions look at how they question, verify and take responsibility for what they submit. A candidate who uses AI thoughtfully and checks its output may show better judgment than one who refuses it.</p>
+          <p>The questions are written so that a generic answer shows little. Take <em>&ldquo;How would you approach and support the person without making them feel judged, pressured, or uncomfortable?&rdquo;</em> An AI system quickly finds the keywords (empathy, patience, respect, listening, boundaries) and writes something like:</p>
+          <blockquote class="vier-callout generic">&ldquo;I would approach the person with empathy, patience, and respect. I would listen without judging them or forcing them to share more than they feel comfortable with. I would let them know that they are not alone.&rdquo;</blockquote>
+          <p>Nothing in that is wrong. It just does not show that the writer can do any of it. So the scenario ends with <strong>&ldquo;Explain what you would actually do, why you would do it, and what you would avoid doing.&rdquo;</strong> What would you say? How would you recognise that professional help is needed? What would you avoid, and why? Repeating ethical words is cheap. Explaining how they become a decision is not.</p>
+        </div>
+        <div class="vier-op">
+          <h4>Ethical reasoning</h4>
+          <p>Scenario 1 describes a colleague with depression and suicidal thoughts and asks how to respond with compassion while keeping boundaries. Five traditions are deliberately in play:</p>
+          <ul class="vier-bullets">
+            <li><strong>Aristotle</strong>: practical wisdom (<em>phronesis</em>). Good intentions are not good judgment.</li>
+            <li><strong>Gilligan&rsquo;s ethics of care</strong>: recognise vulnerability, but care does not demand unlimited self-sacrifice.</li>
+            <li><strong>Kant</strong>: the colleague is a person with dignity, not a means to productivity.</li>
+            <li><strong>Mill</strong>: respect autonomy until a foreseeable serious harm justifies professional help.</li>
+            <li><strong>Consequentialism</strong>: moving all the work to someone else only creates a new problem.</li>
+          </ul>
+          <p>The aim is not vocabulary. It is whether the principles show in what the candidate would actually do.</p>
+        </div>
+        <div class="vier-op">
+          <h4>Microeconomics and responsibility</h4>
+          <p>Scenario 2 introduces opportunity cost, marginal utility and diminishing marginal returns, and asks the candidate to allocate scarce hours, AI resources and colleagues' different capacities. It looks for prioritisation, trade-offs, and the point where more work starts to lower quality or well-being.</p>
+          <p>It is a counterweight to &ldquo;maximise output&rdquo;. Doing more is not always creating more value.</p>
+        </div>
+        <div class="vier-op">
+          <h4>Fact-checking and epistemic responsibility</h4>
+          <p>AI can write convincing text with wrong numbers or invented references. The candidate receives an AI-written summary of a small cytotoxicity experiment, with eight claims and its reference list, and for each claim decides to retain, revise or reject it, with a reason. For three claims they check whether the cited paper supports the statement.</p>
+          <p>It looks for the habit: separate the claims, find the original source, tell a primary study from a report about it, check that the source says what is claimed, name uncertainty, and correct rather than defend. &ldquo;I cannot tell from the materials&rdquo; is a valid answer.</p>
+        </div>
+        <div class="vier-op">
+          <h4>Criticism and logical reasoning</h4>
+          <p>Five fictional posts about science, each with six to eight comments, some harsh, emotional or discriminatory. The candidate replies to those they choose, which recalls the online disinhibition effect: people say online what they would not say face to face.</p>
+          <p>It looks for why an argument is weak (attack on the person, appeal to authority, straw man, false dilemma, hasty generalisation, appeal to popularity, circular reasoning), the valid point inside a poor argument, and a constructive reply. Naming a fallacy is not the goal; explaining it is.</p>
+        </div>
+        <div class="vier-op">
+          <h4>Openness and inclusion</h4>
+          <p>Science stays open to questioning and is not limited by ideological, religious, institutional or personal authority. The comments include remarks that dismiss someone's faith or discriminate. Neutrality does not mean every claim is equally credible: evidence decides, not the identity or beliefs of the person making the claim. The aim is people who challenge ideas without discriminating against individuals.</p>
+        </div>
+        <div class="vier-op">
+          <h4>Emotional regulation</h4>
+          <p>The same material shows how a candidate behaves when provoked: noticing a reaction, not replying on impulse, disagreeing without personal attacks, knowing when to disengage, admitting a misunderstanding, keeping boundaries. Nobody is expected to feel nothing. The question is whether a passing reaction decides the behaviour.</p>
+        </div>
+        <div class="vier-op vier-op-wide">
+          <h4>What it cannot do</h4>
+          <p>It combines philosophical ethics, microeconomic reasoning, epistemology, scientific criticism and organisational judgment to see how people think, not what they claim to believe. A written test cannot reveal a personality or predict future behaviour. It is a structured source of evidence about reasoning, communication, openness, judgment and self-awareness, read by people who record their own levels and reasons.</p>
+        </div>
+      </div>
+
+      <h4 class="vier-case-h">The screens</h4>
+      <p class="vier-note reveal">Every image below comes from the real code running locally, with fictional people and fictional answers. Tokens are masked in the pixels themselves.</p>
+      <div class="vier-gallery reveal">
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/viercrm-applicants.png" alt="VierCRM applicant base with token and token expires columns" loading="lazy"><figcaption>VierCRM: the applicant base after Issue tokens. Tokens are masked.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/viercrm-template.png" alt="VierCRM e-mail template editor with the HTML of the invitation and a live preview for one record" loading="lazy"><figcaption>VierCRM: the invitation as an HTML template, with a live preview.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/viercrm-automation.png" alt="VierCRM automation: on a schedule, only if full name and e-mail are not empty, send the invitation" loading="lazy"><figcaption>VierCRM: the automation. It starts off and in test mode.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/viercrm-settings.png" alt="VierCRM settings with the assessment server address, the masked issuer key and today's token count" loading="lazy"><figcaption>VierCRM settings: the server address, the issuer key (masked) and the daily count.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/portal-sign-in.png" alt="The portal sign-in page asking for a full name and a unique access token" loading="lazy"><figcaption>Sign-in: full name and token (a masked placeholder is typed here).</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/portal-overview.png" alt="Assessment overview with sections, estimates and the note that AI tools are permitted" loading="lazy"><figcaption>Overview: five sections, no timer, answers saved as you go.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/written-scenario.png" alt="A written scenario with the closing instruction to explain what you would actually do, and an autosaved response" loading="lazy"><figcaption>A written scenario, ending with &ldquo;what you would actually do&rdquo;.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/claims-and-sources.png" alt="The claims and sources section showing the AI-generated summary and its reference list" loading="lazy"><figcaption>Claims and sources: judge the summary, check the citations.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/review-and-submit.png" alt="The AI-use declaration and the submit button" loading="lazy"><figcaption>Review and submit, with the AI-use declaration.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/notification-email.png" alt="The notification e-mail with the candidate's name, reference, assessment version and AI-use declaration" loading="lazy"><figcaption>The notification e-mail that reaches the reviewers.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/reviewer-area.png" alt="The reviewer area with an evidence summary and commentary replies" loading="lazy"><figcaption>The reviewer area: evidence summary, not a decision.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/hiring-pipeline/commentary.png" alt="A commentary case with a candidate's reply under a comment" loading="lazy"><figcaption>Commentary: a reply under one comment.</figcaption></figure>
+      </div>
+
+      <h4 class="vier-case-h">Source, impact and limits</h4>
+      <div class="vier-split vier-split-even reveal">
+        <div class="vier-prose">
+          <p><strong>Source.</strong> The portal, its tests, the architecture notes, the design rationale and the invitation template are in a public repository. The reviewers' scoring descriptors, the claims answer key, all environment values and all applicant data are not.</p>
+          <div class="vier-links">
+            <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/vier-assessment" target="_blank" rel="noopener">Assessment repository</a>
+            <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/vier-assessment/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener">Architecture</a>
+            <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/vier-assessment/blob/main/docs/ASSESSMENT-DESIGN.md" target="_blank" rel="noopener">Design rationale</a>
+          </div>
+          <p><strong>Checks.</strong> When published, the typecheck was clean and 124 unit tests, 53 content checks and 92 end-to-end checks passed against a locally built server.</p>
+        </div>
+        <div class="vier-prose">
+          <p><strong>What it changes in practice.</strong> Issuing a credential is one action on selected records, and once the automation is switched on the invitation goes out without hand work. The result arrives as one e-mail. Every applicant gets the same test, and the reviewers receive the results in one consistent format.</p>
+          <p><strong>Limits I would state plainly.</strong> I have no outcome data, so I make no claim that the test predicts job performance. The reviewer area uses one shared password and should move to individual accounts. The plain token also sits in the VierCRM record, so access to that base must be limited. Photos in the optional section are personal data and need a retention rule. The invitation template says access lasts three days while the server issues four, and the two should be aligned.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ CASE STUDY: VIERVIDEO ============ -->
+    <div class="vier-case" id="viervideo">
+      <div class="vier-case-head reveal">
+        <div class="vier-eyebrow">Case study · Production tool</div>
+        <h3 class="vier-case-title">VierVideo: an HTML-based video studio</h3>
+        <p class="vier-case-lede">A Windows desktop app that turns an HTML animation into an MP4 with narration. It exists because AI-written animations are cheap to make and awkward to change. The feature list below is what the code does and what I verified by running the app; limits are stated at the end.</p>
+      </div>
+
+      <h4 class="vier-case-h">The problem</h4>
+      <div class="vier-ops reveal">
+        <div class="vier-op"><h4>Limited editability</h4><p>An AI-made video arrives as HTML, CSS and JavaScript. Changing one visual element usually means finding it in the code, which is awkward for anyone who does not program, or asking the AI to regenerate the whole thing.</p></div>
+        <div class="vier-op"><h4>Difficult debugging</h4><p>When something looks wrong, finding the element responsible can mean reading several files.</p></div>
+        <div class="vier-op"><h4>No audio workflow</h4><p>HTML animations do not come with voice-over, text-to-speech or a way to mix sound.</p></div>
+        <div class="vier-op"><h4>Cost</h4><p>Paid AI video subscriptions are not an option for every production task, and every regeneration costs again.</p></div>
+        <div class="vier-op"><h4>Speed</h4><p>The AI is fast, but editing, inspecting, correcting and exporting the result is where the time goes.</p></div>
+      </div>
+
+      <h4 class="vier-case-h">The idea</h4>
+      <blockquote class="vier-callout reveal">Keep the speed and flexibility of AI-assisted production without making every change depend on editing source code. Instead of asking the AI to regenerate a whole video for a small change, give direct control over individual elements.<cite>Design principle</cite></blockquote>
+
+      <h4 class="vier-case-h">Architecture</h4>
+      <div class="vier-lanes reveal" role="group" aria-label="VierVideo architecture, two lanes">
+        <div class="vier-lane">
+          <div class="vier-lane-title">Picture</div>
+          <ol class="vier-steps">
+            <li><strong>The animation&rsquo;s HTML page</strong> loads in an offscreen Electron window that is never shown.</li>
+            <li><strong>A virtual clock</strong> replaces <code>requestAnimationFrame</code>, timers, <code>Date</code> and <code>Math.random</code>, so the same time gives the same picture.</li>
+            <li><strong>A canvas recorder</strong> wraps the drawing calls so each painted part (text, line, box) can be picked and moved.</li>
+            <li><strong>Timeline layers</strong> (text, shapes, images, HTML elements) are drawn over the page.</li>
+            <li><strong>Frames</strong> are captured as PNG over the DevTools protocol and streamed to FFmpeg (H.264).</li>
+          </ol>
+        </div>
+        <div class="vier-lane">
+          <div class="vier-lane-title">Sound</div>
+          <ol class="vier-steps">
+            <li><strong>A script</strong> (TXT, Markdown, JSON or CSV) is parsed into timed segments.</li>
+            <li><strong>A Python worker</strong> running Kokoro-82M synthesises each segment on the CPU and talks to the app in JSON lines over stdio.</li>
+            <li><strong>Clips</strong> for narration, music and sound effects sit on timeline tracks.</li>
+            <li><strong>One FFmpeg filter graph</strong> trims, sets volume, fades, delays, sums, pads and limits them.</li>
+            <li><strong>Mux</strong>: the video stream is copied, the mix is encoded as AAC, and the result is one MP4.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="vier-prose reveal">
+        <p>The app is Electron 45 with a React 19 interface. The main process owns the open project and every IPC handler, a preload script is the only bridge, and the document format, timeline model, narration parser and audio-mix planner are pure functions shared by both sides. A project is a folder with one JSON document and an <code>assets/</code> folder. Files are copied in by checksum, originals are never changed, and every change is written atomically with a backup copy. Project media is served through custom URL schemes that only reach that project&rsquo;s own folders.</p>
+      </div>
+
+      <h4 class="vier-case-h">What it does</h4>
+      <div class="vier-ops reveal">
+        <div class="vier-op"><h4>Visual studio</h4><p>A large view of the same frame the export uses, with a layer list, rulers, a grid with snapping, marquee selection, grouping, corner-handle resizing and zoom and pan.</p></div>
+        <div class="vier-op"><h4>Inspect and edit elements</h4><p>Click a part of the animation. For a canvas part the studio shows its kind, text, size and position; for a DOM element it shows the source lines that name it. Drag it, and the offset is stored in the project, keyed to the part and to the stretch of video where it is the same part. Reset puts it back.</p></div>
+        <div class="vier-op"><h4>HTML element layers</h4><p>Paste the HTML of one element, or choose a file. It is sanitised (comments, scripts, frames, plugins, event attributes and <code>javascript:</code> addresses are removed) and drawn in a shadow root over the animation, so its styles cannot leak. It is drawn as a picture at each frame; scripts do not run.</p></div>
+        <div class="vier-op"><h4>Checking the HTML</h4><p>There is no separate HTML validator, and I do not claim one. What exists: the render session warns when an animation never asks for an animation frame, so its motion would be missing; pasted elements are sanitised; and the code view lets you read and edit the source, with the imported original kept for &ldquo;Restore original&rdquo;.</p></div>
+        <div class="vier-op"><h4>Development mode</h4><p>View &rsaquo; &ldquo;Developer tools for the animation&rdquo; opens the animation&rsquo;s own page in a window with Chromium DevTools: its elements, styles and console. The app&rsquo;s own DevTools are a separate menu item, because the preview itself is drawn in a hidden window.</p></div>
+        <div class="vier-op"><h4>Text-to-speech</h4><p>Eight Kokoro-82M voices, speed from 0.7x to 1.3x, generated on the CPU and offline after the first model download. Segments carry a status (not generated, ready, changed, failed) and are cached by text, voice and speed. &ldquo;Vier&rdquo; is spoken as &ldquo;veer&rdquo; through a pronunciation rule.</p></div>
+        <div class="vier-op"><h4>Reading Markdown, JSON and TXT</h4><p>TXT with <code>[00:04 - 00:09]</code> ranges (SRT and WebVTT cue timing is also recognised), JSON with a list of segments (<code>start</code>, <code>end</code>, <code>text</code>), CSV, and Markdown, where emphasis, links and code marks are removed before the text is spoken. Plain prose is split into sentence-sized segments.</p></div>
+        <div class="vier-op"><h4>Production and export</h4><p>MP4 only: H.264 (<code>libx264</code>, <code>yuv420p</code>, CRF 18) with AAC audio at 192 kbps. Aspect ratios 9:16, 16:9 and 1:1, at 30 or 60 fps. The default capture is frame by frame on the virtual clock; a real-time mode exists. A cancelled export leaves no partial file.</p></div>
+      </div>
+
+      <h4 class="vier-case-h">The running application</h4>
+      <p class="vier-note reveal">These are screenshots of the real built app running its example project (an FTIR spectroscopy animation), captured by driving it over the DevTools protocol. Nothing is a mock-up.</p>
+      <div class="vier-gallery reveal">
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/studio-overview.png" alt="The main VierVideo interface with the example project loaded" loading="lazy"><figcaption>The main interface with the example project: assets, preview, project settings and timeline.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/studio.png" alt="The studio view with layers at the frame and parts of the animation" loading="lazy"><figcaption>The studio: layers at this frame and the parts of the animation.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/inspect-element.png" alt="A canvas text part selected in the studio with its size and position" loading="lazy"><figcaption>Element inspection: a text painted on a canvas, with its box.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/select-layer.png" alt="A timeline text layer selected with its placement, rotation, opacity and fade fields" loading="lazy"><figcaption>A layer, with position, size, rotation, opacity and fades.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/move-part.png" alt="The Detector label dragged to a new place, with a note that it moved by 150 px and 20 px and a Reset position button" loading="lazy"><figcaption>Editing an element: the label was dragged and the move is stored in the project.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/add-element.png" alt="The Add an HTML element dialog with pasted HTML" loading="lazy"><figcaption>Adding an HTML element: paste its HTML or choose a file.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/element-added.png" alt="The pasted element drawn as a layer over the animation" loading="lazy"><figcaption>The element as a layer over the animation.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/animation-code.png" alt="The animation's HTML source shown in a code panel with Save and Revert" loading="lazy"><figcaption>The animation&rsquo;s code, editable, with the original kept.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/render-warning.png" alt="A static page in the preview with a warning that the animation never asked for an animation frame" loading="lazy"><figcaption>Render check: a page with no motion gets a warning.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/animation-devtools.png" alt="The animation's own window with DevTools open on its elements and styles" loading="lazy"><figcaption>Development mode: the animation&rsquo;s own DevTools window.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/script-markdown.png" alt="A Markdown script imported as three plain segments" loading="lazy"><figcaption>A Markdown script: markdown marks are removed before speech.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/script-json.png" alt="A JSON script detected as JSON with three segments" loading="lazy"><figcaption>A JSON script with timed segments.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/script-txt.png" alt="A TXT script with timed lines" loading="lazy"><figcaption>A TXT script with timed lines.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/narration-generated.png" alt="The Narration section reporting three segments ready" loading="lazy"><figcaption>Text-to-speech: three segments generated and ready.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/export-running.png" alt="An export in progress with the export button reading Exporting" loading="lazy"><figcaption>Export in progress.</figcaption></figure>
+        <figure class="vier-admin-shot"><img src="assets/images/projects/viervideo/export-done.png" alt="The status line after export reporting 240 frames and sound from 2 clips" loading="lazy"><figcaption>Export finished: 240 frames, sound from 2 clips.</figcaption></figure>
+      </div>
+
+      <h4 class="vier-case-h">Source, impact and limits</h4>
+      <div class="vier-split vier-split-even reveal">
+        <div class="vier-prose">
+          <p><strong>Source.</strong> The whole app, its developer description, plan and test results are in a public repository.</p>
+          <div class="vier-links">
+            <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/VierVideo" target="_blank" rel="noopener">VierVideo repository</a>
+            <a class="btn btn-secondary btn-sm" href="https://github.com/MhSatrio/VierVideo/blob/main/docs/how-the-app-works.md" target="_blank" rel="noopener">How the app works</a>
+          </div>
+          <p><strong>Checks.</strong> When published, the typecheck was clean and 166 unit tests passed. End-to-end suites drive the built app over the DevTools protocol, including a real narration and export run that checks the audio of the resulting MP4.</p>
+        </div>
+        <div class="vier-prose">
+          <p><strong>In practice.</strong> On my development machine an 8-second, 30 fps export (240 frames, two audio clips) took about 45 seconds. The first narration after starting the app takes about a minute and a half while the model loads, then about five seconds per short segment. Rendering is slower than real time.</p>
+          <p><strong>Limits.</strong> Windows is the only tested platform. The installer is unsigned and was tested only on the development machine. Canvas parts are picked by their box, not their outline, and a part that moves very fast is not followed across frames. HTML element layers are pictures: their scripts do not run. Groups are one level deep. Export is MP4 only. There is no stand-alone HTML check or HTML export.</p>
         </div>
       </div>
     </div>
